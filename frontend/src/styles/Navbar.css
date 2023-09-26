@@ -1,0 +1,139 @@
+.navbar {
+  background-color: #3c1053;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  font-size: 24px;
+  margin-right: 20px;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  margin-right: 20px;
+}
+
+.navbar-menu li {
+  margin-right: 20px;
+}
+
+.navbar-menu a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.buttons {
+  display: flex;
+}
+
+.login-button,
+.get-started-button {
+  background-color: #f2eaf9;
+  color: #5a287d;
+  border: none;
+  padding: 10px 20px;
+  margin-left: 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.login-button:hover,
+.get-started-button:hover {
+  background-color: #840bdb;
+  color: #f2eaf9;
+}
+
+.hamburger-menu {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 3px 0;
+  transition: 0.4s;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px;
+  }
+  .navbar-right {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #5a287d;
+    width: 100%;
+  }
+  .navbar-right.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar-menu {
+    flex-direction: column;
+
+    align-items: center;
+  }
+
+  .navbar-menu li {
+    padding-top: 10px;
+    font-size: 18px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  .login-button {
+    margin: 10px 20px;
+    font-size: 15px;
+  }
+  
+  .get-started-button {
+    margin: 10px 20px;
+    font-size: 15px;
+  }
+  
+  .hamburger-menu {
+    display: flex;
+    position: fixed;
+    margin-left: 85%;
+  }
+
+  .hamburger-menu.active .bar:nth-child(1) {
+    transform: rotate(-50deg) translate(-5px, 6px);
+  }
+
+  .hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger-menu.active .bar:nth-child(3) {
+    transform: rotate(50deg) translate(-5px, -6px);
+  }
+}
