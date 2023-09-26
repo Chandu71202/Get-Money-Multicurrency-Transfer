@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useNavigate} from 'react-router-dom';
 import '../styles/Navbar.css';
 
 export default function Navbar() {
@@ -7,6 +8,11 @@ export default function Navbar() {
   const toggleMenu = () => {
     setMenuActive(!menuActive);
   };
+
+  let navigate = useNavigate();
+  const Register = () => {
+    navigate("/register");
+  }
 
   return (
     <nav className="navbar">
@@ -24,7 +30,7 @@ export default function Navbar() {
         </ul>
         <div className="buttons">
           <button className="login-button">Login</button>
-          <button className="get-started-button">Get Started</button>
+          <button className="get-started-button" onClick={() => Register()}>Get Started</button>
         </div>
       </div>
     </nav>
