@@ -6,7 +6,7 @@ import '../styles/Carousel.css'
 export default function CarouselSection() {
 
   return (
-    <div className='carouselSection' style={{display: 'block' ,padding:20, width: 'auto'}}>
+    <div className='carouselSection' style={{display: 'block', width: 'auto'}}>
       <Carousel>
         <Carousel.Item interval={5000}>
           <img

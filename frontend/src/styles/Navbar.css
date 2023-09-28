@@ -15,7 +15,9 @@
 
 .logo {
   font-size: 24px;
-  margin-right: 20px;
+  margin-left: 20px;
+  text-decoration: none;
+  color: white;
 }
 
 .navbar-right {
@@ -27,6 +29,7 @@
   list-style: none;
   display: flex;
   margin-right: 20px;
+  padding-top: 15px;
 }
 
 .navbar-menu li {
@@ -42,7 +45,9 @@
 
 .buttons {
   display: flex;
+  margin-right: 30px;
 }
+
 
 .login-button,
 .get-started-button {
@@ -54,12 +59,14 @@
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
 }
 
 .login-button:hover,
 .get-started-button:hover {
   background-color: #840bdb;
   color: #f2eaf9;
+  text-decoration: none;
 }
 
 .hamburger-menu {
@@ -77,14 +84,10 @@
 }
 
 @media (max-width: 768px) {
-  .navbar {
-    padding: 20px;
-  }
   .navbar-right {
     display: none;
     flex-direction: column;
-    position: absolute;
-    top: 60px;
+    position:relative;
     right: 0;
     background-color: #5a287d;
     width: 100%;
@@ -93,11 +96,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    top:10px;
   }
 
   .navbar-menu {
     flex-direction: column;
     align-items: center;
+    margin-right: 62px; 
   }
 
   .navbar-menu li {
@@ -112,6 +117,7 @@
   .login-button {
     margin: 10px 20px;
     font-size: 15px;
+    text-align: center;
   }
   
   .get-started-button {

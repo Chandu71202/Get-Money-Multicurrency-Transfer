@@ -21,9 +21,33 @@ export default function Register() {
 
         const handleSubmit = (e) => {
             e.preventDefault()
-            axios.post("http://localhost:8080/users/addUser",user);
-            alert("Registered Successfully");
-            console.log(user)
+            if(user)
+            {
+                if (user.name.length < 3) {
+                    alert("Name must be at least 3 characters long");
+                    return;
+                }
+                if (user.email.length < 3) {
+                    alert("Email must be at least 3 characters long");
+                    return;
+                }
+                if (user.phone_no.length !== 10) {
+                    alert("Phone number must have exactly 10 digits");
+                    return;
+                }
+                if(user.password.length<8){
+                    alert("Password length must be atleast 8 characters");
+                    return;
+                }
+                if (user.password !== user.confirm_password) {
+                    alert("Passwords do not match");
+                    return;
+                }
+                axios.post("http://localhost:8080/users/addUser",user);
+                alert("Registered Successfully");
+                console.log(user)
+            }
+            
         }
         return ( 
             <div>
@@ -39,7 +63,7 @@ export default function Register() {
                 </div>
 
                 <div className="form-group">
-                <label  className="label">Email</label>
+                <label className="label">Email</label>
                 <input className="email_field" type="email" id="email" name="email" value={user.email} onChange={handleChanges} required/>
                 </div>
 
