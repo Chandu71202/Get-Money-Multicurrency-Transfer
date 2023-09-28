@@ -13,10 +13,8 @@ export default function Home() {
       <Navbar />
       <CarouselSection />
       <Services />
-      <div style={{display: 'flex'}}>
-        <SecuritySection />
-        <CurrentExchangeRates />
-      </div>
+      <SecuritySection />
+      <CurrentExchangeRates />
       <CountriesSection />
       <Footer />
     </div>

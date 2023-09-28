@@ -61,35 +61,44 @@ export default function CurrentExchangeRates() {
   };
 
   return (
-    <div className="currency-converter-card">
-      <h1>Current Exchange Rates</h1>
+    <div className="current-exchange-rates">
       <div>
-        <p>GBP to USD: {exchangeRates1.USD?.toFixed(4)}</p>
-        <p>GBP to EUR: {exchangeRates1.EUR?.toFixed(4)}</p>
-        <p>USD to GBP: {exchangeRates2.GBP?.toFixed(4)}</p>
-        <p>USD to EUR: {exchangeRates2.EUR?.toFixed(4)}</p>
-        <p>EUR to GBP: {exchangeRates3.EUR?.toFixed(4)}</p>
-        <p>EUR to USD: {exchangeRates3.USD?.toFixed(4)}</p>
+        <h1 className="currency-exchange-rates-h1">Make your money move, fast</h1>
+        <div style={{width:'80%'}}>
+        <h2>Send to 70+ countries, fast. Free from hidden fees and exchange rate markups</h2>
       </div>
-      <div>
-        <label>Try Yourself Out!</label>
-        <input type="number" className="styled-input" value={amount} onChange={handleAmountChange} />
-        <select value={baseCurrency} onChange={handleBaseCurrencyChange}>
-          <option value="GBP">GBP</option>
-          <option value="USD">USD</option>
-          <option value="EUR">EUR</option>
-        </select>
-        <span>to</span>
-        <select value={targetCurrency} onChange={handleTargetCurrencyChange}>
-          {Object.keys(exchangeRates).map((currency) => (
-            <option key={currency} value={currency}>
-              {currency}
-            </option>
-          ))}
-        </select>
-        <p>
-          {baseCurrency} to {targetCurrency}: {result.toFixed(4)}
-        </p>
+      </div>
+      
+      <div className="currency-converter-card">
+        <h1>Current Exchange Rates</h1>
+        <div>
+          <p>GBP to USD: {exchangeRates1.USD?.toFixed(4)}</p>
+          <p>GBP to EUR: {exchangeRates1.EUR?.toFixed(4)}</p>
+          <p>USD to GBP: {exchangeRates2.GBP?.toFixed(4)}</p>
+          <p>USD to EUR: {exchangeRates2.EUR?.toFixed(4)}</p>
+          <p>EUR to GBP: {exchangeRates3.EUR?.toFixed(4)}</p>
+          <p>EUR to USD: {exchangeRates3.USD?.toFixed(4)}</p>
+        </div>
+        <div>
+          <label>Try Yourself Out!</label>
+          <input type="number" className="styled-input" value={amount} onChange={handleAmountChange} />
+          <select value={baseCurrency} onChange={handleBaseCurrencyChange}>
+            <option value="GBP">GBP</option>
+            <option value="USD">USD</option>
+            <option value="EUR">EUR</option>
+          </select>
+          <span>to</span>
+          <select value={targetCurrency} onChange={handleTargetCurrencyChange}>
+            {Object.keys(exchangeRates).map((currency) => (
+              <option key={currency} value={currency}>
+                {currency}
+              </option>
+            ))}
+          </select>
+          <p>
+            {baseCurrency} to {targetCurrency}: {result.toFixed(4)}
+          </p>
+        </div>
       </div>
     </div>
   );
