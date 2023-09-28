@@ -1,8 +1,8 @@
 .signup-container {
   text-align: center;
-  max-width: 500px;
-  margin: 50px auto 0 auto;
-  padding: 30px 80px;
+  max-width: 550px;
+  margin: 20px auto 0 auto;
+  padding: 25px 80px;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #b3adad29;
@@ -24,13 +24,13 @@
   margin-top: 10px;
 }
 
-a {
+.login {
   color: #3c1053;
   text-decoration: none;
   font-weight: 700;
 }
 
-a:hover {
+.login:hover {
   text-decoration: underline;
 }
 
@@ -39,16 +39,17 @@ a:hover {
   text-align: left;
 }
 
-label {
+.label {
   display: block;
   font-size: 16px;
   margin-bottom: 5px;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="password"] {
+  .name_field,
+  .email_field,
+  .phone_field,
+  .password_field,
+  .confirm_password_field {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -56,47 +57,30 @@ input[type="password"] {
   border-radius: 5px;
 }
 
-input[type="text"]:hover,
-input[type="email"]:hover,
-input[type="tel"]:hover,
-input[type="password"]:hover {
-  box-shadow: 10px 10px 10px 10px rgba(70, 9, 77, 0.1);
+  .name_field:hover,
+  .email_field:hover,
+  .phone_field:hover,
+  .password_field:hover,
+  .confirm_password_field:hover {
+  box-shadow: 3px 3px 3px 3px rgba(70, 9, 77, 0.1);
   transform: translateY(-4px);
   border-color: #7739a4; /* Change border color on hover */
 }
 
-button[type="submit"] {
+.submit_button {
   background-color: #3c1053;
   color: #fff;
   font-size: 18px;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
-button[type="submit"]:hover {
+.submit_button:hover {
   box-shadow: 10px 10px 10px 10px rgba(117, 35, 128, 0.1);
   background-color: #7739a4;
   color: black;
   
-}
-
-/* Navbar.css */
-
-.navbar1 {
-  background-color: #3c1053;
-  color: white;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 5px 20px 4.5px;
-  margin-bottom: 10px;
-}
-
-.navbar-heading1 {
-  font-size: 24px;
-  margin-right: 20px;
-  font-weight: 450;
 }
