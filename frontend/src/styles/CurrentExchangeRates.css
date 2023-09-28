@@ -1,14 +1,27 @@
 /* CurrencyConverter.css */
-
+.current-exchange-rates{
+  background-color: #f2eaf9;
+  font-family: "knilebold",sans-serif;
+  color: #3c1053;
+  padding: 30px;
+  display: flex;
+  
+}
+.currency-exchange-rates-h1{
+  font-weight: bold;
+}
 .currency-converter-card {
-    background-color: #15121229;
+    background-color: #fff;
+    align-self: flex-end;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    max-width: 400px;
+    width: 90%;
+    max-width: 500px;
+    min-width: 400px;
     margin-left:20px;
     margin-top: 20px;
-    font-family: Arial, sans-serif;
+    font-family: "knilebold",sans-serif;
     color: #333;
   }
   
