@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {useNavigate} from 'react-router-dom';
+import { Link } from 'react-router-dom'; // Import Link
 import '../styles/Navbar.css';
 
 export default function Navbar() {
@@ -8,11 +8,6 @@ export default function Navbar() {
   const toggleMenu = () => {
     setMenuActive(!menuActive);
   };
-
-  let navigate = useNavigate();
-  const Register = () => {
-    navigate("/register");
-  }
 
   return (
     <nav className="navbar">
@@ -29,8 +24,8 @@ export default function Navbar() {
           <li><a href="#">About</a></li>
         </ul>
         <div className="buttons">
-          <button className="login-button">Login</button>
-          <button className="get-started-button" onClick={() => Register()}>Get Started</button>
+          <Link to="/login" className="login-button">Login</Link> {/* Use Link component */}
+          <Link to="/register" className="get-started-button">Get Started</Link> {/* Use Link component */}
         </div>
       </div>
     </nav>
