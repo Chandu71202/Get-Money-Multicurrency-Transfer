@@ -16,8 +16,7 @@ export default function CarouselSection() {
             alt="Image One"
           />
           <Carousel.Caption>
-            <h3>Label for first slide</h3>
-            <p>Sample Text for Image One</p>
+            <h1 className='carouselSection color-change'>For people going places</h1>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={5000}>
@@ -28,8 +27,7 @@ export default function CarouselSection() {
             alt="Image Two"
           />
           <Carousel.Caption>
-            <h3>Label for second slide</h3>
-            <p>Sample Text for Image Two</p>
+            <h1 className='carouselSection color-change'>Save when you send worldwide</h1>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item interval={5000}>
@@ -40,8 +38,7 @@ export default function CarouselSection() {
             alt="Image Two"
           />
           <Carousel.Caption>
-            <h3>Label for second slide</h3>
-            <p>Sample Text for Image Two</p>
+            <h1 className='carouselSection'>Meet money without borders</h1>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>

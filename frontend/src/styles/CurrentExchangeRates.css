@@ -7,8 +7,17 @@
   display: flex;
   
 }
+.text{
+  margin-left: 20px;
+}
 .currency-exchange-rates-h1{
   font-weight: bold;
+  margin: 50px 0px 50px 0px;
+  font-size: 50px;
+}
+.currency-exchange-rates-h3{
+  text-align: center;
+  margin-top: 100px;
 }
 .currency-converter-card {
     background-color: #fff;
@@ -76,4 +85,66 @@
   .currency-converter-card:hover{
     transform: translateY(-1.5px);
   }
+
+  /* Add responsive styles */
+@media screen and (max-width: 768px) {
+  .current-exchange-rates {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .text {
+    margin-left: 0;
+    margin-bottom: 20px;
+  }
+
+  .currency-converter-card {
+    min-width: unset;
+    width: 80%;
+  }
+
+  .styled-input,
+  select {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+/* Existing CSS... */
+
+/* Add responsive styles for smaller screens */
+@media screen and (max-width: 576px) {
+  .current-exchange-rates .text {
+    margin-bottom: 10px;
+  }
+
+  .currency-converter-card {
+    padding: 10px;
+    min-width: unset;
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+/* Add responsive styles for medium-sized screens */
+@media screen and (min-width: 577px) and (max-width: 991px) {
+  .current-exchange-rates .text {
+    margin-bottom: 20px;
+  }
+
+  .currency-converter-card {
+    width: 45%;
+    margin: 10px;
+  }
+}
+
+/* Add responsive styles for large screens */
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  .currency-converter-card {
+    width: 30%;
+  }
+}
+
+
   

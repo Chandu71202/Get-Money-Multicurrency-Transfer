@@ -17,7 +17,13 @@ export default function Navbar() {
           <div className="bar"></div>
           <div className="bar"></div>
         </div>
-        <div><Link className="logo" to="/">GET-Money</Link></div>
+        <div >
+          <Link className='head' to="/">
+            <img className='logo' src="https://www.natwestinternational.com/content/dam/championlogos/NWInternational_Secondary_Horizontal.svg" alt="Bank Logo" />
+            <p className='head' title='Global Exchange and Transaction of Money'>GET-Money</p>
+          </Link>
+        </div>
+
       </div>
       <div className={`navbar-right ${menuActive ? 'active' : ''}`}>
         <ul className="navbar-menu">
