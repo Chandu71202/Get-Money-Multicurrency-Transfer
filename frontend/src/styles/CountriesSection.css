@@ -46,3 +46,17 @@
     margin: 0px;
   }
   
+  @media screen and (max-width: 768px) {
+    .country-title{
+      margin-left: 200px;
+      margin-top: -50px; 
+      margin-bottom: 50px;
+    }
+    @media screen and (max-width: 480px) {
+      .country-title{
+        margin-top: 50px;
+        margin-right: 100px;
+        margin-left: 100px;
+      }
+  }
+}

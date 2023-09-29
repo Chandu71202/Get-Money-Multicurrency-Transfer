@@ -23,6 +23,11 @@
   text-decoration: none;
   color: white;
 }
+.logo-text {
+  margin-left: 20px;
+  margin-top: 10px;
+  font-size: 20px;
+}
 
 .navbar-right {
   display: flex;

@@ -20,7 +20,7 @@ export default function Navbar() {
         <div >
           <Link className='head' to="/">
             <img className='logo' src="https://www.natwestinternational.com/content/dam/championlogos/NWInternational_Secondary_Horizontal.svg" alt="Bank Logo" />
-            <p className='head' title='Global Exchange and Transaction of Money'>GET-Money</p>
+            <p className='logo-text' title='Global Exchange and Transaction of Money'>GET-Money</p>
           </Link>
         </div>
 
