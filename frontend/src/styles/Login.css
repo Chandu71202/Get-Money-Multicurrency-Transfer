@@ -1,82 +1,98 @@
+/* Apply styles to the entire login page */
 .login-page {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Adjust the height to your preference */
-    background-color: #b3adad29; /* Use the same background color as in Register.css */
-  }
-  
-  .login-card {
-    text-align: center;
-    max-width: 400px;
-    padding: 30px 80px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #b3adad29; /* Use the same background color as in Register.css */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .login-card h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .login-card form {
-    margin-top: 20px;
-  }
-  
-  .login-card label {
-    display: block;
-    font-size: 16px;
-    margin-bottom: 10px; /* Increased margin to add space */
-  }
-  
-  .login-card input[type="text"],
-  .login-card input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 3px solid #3c1053;
-    border-radius: 5px;
-  }
-  
-  .login-card input[type="text"]:hover,
-  .login-card input[type="password"]:hover {
-    box-shadow: 10px 10px 10px 10px rgba(70, 9, 77, 0.1);
-    transform: translateY(-4px);
-    border-color: #7739a4; /* Change border color on hover */
-  }
-  
-  .login-card button[type="submit"] {
-    background-color: #3c1053;
-    color: #fff;
-    font-size: 18px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-top: 10px; /* Added margin to create space */
-  }
-  
-  .login-card button[type="submit"]:hover {
-    box-shadow: 10px 10px 10px 10px rgba(117, 35, 128, 0.1);
-    background-color: #7739a4;
-    color: black;
-  }
-  
-  .login-card p {
-    font-size: 14px;
-    margin-top: 20px;
-  }
-  
-  .login-card a {
-    color: #3c1053;
-    text-decoration: none;
-    font-weight: 700;
-  }
-  
-  .login-card a:hover {
-    text-decoration: underline;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Adjust the height to your preference */
+  background-color: #b3adad29; /* Use the same background color as in Register.css */
+}
+
+/* Apply styles to the login card container */
+.login-card {
+  text-align: center;
+  max-width: 400px;
+  padding: 30px 80px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #b3adad29; /* Use the same background color as in Register.css */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Apply styles to the login card heading */
+.login-card h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: bold; /* Make the heading bold */
+}
+
+/* Apply styles to the login form */
+.login-card form {
+  margin-top: 20px;
+}
+
+/* Apply styles to form labels */
+.login-card label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 10px; /* Increased margin to add space */
+  text-align: left; /* Align the text to the left */
+  font-weight: bold; /* Make labels bold */
+}
+
+/* Apply styles to text and password input fields */
+.login-card input[type="text"],
+.login-card input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 3px solid #3c1053;
+  border-radius: 5px;
+}
+
+/* Apply hover effect to input fields */
+.login-card input[type="text"]:hover,
+.login-card input[type="password"]:hover {
+  box-shadow: 10px 10px 10px 10px rgba(70, 9, 77, 0.1);
+  transform: translateY(-4px);
+  border-color: #7739a4; /* Change border color on hover */
+}
+
+/* Apply styles to the login button */
+.login-card button[type="submit"] {
+  background-color: #3c1053;
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-top: 10px; /* Added margin to create space */
+  font-weight: bold; /* Make the button text bold */
+}
+
+/* Apply hover effect to the login button */
+.login-card button[type="submit"]:hover {
+  box-shadow: 10px 10px 10px 10px rgba(117, 35, 128, 0.1);
+  background-color: #7739a4;
+  color: black;
+}
+
+/* Apply styles to the paragraph below the form */
+.login-card p {
+  font-size: 14px;
+  margin-top: 20px;
+  font-weight: bold; /* Make the paragraph text bold */
+}
+
+/* Apply styles to links within the paragraph */
+.login-card a {
+  color: #3c1053;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* Apply hover effect to links */
+.login-card a:hover {
+  text-decoration: underline;
+}
