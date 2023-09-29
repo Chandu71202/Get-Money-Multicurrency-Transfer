@@ -1,73 +1,73 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import '../styles/Login.css';
-import Navbar from './Navbar'; // Import the Navbar component
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "../styles/Login.css";
+import axios from "axios";
+import Navbar from "./Navbar"; 
 
 export default function Login() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [user, setUser] = useState({
+    name: "",
+    password: "",
+  });
 
-  const handleUsernameChange = (event) => {
-    setUsername(event.target.value);
+  const handleChanges = (e) => {
+    setUser({
+      ...user,
+      [e.target.name]: e.target.value,
+    });
   };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    // Simulate a login request (replace this with your actual login logic)
-    try {
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-      });
-
-      if (response.ok) {
-        // Login successful, redirect to another page (e.g., dashboard)
-        // Replace "/dashboard" with the actual URL where you want to redirect
-        window.location.href = '/dashboard';
-      } else {
-        // Handle login failure (display an error message, etc.)
-        console.error('Login failed');
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (user) {
+      if (user.name.length < 3) {
+        alert("Name must be at least 3 characters long");
+        return;
       }
-    } catch (error) {
-      console.error('Login error:', error);
+      if (user.password.length < 8) {
+        alert("Password length must be atleast 8 characters");
+        return;
+      }
+      axios.post("http://localhost:8080/users/addUser", user);
+      alert("User Login Successful");
+      console.log(user);
     }
   };
 
   return (
     <div>
-      <Navbar /> {/* Include the Navbar component here */}
+      <Navbar/>
       <div className="login-page">
         <div className="login-card">
-          <h1>Login</h1>
+          <h1>Welcome Back Please Login!</h1>
           <form onSubmit={handleSubmit}>
             <div>
               <label>Username:</label>
               <input
+                className="username_field"
                 type="text"
-                value={username}
-                onChange={handleUsernameChange}
+                id="name"
+                name="name"
+                value={user.name}
+                onChange={handleChanges}
                 required
               />
             </div>
             <div>
               <label>Password:</label>
               <input
+                className="password_field"
                 type="password"
-                value={password}
-                onChange={handlePasswordChange}
+                id="password"
+                name="password"
+                value={user.password}
+                onChange={handleChanges}
                 required
               />
             </div>
             <div>
-              <button type="submit">Login</button>
+              <button className="submit_button" type="submit">
+                Login
+              </button>
             </div>
           </form>
           <p>

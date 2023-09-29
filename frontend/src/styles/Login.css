@@ -10,7 +10,7 @@
 /* Apply styles to the login card container */
 .login-card {
   text-align: center;
-  max-width: 400px;
+  max-width: 500px;
   padding: 30px 80px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -18,11 +18,17 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
+.login-card:hover{
+  box-shadow: 20px 20px 20px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-5px);
+  background-color: #15121229;
+}
 /* Apply styles to the login card heading */
 .login-card h1 {
   font-size: 24px;
-  margin-bottom: 20px;
-  font-weight: bold; /* Make the heading bold */
+  margin-bottom: 40px;
+  font-weight: bold;
+  color: #3c1053;
 }
 
 /* Apply styles to the login form */
@@ -33,51 +39,52 @@
 /* Apply styles to form labels */
 .login-card label {
   display: block;
-  font-size: 16px;
-  margin-bottom: 10px; /* Increased margin to add space */
-  text-align: left; /* Align the text to the left */
-  font-weight: bold; /* Make labels bold */
+  font-size:16px;
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #3c1053;
 }
 
 /* Apply styles to text and password input fields */
-.login-card input[type="text"],
-.login-card input[type="password"] {
+.password_field,
+.username_field {
   width: 100%;
   padding: 10px;
   font-size: 16px;
   border: 3px solid #3c1053;
   border-radius: 5px;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 
 /* Apply hover effect to input fields */
-.login-card input[type="text"]:hover,
-.login-card input[type="password"]:hover {
+ .password_field:hover,
+ .username_field:hover {
   box-shadow: 10px 10px 10px 10px rgba(70, 9, 77, 0.1);
-  transform: translateY(-4px);
+  transform: translateY(-1px);
   border-color: #7739a4; /* Change border color on hover */
 }
 
 /* Apply styles to the login button */
-.login-card button[type="submit"] {
+.submit_button {
   background-color: #3c1053;
   color: #fff;
   font-size: 18px;
   padding: 10px 20px;
   border: none;
-  border-radius: 5px;
+  border-radius: 20px;
+  margin-top: 10px;
   cursor: pointer;
   transition: background-color 0.2s;
-  margin-top: 10px; /* Added margin to create space */
-  font-weight: bold; /* Make the button text bold */
 }
 
-/* Apply hover effect to the login button */
-.login-card button[type="submit"]:hover {
+.submit_button:hover {
   box-shadow: 10px 10px 10px 10px rgba(117, 35, 128, 0.1);
   background-color: #7739a4;
   color: black;
+  
 }
-
 /* Apply styles to the paragraph below the form */
 .login-card p {
   font-size: 14px;
