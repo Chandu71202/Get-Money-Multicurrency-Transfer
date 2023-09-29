@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "../styles/CurrentExchangeRates.css"
+import "../styles/CurrentExchangeRates.css";
+import { BsArrowRight } from 'react-icons/bs';
+
 
 export default function CurrentExchangeRates() {
   const [exchangeRates, setExchangeRates] = useState({});
@@ -62,13 +64,16 @@ export default function CurrentExchangeRates() {
 
   return (
     <div className="current-exchange-rates">
-      <div>
+      <div className="text">
         <h1 className="currency-exchange-rates-h1">Make your money move, fast</h1>
-        <div style={{width:'80%'}}>
-        <h2>Send to 70+ countries, fast. Free from hidden fees and exchange rate markups</h2>
+        <div style={{ width: '80%' }}>
+          <h2 style={{fontSize: 30}}>Send to 70+ countries, fast. Free from hidden fees and exchange rate markups</h2>
+        </div>
+        <div>
+          <h3 className="currency-exchange-rates-h3">Try our calculator right now <BsArrowRight/></h3>
+        </div>
       </div>
-      </div>
-      
+
       <div className="currency-converter-card">
         <h1>Current Exchange Rates</h1>
         <div>
@@ -80,7 +85,7 @@ export default function CurrentExchangeRates() {
           <p>EUR to USD: {exchangeRates3.USD?.toFixed(4)}</p>
         </div>
         <div>
-          <label>Try Yourself Out!</label>
+          <label>Try Yourself Out!</label><br></br>
           <input type="number" className="styled-input" value={amount} onChange={handleAmountChange} />
           <select value={baseCurrency} onChange={handleBaseCurrencyChange}>
             <option value="GBP">GBP</option>

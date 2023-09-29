@@ -1,16 +1,48 @@
-import React from 'react'
-import '../styles/Footer.css'
+import React from 'react';
+import '../styles/Footer.css';
+import {IoLogoInstagram, IoLogoLinkedin, IoLogoFacebook} from 'react-icons/io';
+import {FaXTwitter} from 'react-icons/fa6';
+
+
+
+
 
 export default function Footer() {
     return (
-        <div>
-            <footer class="flex-rw">
-                <div class="footer__copytext ">
-                    <p>© The Royal Bank of Scotland International Limited trading as NatWest International
-
-                    </p>
+        <footer className="footer">
+            <div className="footer-container" style={{ paddingLeft: 30, paddingRight: 30 }}>
+                <div className="footer-logo" >
+                    <img src="https://www.natwestinternational.com/content/dam/championlogos/NWInternational_Secondary_Horizontal.svg" alt="Bank Logo" />
+                    <h2>GET-Money</h2>
                 </div>
-            </footer>
-        </div>
-    )
+                <div className="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="#">Customer Help</a></li>
+                        <li><a href="#">Feedback</a></li>
+                    </ul>
+                </div>
+                <div className="footer-contact">
+                    <h3>Contact Us</h3>
+                    <p>123 Main Street</p>
+                    <p>Cityville, State, 12345</p>
+                    <p>Email: info@yourbank.com</p>
+                    <p>Phone: (123) 456-7890</p>
+                </div>
+                <div className="footer-social">
+                    <h3>Follow Us</h3>
+                    <ul>
+                        <li><a href="#"><IoLogoFacebook /></a></li>
+                        <li><a href="#"><FaXTwitter /></a></li>
+                        <li><a href="#"><IoLogoLinkedin /></a></li>
+                        <li><a href="#"><IoLogoInstagram /></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div className="footer-bottom">
+                <p>&copy; 2023 GET-Money. All rights reserved.</p>
+            </div>
+        </footer>
+    );
 }

@@ -17,7 +17,7 @@ export default function Navbar() {
           <div className="bar"></div>
           <div className="bar"></div>
         </div>
-        <div><Link className="logo" to="/">GET-Money</Link></div>
+        <div><Link className="logo" to="/" title='Global Exchange and Transaction of Money'>GET-Money</Link></div>
       </div>
       <div className={`navbar-right ${menuActive ? 'active' : ''}`}>
         <ul className="navbar-menu">
