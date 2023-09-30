@@ -53,7 +53,7 @@
   .name_field,
   .email_field,
   .phone_field,
-  .password_field,
+  .password_field_register,
   .confirm_password_field {
   width: 100%;
   padding: 10px;
@@ -65,7 +65,7 @@
   .name_field:hover,
   .email_field:hover,
   .phone_field:hover,
-  .password_field:hover,
+  .password_field_register:hover,
   .confirm_password_field:hover {
   box-shadow: 3px 3px 3px 3px rgba(70, 9, 77, 0.1);
   transform: translateY(-1px);
@@ -104,7 +104,7 @@
   .name_field,
   .email_field,
   .phone_field,
-  .password_field,
+  .password_field_register,
   .confirm_password_field {
   width: 80%;
   padding: 10px;

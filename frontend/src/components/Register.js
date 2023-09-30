@@ -2,15 +2,25 @@ import React, { useState } from "react";
 import "../styles/Register.css";
 import Navbar from "./Navbar";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Register() {
   const [user, setUser] = useState({
     name: "",
     email: "",
-    phone_no: "",
+    phoneNo: "",
     password: "",
-    confirm_password: "",
+    confirmPassword: "",
   });
+  let navigate = useNavigate();
+  const [emailExists, setEmailExists] = useState(false);
+  const validateEmail = (email) => {
+    const pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+    if (!pattern.test(email)) {
+      return false;
+    }
+    return true;
+  };
   const handleChanges = (e) => {
     setUser({
       ...user,
@@ -18,33 +28,55 @@ export default function Register() {
     });
   };
 
+  const checkEmailExists = () => {
+    axios
+      .get(`http://localhost:8080/users/checkEmail/${user.email}`)
+      .then((response) => {
+        setEmailExists(response.data);
+      })
+      .catch((error) => {
+        console.error("Error checking email existence:", error);
+      });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (user) {
-      if (user.name.length < 3) {
-        alert("Name must be at least 3 characters long");
-        return;
-      }
-      if (user.email.length < 3) {
-        alert("Email must be at least 3 characters long");
-        return;
-      }
-      if (user.phone_no.length !== 10) {
-        alert("Phone number must have exactly 10 digits");
-        return;
-      }
-      if (user.password.length < 8) {
-        alert("Password length must be atleast 8 characters");
-        return;
-      }
-      if (user.password !== user.confirm_password) {
-        alert("Passwords do not match");
-        return;
-      }
-      axios.post("http://localhost:8080/users/addUser", user);
-      alert("Registered Successfully");
-      console.log(user);
+    if (!emailExists) {
+      alert("Email already exists. Please choose a different email.");
+      return;
     }
+    if(user){
+    if (user.name.length < 3) {
+      alert("Name must be at least 3 characters long");
+      return;
+    }
+    if (!validateEmail(user.email)) {
+      alert("Invalid Email");
+      return;
+    }
+    if (user.email.length < 3) {
+      alert("Email must be at least 3 characters long");
+      return;
+    }
+    if (user.phoneNo.length !== 10) {
+      alert("Phone number must have exactly 10 digits");
+      return;
+    }
+    if (user.password.length < 8) {
+      alert("Password length must be atleast 8 characters");
+      return;
+    }
+    if (user.password !== user.confirmPassword) {
+      alert("Passwords do not match");
+      return;
+    }
+    axios.post("http://localhost:8080/users/registerNewUser", user);
+    alert("Registered Successfully");
+    navigate('/login');
+  }
+  else{
+    alert("Not a valid User Data")
+  }
   };
   return (
     <div>
@@ -76,10 +108,11 @@ export default function Register() {
             <label className="label">Email</label>
             <input
               className="email_field"
-              type="email"
+              type="text"
               id="email"
               name="email"
               value={user.email}
+              onBlur={checkEmailExists}
               onChange={handleChanges}
               required
             />
@@ -90,9 +123,9 @@ export default function Register() {
             <input
               className="phone_field"
               type="tel"
-              id="phone_no"
-              name="phone_no"
-              value={user.phone_no}
+              id="phoneNo"
+              name="phoneNo"
+              value={user.phoneNo}
               onChange={handleChanges}
               required
             />
@@ -101,7 +134,7 @@ export default function Register() {
           <div className="form-group">
             <label className="label">Password</label>
             <input
-              className="password_field"
+              className="password_field_register"
               type="password"
               id="password"
               name="password"
@@ -116,9 +149,9 @@ export default function Register() {
             <input
               className="confirm_password_field"
               type="password"
-              id="confirm_password"
-              name="confirm_password"
-              value={user.confirm_password}
+              id="confirmPassword"
+              name="confirmPassword"
+              value={user.confirmPassword}
               onChange={handleChanges}
               required
             />

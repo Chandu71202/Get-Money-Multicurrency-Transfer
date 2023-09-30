@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom'; // Import Link
+import { Link, useNavigate} from 'react-router-dom'; 
 import '../styles/Navbar.css';
 
 export default function Navbar() {
   const [menuActive, setMenuActive] = useState(false);
-
+  const navigate = useNavigate();
   const toggleMenu = () => {
     setMenuActive(!menuActive);
   };
 
+  function Logout() {
+    sessionStorage.clear();
+  }
   return (
     <div className="navbar">
       <div className="navbar-left">
@@ -30,8 +33,17 @@ export default function Navbar() {
           <Link to="/">About</Link>
         </ul>
         <div className="buttons">
-          <Link to="/login" className="login-button">Login</Link> {/* Use Link component */}
-          <Link to="/register" className="get-started-button">Get Started</Link> {/* Use Link component */}
+        {sessionStorage.getItem("id") ? (
+          <>
+          <Link to="/dashboard" className="login-button">Dashboard</Link> 
+          <Link to="/login" className="get-started-button" onClick={Logout}>Logout</Link>
+          </>
+        ):(
+          <>
+          <Link to="/login" className="login-button">Login</Link> 
+          <Link to="/register" className="get-started-button">Get Started</Link> 
+          </>
+        )}
         </div>
       </div>
     </div>

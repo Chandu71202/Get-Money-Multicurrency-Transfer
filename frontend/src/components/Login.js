@@ -3,12 +3,15 @@ import { Link } from "react-router-dom";
 import "../styles/Login.css";
 import axios from "axios";
 import Navbar from "./Navbar"; 
+import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function Login({ onLogin }) {
   const [user, setUser] = useState({
-    name: "",
+    email: "",
     password: "",
   });
+
+  let navigate = useNavigate();
 
   const handleChanges = (e) => {
     setUser({
@@ -16,20 +19,51 @@ export default function Login() {
       [e.target.name]: e.target.value,
     });
   };
+
+
+  const validateEmail = (email) => {
+    const pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
+    if (!pattern.test(email)) {
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (user) {
-      if (user.name.length < 3) {
-        alert("Name must be at least 3 characters long");
+      if (!validateEmail(user.email)) {
+        alert("Invalid Email");
         return;
       }
       if (user.password.length < 8) {
         alert("Password length must be atleast 8 characters");
         return;
       }
-      axios.post("http://localhost:8080/users/addUser", user);
-      alert("User Login Successful");
-      console.log(user);
+      axios.post("http://localhost:8080/users/loginUser", user)
+      .then((response) => {
+        if(response.data=="Login Successful"){
+          axios.get(`http://localhost:8080/users/getIdByEmail/${user.email}`)
+          .then((response) => {
+            sessionStorage.setItem("id", response.data);
+          })
+          onLogin();
+          alert("User Login Successful");
+          navigate('/dashboard');
+        }
+        else if(response.data=="Invalid password"){
+          alert("Wrong Password!");
+        }
+        else{
+          alert("User does not exist!, Please Register");
+        }
+      })
+      .catch((error) => {
+        console.error("Error checking email existence:", error);
+      });
+    }
+    else{
+      alert("Not a valid Login Data")
     }
   };
 
@@ -41,13 +75,13 @@ export default function Login() {
           <h1>Welcome Back Please Login!</h1>
           <form onSubmit={handleSubmit}>
             <div>
-              <label>Username:</label>
+              <label>Email Id:</label>
               <input
                 className="username_field"
                 type="text"
-                id="name"
-                name="name"
-                value={user.name}
+                id="email"
+                name="email"
+                value={user.email}
                 onChange={handleChanges}
                 required
               />

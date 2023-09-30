@@ -13,13 +13,13 @@ import javax.persistence.*;
 @Getter
 @Setter
 @ToString
-@Document(collection = "Users")
-
+@Document(collection = "userDetails")
 public class Users {
     @Id
+    private int id;
     private String name;
     private String email;
-    private String phone_no;
+    private Long phone_no;
     private String password;
     private String confirm_password;
 }
