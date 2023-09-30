@@ -1,25 +1,22 @@
 package com.example.GETMoney.model;
 
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.data.mongodb.core.mapping.Document;
-
+import org.springframework.data.mongodb.core.index.Indexed;
 import javax.persistence.*;
 
 @Data
-@Getter
-@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString
 @Document(collection = "userDetails")
-public class Users {
+public class User {
     @Id
-    private int id;
+    private String id;
     private String name;
     private String email;
-    private Long phone_no;
+    private Long phoneNo;
     private String password;
-    private String confirm_password;
+    private String confirmPassword;
 }
