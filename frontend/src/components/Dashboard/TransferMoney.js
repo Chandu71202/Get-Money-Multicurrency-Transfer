@@ -244,32 +244,44 @@ export default function TransferMoney({ account }) {
 
   const updatingBalance = (e) => {
     e.preventDefault();
-    const updateBalanceApiUrl = "http://localhost:8081/accounts/";
+    const ApiUrl = "http://localhost:8081/accounts/";
     if (senderAmount > 0) {
       if (selectedSenderCurrency === "GBP") {
         if (account.balanceGBP >= senderAmount) {
-          axios.put(updateBalanceApiUrl + `${account.id}/updateBalanceGBP`, {
-            balanceGBP: account.balanceGBP - senderAmount,
+          axios.put(ApiUrl + `${account.id}/updateBalanceGBP`, {
+            "balanceGBP": account.balanceGBP - senderAmount
           });
           alert("Transfer Successful");
+          const transaction=`An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${recieverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
+          axios.put(ApiUrl+`${account.id}/addTransaction`,{
+            "transaction":transaction
+          })
         } else {
           alert("Insufficient Balance");
         }
       } else if (selectedSenderCurrency === "USD") {
         if (account.balanceUSD >= senderAmount) {
-          axios.put(updateBalanceApiUrl + `${account.id}/updateBalanceUSD`, {
-            balanceUSD: account.balanceUSD - senderAmount,
+          axios.put(ApiUrl + `${account.id}/updateBalanceUSD`, {
+            "balanceUSD": account.balanceUSD - senderAmount,
           });
           alert("Transfer Successful");
+          const transaction=`An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${recieverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`
+          axios.put(ApiUrl+`${account.id}/addTransaction`,{
+            "transaction":transaction
+          })
         } else {
           alert("Insufficient Balance");
         }
       } else {
         if (account.balanceEUR >= senderAmount) {
-          axios.put(updateBalanceApiUrl + `${account.id}/updateBalanceEUR`, {
-            balanceEUR: account.balanceEUR - senderAmount,
+          axios.put(ApiUrl + `${account.id}/updateBalanceEUR`, {
+            "balanceEUR": account.balanceEUR - senderAmount,
           });
           alert("Transfer Successful");
+          const transaction=`An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${recieverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`
+          axios.put(ApiUrl+`${account.id}/addTransaction`,{
+            "transaction":transaction
+          })
         } else {
           alert("Insufficient Balance");
         }

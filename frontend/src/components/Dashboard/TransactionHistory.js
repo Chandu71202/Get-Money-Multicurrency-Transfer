@@ -3,6 +3,12 @@ import "../../styles/Dashboard/TransactionHistory.css"
 
 export default function TransactionHistory({account}) {
   return (
-    <div>TransactionHistory</div>
+    <div>
+    {account.transactionHistory.map(transactions => (  
+          <li>  
+            {transactions}  
+          </li>  
+        ))}  
+    </div>
   )
 }

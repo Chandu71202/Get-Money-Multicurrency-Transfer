@@ -100,7 +100,7 @@ export default function CurrentExchangeRates() {
               </option>
             ))}
           </select>
-          <p>
+          <p className="resultant">
             {baseCurrency} to {targetCurrency}: {result.toFixed(4)}
           </p>
         </div>

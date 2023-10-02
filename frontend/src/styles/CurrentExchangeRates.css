@@ -98,6 +98,10 @@
   .currency-converter-card:hover{
     transform: translateY(-1.5px);
   }
+  .resultant{
+    /* font-size:50px; */
+    font-weight:700;
+  }
 
   /* Add responsive styles */
 @media screen and (max-width: 768px) {

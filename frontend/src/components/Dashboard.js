@@ -47,15 +47,15 @@ export default function Dashboard() {
   useEffect(() => {
     const user_id = sessionStorage.getItem("id");
     axios.get(`http://localhost:8081/accounts/findUserById/${user_id}`).then((response) => {
-      if (response.data!=null) {
+      if (response.data.id===user_id) {
         setHasAccount(true);
         setAccount(response.data);
-        console.log(account)
       } else {
         setHasAccount(false);
+        console.log("hello");
       }
     });
-  }, [hasAccount,account]);
+  }, [account]);
   return (
     <div>
       <Navbar />
