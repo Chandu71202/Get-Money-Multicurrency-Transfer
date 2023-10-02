@@ -27,13 +27,6 @@ public class AccountService {
         Account existingAccount = accountRepository.findById(id).orElse(null);
         return existingAccount;
     }
-    public ArrayList<String> getTransactionHistoryById(String id) {
-        Account account = accountRepository.findById(id).orElse(null);
-        if(account!=null){
-            return account.getTransactionHistory();
-        }
-        return null;
-    }
     public Long updateBalanceGBP(String id, Long amount) {
         Account account = accountRepository.findById(id).orElse(null);
         if(account!=null){

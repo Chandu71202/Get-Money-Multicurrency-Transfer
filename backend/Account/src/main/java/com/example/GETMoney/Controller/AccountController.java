@@ -33,11 +33,6 @@ public class AccountController {
         }
         return null;
     }
-
-    @GetMapping("/{id}/getTransactionHistoryById")
-    public List<String> getTransactionHistoryById(@PathVariable String id){
-        return accountService.getTransactionHistoryById(id);
-    }
     @PutMapping("/{id}/updateBalanceGBP")
     public Long updateBalanceGBP(@PathVariable String id,@RequestBody Map<String, Long> requestData){
         Long amount = requestData.get("balanceGBP");
