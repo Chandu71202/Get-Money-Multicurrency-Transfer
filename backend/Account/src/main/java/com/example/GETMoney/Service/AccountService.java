@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
+
 @Service
 public class AccountService {
 
@@ -21,13 +23,56 @@ public class AccountService {
         accountRepository.save(account);
     }
 
-    public String findUserById(String id) {
+    public Account findUserById(String id) {
         Account existingAccount = accountRepository.findById(id).orElse(null);
-        if(existingAccount!=null){
-            return existingAccount.getId();
+        return existingAccount;
+    }
+    public ArrayList<String> getTransactionHistoryById(String id) {
+        Account account = accountRepository.findById(id).orElse(null);
+        if(account!=null){
+            return account.getTransactionHistory();
         }
         return null;
     }
+    public Long updateBalanceGBP(String id, Long amount) {
+        Account account = accountRepository.findById(id).orElse(null);
+        if(account!=null){
+            account.setBalanceGBP(amount);
+            return accountRepository.save(account).getBalanceGBP();
+        }
+        return null;
+    }
+
+    public Long updateBalanceUSD(String id, Long amount) {
+        Account account = accountRepository.findById(id).orElse(null);
+        if(account!=null){
+            account.setBalanceUSD(amount);
+            return accountRepository.save(account).getBalanceUSD();
+        }
+        return null;
+    }
+
+    public Long updateBalanceEUR(String id, Long amount) {
+        Account account = accountRepository.findById(id).orElse(null);
+        if(account!=null){
+            account.setBalanceEUR(amount);
+            return accountRepository.save(account).getBalanceEUR();
+        }
+        return null;
+    }
+
+    public String updateTransaction(String id, String transaction) {
+        Account account = accountRepository.findById(id).orElse(null);
+        if(account!=null){
+            ArrayList<String> transactionHistory = account.getTransactionHistory();
+            transactionHistory.add(transaction);
+            account.setTransactionHistory(transactionHistory);
+            accountRepository.save(account);
+            return "Added New Transaction Successfully";
+        }
+        return null;
+    }
+
 
     public ResponseTemplateVO getUserWithAccount(String id) {
         ResponseTemplateVO vo = new ResponseTemplateVO();
@@ -37,4 +82,6 @@ public class AccountService {
                 User.class));
         return vo;
     }
+
+
 }

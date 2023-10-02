@@ -1,12 +1,39 @@
 import React, { useState, useEffect } from "react";
-import "../styles/TransferMoney.css";
+import "../../styles/Dashboard/TransferMoney.css"
+import axios from "axios";
 
-export default function TransferMoney() {
+export default function TransferMoney({ account }) {
   const [senderAmount, setSenderAmount] = useState("");
+  const [recieverAccountNumber, setReceiverAccountNumber] = useState("");
   const [selectedSenderCurrency, setSelectedSenderCurrency] = useState("GBP");
-  const [selectedRecieverCurrency, setselectedRecieverCurrency] = useState("USD");
+  const [selectedRecieverCurrency, setSelectedRecieverCurrency] =
+    useState("USD");
   const [receiverAmount, setReceiverAmount] = useState("");
   const [feeAmount, setFeeAmount] = useState("");
+
+  const handleSenderAmountChange = (e) => {
+    setSenderAmount(e.target.value);
+  };
+
+  const handleReceiverAccountNumberChange = (e) => {
+    setReceiverAccountNumber(e.target.value);
+  };
+
+  const handleSelectedSenderCurrencyChange = (e) => {
+    setSelectedSenderCurrency(e.target.value);
+  };
+
+  const handleSelectedRecieverCurrencyChange = (e) => {
+    setSelectedRecieverCurrency(e.target.value);
+  };
+
+  const handleReceiverAmountChange = (e) => {
+    setReceiverAmount(e.target.value);
+  };
+
+  const handleFeeAmountChange = (e) => {
+    setFeeAmount(e.target.value);
+  };
 
   const currencies = [
     "INR",
@@ -188,13 +215,14 @@ export default function TransferMoney() {
     calculateReceiverAmount();
   }, [senderAmount, selectedSenderCurrency, selectedRecieverCurrency]);
 
-
-  // Function to get exchange rates for different currencies
-  const getExchangeRate = async (selectedSenderCurrency, selectedRecieverCurrency) => {
+  const getExchangeRate = async (
+    selectedSenderCurrency,
+    selectedRecieverCurrency
+  ) => {
     return fetch(`https://open.er-api.com/v6/latest/${selectedSenderCurrency}`)
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Failed to fetch exchange rate');
+          throw new Error("Failed to fetch exchange rate");
         }
         return response.json();
       })
@@ -205,29 +233,78 @@ export default function TransferMoney() {
           console.log(senderAmount);
           return exchangeRate.toFixed(4);
         } else {
-          return 1.0; 
+          return 1.0;
         }
       })
       .catch((error) => {
-        console.error('Error fetching exchange rate:', error);
-        return 1.0; 
+        console.error("Error fetching exchange rate:", error);
+        return 1.0;
       });
   };
-  
+
+  const updatingBalance = (e) => {
+    e.preventDefault();
+    const updateBalanceApiUrl = "http://localhost:8081/accounts/";
+    if (senderAmount > 0) {
+      if (selectedSenderCurrency === "GBP") {
+        if (account.balanceGBP >= senderAmount) {
+          axios.put(updateBalanceApiUrl + `${account.id}/updateBalanceGBP`, {
+            balanceGBP: account.balanceGBP - senderAmount,
+          });
+          alert("Transfer Successful");
+        } else {
+          alert("Insufficient Balance");
+        }
+      } else if (selectedSenderCurrency === "USD") {
+        if (account.balanceUSD >= senderAmount) {
+          axios.put(updateBalanceApiUrl + `${account.id}/updateBalanceUSD`, {
+            balanceUSD: account.balanceUSD - senderAmount,
+          });
+          alert("Transfer Successful");
+        } else {
+          alert("Insufficient Balance");
+        }
+      } else {
+        if (account.balanceEUR >= senderAmount) {
+          axios.put(updateBalanceApiUrl + `${account.id}/updateBalanceEUR`, {
+            balanceEUR: account.balanceEUR - senderAmount,
+          });
+          alert("Transfer Successful");
+        } else {
+          alert("Insufficient Balance");
+        }
+      }
+    } else {
+      alert("Transferring amount must be greater than 0");
+    }
+  };
 
   return (
     <div>
       <div className="card">
-        <form className="form-group">
+        <form className="form-group" onSubmit={updatingBalance}>
           <div className="flex-container">
             <div className="flex-item">
-            <label className="form-group-label">Receiver's Account Number</label>
+              <label className="form-group-label">Your Account Number</label>
+              <input
+                className="form-group-input"
+                type="number"
+                name="senderAccountNumber"
+                id="senderAccountNumber"
+                value={account.accountNumber}
+                disabled
+              />
+              <label className="form-group-label">
+                Receiver's Account Number
+              </label>
               <input
                 className="form-group-input"
                 type="number"
                 name="recieverAccountNumber"
                 id="recieverAccountNumber"
-                // value={recieverAccountNumber}
+                value={recieverAccountNumber}
+                onChange={handleReceiverAccountNumberChange}
+                required
               />
               <label className="form-group-label">Amount to Send</label>
               <input
@@ -236,12 +313,14 @@ export default function TransferMoney() {
                 name="senderAmount"
                 id="senderAmount"
                 value={senderAmount}
-                onChange={(e) => setSenderAmount(e.target.value)}
+                onChange={handleSenderAmountChange}
+                required
               />
 
               <select
                 value={selectedSenderCurrency}
-                onChange={(e) => setSelectedSenderCurrency(e.target.value)}
+                onChange={handleSelectedSenderCurrencyChange}
+                required
               >
                 <option value="GBP">GBP</option>
                 <option value="USD">USD</option>
@@ -249,7 +328,10 @@ export default function TransferMoney() {
               </select>
             </div>
           </div>
-          <p>Exact Currency Change : {(parseFloat(receiverAmount) + parseFloat(feeAmount)).toFixed(2)}</p>
+          <p>
+            Exact Currency Change :{" "}
+            {(parseFloat(receiverAmount) + parseFloat(feeAmount)).toFixed(2)}
+          </p>
           <p>- Fee: {feeAmount}</p>
           <p>= Resultant : {receiverAmount} </p>
           <label className="form-group-label">The Amount Receiver Gets</label>
@@ -259,12 +341,13 @@ export default function TransferMoney() {
             id="receiverAmount"
             name="receiverAmount"
             value={receiverAmount}
+            onChange={handleReceiverAmountChange}
             disabled
           />
 
           <select
             value={selectedRecieverCurrency}
-            onChange={(e) => setselectedRecieverCurrency(e.target.value)}
+            onChange={handleSelectedRecieverCurrencyChange}
           >
             {currencies.map((currency) => (
               <option key={currency} value={currency}>

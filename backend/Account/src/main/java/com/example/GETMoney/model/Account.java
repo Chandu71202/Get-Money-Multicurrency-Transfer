@@ -7,6 +7,7 @@ import lombok.ToString;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Id;
+import java.util.ArrayList;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -27,6 +28,7 @@ public class Account {
     private Long balanceGBP;
     private Long balanceUSD;
     private Long balanceEUR;
+    private ArrayList<String> transactionHistory = new ArrayList<>();;
 }
 
 

@@ -1,16 +1,25 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Dashboard.css";
 import Navbar from "./Navbar";
-import * as Ailcons from "react-icons/ai";
 import * as FaIcons from "react-icons/fa";
 import axios from "axios";
-import TransferMoney from "./TransferMoney";
-import CreateAccount from "./CreateAccount";
+
+import CreateAccount from "./Dashboard/CreateAccount";
+import PersonalProfile from "./Dashboard/PersonalProfile";
+import YourAccount from "./Dashboard/YourAccount";
+import TransferMoney from "./Dashboard/TransferMoney";
+import DepositWithdraw from "./Dashboard/DepositWithdraw";
+import TransactionHistory from "./Dashboard/TransactionHistory";
+import Support from "./Dashboard/Support";
+import MoreInfo from "./Dashboard/MoreInfo";
+import Settings from "./Dashboard/Settings";
 
 export default function Dashboard() {
   const [selectedItem, setSelectedItem] = useState("My Account");
   const [username, setUserName] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
+  const [account,setAccount] = useState([])
+  const [user,setUser] = useState([])
 
   const handleItemClick = (item) => {
     setSelectedItem(item);
@@ -26,24 +35,27 @@ export default function Dashboard() {
         const users = response.data;
         const user_id = sessionStorage.getItem("id");
         const matchingUser = users.find((user) => user.id === user_id);
+        setUser(matchingUser);
         if (matchingUser) {
           setUserName(matchingUser.name);
         }
       });
     };
     settingUserName();
-  }, [username]);
+  }, [username,user]);
 
   useEffect(() => {
     const user_id = sessionStorage.getItem("id");
     axios.get(`http://localhost:8081/accounts/findUserById/${user_id}`).then((response) => {
-      if (response.data==="Account Exists") {
+      if (response.data!=null) {
         setHasAccount(true);
+        setAccount(response.data);
+        console.log(account)
       } else {
         setHasAccount(false);
       }
     });
-  }, []);
+  }, [hasAccount,account]);
   return (
     <div>
       <Navbar />
@@ -155,26 +167,27 @@ export default function Dashboard() {
             </div>
             <div className="main-content1">
               <div className="content">
+                {/* {selectedItem === "Empty" && (<p>Navigate to any of the buttons in the sidebar</p>) } */}
+              
                 {selectedItem === "Personal Profile" && (
-                  // <CurrentExchangeRates />
-                  <p>dsfs</p>
+                  <PersonalProfile account={account} user={user}/>
                 )}
-                {selectedItem === "Inter-Account Transfer" && <TransferMoney />}
+                {selectedItem === "Inter-Account Transfer" && <TransferMoney account={account}/>}
                 {selectedItem === "Your Account" && (
-                  <p>Your Account Content Goes Here</p>
+                  <YourAccount account={account}/>
                 )}
                 {selectedItem === "Depost & Withdraw" && (
-                  <p>Depost & Withdraw Content Goes Here</p>
+                  <DepositWithdraw account={account}/>
                 )}
                 {selectedItem === "Transaction History" && (
-                  <p>Transaction History Content Goes Here</p>
+                 <TransactionHistory account={account}/>
                 )}
-                {selectedItem === "Support" && <p>Support Content Goes Here</p>}
+                {selectedItem === "Support" && <Support/>}
                 {selectedItem === "More Info" && (
-                  <p>More Info Content Goes Here</p>
+                  <MoreInfo/>
                 )}
                 {selectedItem === "Settings" && (
-                  <p>Settings Content Goes Here</p>
+                  <Settings/>
                 )}
               </div>
             </div>

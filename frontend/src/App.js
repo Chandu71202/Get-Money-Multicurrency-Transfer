@@ -5,9 +5,7 @@ import Dashboard from "./components/Dashboard";
 import Login from "./components/Login"; // Import the Login component
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useState,useEffect } from "react";
-import TransferMoney from "./components/TransferMoney";
 import ErrorHandling from "./components/ErrorHandling";
-import CreateAccount from "./components/CreateAccount";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -42,7 +40,6 @@ function App() {
           ) : (
             <Route path="/dashboard" element={<ErrorHandling />} />
           )}
-          <Route path="/transferMoney" element={<TransferMoney />} />'
         </Routes>
       </Router>
     </div>
