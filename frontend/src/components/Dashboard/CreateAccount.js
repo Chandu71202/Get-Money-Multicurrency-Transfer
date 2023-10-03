@@ -3,6 +3,7 @@ import "../../styles/Register.css";
 import Navbar from "../Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import MiddlePage from "../MiddlePage";
 
 export default function CreateAccount({ updateHasAccount }) {
   const [account, setAccount] = useState({
@@ -65,7 +66,7 @@ export default function CreateAccount({ updateHasAccount }) {
     axios.post("http://localhost:8081/accounts/createNewAccount", account);
     updateHasAccount(true);
     alert("Registered Successfully");
-    navigate('/dashboard');
+    navigate('/loading');
   }
   else{
     alert("Not a valid account Data")

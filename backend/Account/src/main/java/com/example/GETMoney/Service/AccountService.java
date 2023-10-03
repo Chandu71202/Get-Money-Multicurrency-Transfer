@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AccountService {
@@ -65,6 +67,12 @@ public class AccountService {
         }
         return null;
     }
+    public ArrayList<Long> findAllAccountNumbers() {
+        List<Account> allAccounts = accountRepository.findAll();
+        return allAccounts.stream()
+                .map(Account::getAccountNumber)
+                .collect(Collectors.toCollection(ArrayList::new));
+    }
 
 
     public ResponseTemplateVO getUserWithAccount(String id) {
@@ -75,6 +83,7 @@ public class AccountService {
                 User.class));
         return vo;
     }
+
 
 
 }

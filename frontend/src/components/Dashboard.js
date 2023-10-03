@@ -17,7 +17,7 @@ import Settings from "./Dashboard/Settings";
 export default function Dashboard() {
   const [selectedItem, setSelectedItem] = useState("My Account");
   const [username, setUserName] = useState("");
-  const [hasAccount, setHasAccount] = useState(false);
+  const [hasAccount, setHasAccount] = useState(true);
   const [account, setAccount] = useState([])
   const [user, setUser] = useState([])
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -30,24 +30,25 @@ export default function Dashboard() {
     setHasAccount(value);
   };
 
-  useEffect(() => {
-    const settingUserName = async () => {
-      axios.get("http://localhost:8080/users/allUsers").then((response) => {
-        const users = response.data;
-        const user_id = sessionStorage.getItem("id");
-        const matchingUser = users.find((user) => user.id === user_id);
-        setUser(matchingUser);
-        if (matchingUser) {
-          setUserName(matchingUser.name);
-        }
-      });
-    };
-    settingUserName();
-  }, [username, user]);
+  const settingUserName = async () => {
+    await axios.get("http://localhost:8080/users/allUsers").then((response) => {
+      const users = response.data;
+      const user_id = sessionStorage.getItem("id");
+      const matchingUser = users.find((user) => user.id === user_id);
+      setUser(matchingUser);
+      if (matchingUser) {
+        setUserName(matchingUser.name);
+      }
+    });
+  };
 
   useEffect(() => {
+    settingUserName();
+  },[]);
+
+  const settingHasAccount= async () =>{
     const user_id = sessionStorage.getItem("id");
-    axios.get(`http://localhost:8081/accounts/findUserById/${user_id}`).then((response) => {
+    await axios.get(`http://localhost:8081/accounts/findUserById/${user_id}`).then((response) => {
       if (response.data.id === user_id) {
         setHasAccount(true);
         setAccount(response.data);
@@ -55,7 +56,11 @@ export default function Dashboard() {
         setHasAccount(false);
       }
     });
-  }, [account]);
+  }
+
+  useEffect(() => {
+    settingHasAccount();
+  }, []);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -167,7 +172,8 @@ export default function Dashboard() {
                     backgroundColor: "#56595f2e",
                   }}
                 >
-                  Hi <u>{username}</u>! Welcome to Your Personal Dashboard
+
+                  Hi <u>{username ? ( <>{username}</>) : (<>{"Loading"}</>)}</u>! Welcome to Your Personal Dashboard
                 </h1>
 
                 {selectedItem === "Personal Profile" && (

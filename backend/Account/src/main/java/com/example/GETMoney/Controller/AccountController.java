@@ -51,9 +51,14 @@ public class AccountController {
     }
 
     @PutMapping("/{id}/addTransaction")
-    public String updateTransaction (@PathVariable String id,@RequestBody Map<String, ArrayList<String>> newTransactionData){
+    public String updateTransaction (@PathVariable String id,@RequestBody Map<String, ArrayList<String>> newTransactionData) {
         ArrayList<String> transaction = newTransactionData.get("transaction");
-        return accountService.updateTransaction(id,transaction);
+        return accountService.updateTransaction(id, transaction);
+    }
+
+    @GetMapping("/findAllAccountNumbers")
+    public ArrayList<Long> findAllAccountNumbers(){
+        return accountService.findAllAccountNumbers();
     }
 
 
