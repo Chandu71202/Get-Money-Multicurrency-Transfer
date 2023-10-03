@@ -13,7 +13,7 @@ export default function Footer() {
             <div className="footer-container" style={{ paddingLeft: 30, paddingRight: 30 }}>
                 <div className="footer-logo" >
                     <img src="https://www.natwestinternational.com/content/dam/championlogos/NWInternational_Secondary_Horizontal.svg" alt="Bank Logo" />
-                    <h2>GET-Money</h2>
+                    <h2 title='Global Exchange and Transaction of Money'>GET-Money</h2>
                 </div>
                 <div className="footer-links">
                     <h3>Quick Links</h3>
@@ -41,7 +41,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="footer-bottom">
-                <p>&copy; 2023 GET-Money. All rights reserved.</p>
+                <p title='Global Exchange and Transaction of Money'>&copy; 2023 GET-Money. All rights reserved.</p>
             </div>
         </footer>
     );
