@@ -4,7 +4,7 @@ import axios from "axios";
 
 export default function TransferMoney({ account }) {
   const [senderAmount, setSenderAmount] = useState("");
-  const [recieverAccountNumber, setReceiverAccountNumber] = useState("");
+  const [recievertransactionId, setReceivertransactionId] = useState("");
   const [selectedSenderCurrency, setSelectedSenderCurrency] = useState("GBP");
   const [selectedRecieverCurrency, setSelectedRecieverCurrency] =
     useState("USD");
@@ -15,8 +15,8 @@ export default function TransferMoney({ account }) {
     setSenderAmount(e.target.value);
   };
 
-  const handleReceiverAccountNumberChange = (e) => {
-    setReceiverAccountNumber(e.target.value);
+  const handleReceivertransactionIdChange = (e) => {
+    setReceivertransactionId(e.target.value);
   };
 
   const handleSelectedSenderCurrencyChange = (e) => {
@@ -34,6 +34,25 @@ export default function TransferMoney({ account }) {
   const handleFeeAmountChange = (e) => {
     setFeeAmount(e.target.value);
   };
+
+  const generateTransactionID = () => {
+    const transactionId = Math.floor(
+      1000000 + Math.random() * 90000
+    );
+    return transactionId;
+  };
+  
+  const timeStamp = () =>{
+    const currentDate = new Date();
+    const currentDayOfMonth = currentDate.getDate();
+    const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+
+    const dateString = currentDayOfMonth + "-" + (currentMonth + 1) + "-" + currentYear;
+    return dateString;
+  }
+  
+
 
   const currencies = [
     "INR",
@@ -252,9 +271,11 @@ export default function TransferMoney({ account }) {
             "balanceGBP": account.balanceGBP - senderAmount
           });
           alert("Transfer Successful");
-          const transaction=`An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${recieverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
+          const transactionId = generateTransactionID();
+          const transaction=`An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${recievertransactionId} as ${receiverAmount} ${selectedRecieverCurrency}`;
+          const transaction_array =  new Array(`${transactionId}`,`${senderAmount}`,`${selectedSenderCurrency}`,`${selectedRecieverCurrency}`,`${transaction}`,`${account.balanceGBP - senderAmount} ${selectedSenderCurrency}`,timeStamp());
           axios.put(ApiUrl+`${account.id}/addTransaction`,{
-            "transaction":transaction
+            "transaction":transaction_array
           })
         } else {
           alert("Insufficient Balance");
@@ -265,9 +286,11 @@ export default function TransferMoney({ account }) {
             "balanceUSD": account.balanceUSD - senderAmount,
           });
           alert("Transfer Successful");
-          const transaction=`An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${recieverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`
+          const transactionId = generateTransactionID();
+          const transaction=`An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${recievertransactionId} as ${receiverAmount} ${selectedRecieverCurrency}`
+          const transaction_array =  new Array(`${transactionId}`,`${senderAmount}`,`${selectedSenderCurrency}`,`${selectedRecieverCurrency}`,`${transaction}`,`${account.balanceUSD - senderAmount} ${selectedSenderCurrency}`,timeStamp());
           axios.put(ApiUrl+`${account.id}/addTransaction`,{
-            "transaction":transaction
+            "transaction":transaction_array
           })
         } else {
           alert("Insufficient Balance");
@@ -278,9 +301,11 @@ export default function TransferMoney({ account }) {
             "balanceEUR": account.balanceEUR - senderAmount,
           });
           alert("Transfer Successful");
-          const transaction=`An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${recieverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`
+          const transactionId = generateTransactionID();
+          const transaction=`An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${recievertransactionId} as ${receiverAmount} ${selectedRecieverCurrency}`
+          const transaction_array =  new Array(`${transactionId}`,`${senderAmount}`,`${selectedSenderCurrency}`,`${selectedRecieverCurrency}`,`${transaction}`,`${account.balanceEUR - senderAmount} ${selectedSenderCurrency}`,timeStamp());
           axios.put(ApiUrl+`${account.id}/addTransaction`,{
-            "transaction":transaction
+            "transaction":transaction_array
           })
         } else {
           alert("Insufficient Balance");
@@ -312,10 +337,10 @@ export default function TransferMoney({ account }) {
               <input
                 className="form-group-input"
                 type="number"
-                name="recieverAccountNumber"
-                id="recieverAccountNumber"
-                value={recieverAccountNumber}
-                onChange={handleReceiverAccountNumberChange}
+                name="recievertransactionId"
+                id="recievertransactionId"
+                value={recievertransactionId}
+                onChange={handleReceivertransactionIdChange}
                 required
               />
               <label className="form-group-label">Amount to Send</label>

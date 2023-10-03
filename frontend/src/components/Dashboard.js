@@ -53,7 +53,6 @@ export default function Dashboard() {
         setAccount(response.data);
       } else {
         setHasAccount(false);
-        console.log("hello");
       }
     });
   }, [account]);
@@ -170,7 +169,6 @@ export default function Dashboard() {
                 >
                   Hi <u>{username}</u>! Welcome to Your Personal Dashboard
                 </h1>
-                {/* {selectedItem === "Empty" && (<p>Navigate to any of the buttons in the sidebar</p>) } */}
 
                 {selectedItem === "Personal Profile" && (
                   <PersonalProfile account={account} user={user} />

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -50,8 +51,8 @@ public class AccountController {
     }
 
     @PutMapping("/{id}/addTransaction")
-    public String updateTransaction (@PathVariable String id,@RequestBody Map<String, String> newTransactionData){
-        String transaction = newTransactionData.get("transaction");
+    public String updateTransaction (@PathVariable String id,@RequestBody Map<String, ArrayList<String>> newTransactionData){
+        ArrayList<String> transaction = newTransactionData.get("transaction");
         return accountService.updateTransaction(id,transaction);
     }
 

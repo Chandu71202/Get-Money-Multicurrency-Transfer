@@ -28,7 +28,7 @@ public class Account {
     private Long balanceGBP;
     private Long balanceUSD;
     private Long balanceEUR;
-    private ArrayList<String> transactionHistory = new ArrayList<>();;
+    private ArrayList<ArrayList<String>> transactionHistory = new ArrayList<>();;
 }
 
 

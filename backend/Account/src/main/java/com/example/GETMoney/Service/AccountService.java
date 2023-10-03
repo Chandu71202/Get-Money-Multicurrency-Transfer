@@ -54,10 +54,10 @@ public class AccountService {
         return null;
     }
 
-    public String updateTransaction(String id, String transaction) {
+    public String updateTransaction(String id, ArrayList<String> transaction) {
         Account account = accountRepository.findById(id).orElse(null);
         if(account!=null){
-            ArrayList<String> transactionHistory = account.getTransactionHistory();
+            ArrayList<ArrayList<String>> transactionHistory = account.getTransactionHistory();
             transactionHistory.add(transaction);
             account.setTransactionHistory(transactionHistory);
             accountRepository.save(account);
