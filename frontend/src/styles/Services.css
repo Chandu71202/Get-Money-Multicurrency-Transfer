@@ -39,17 +39,24 @@
 }
 
 .flip-card-front {
+  display: flex;
   background-color: #f2eaf9;
   color: #5a287d;
-  text-align: center;
+  text-align:center;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
   border-radius: 10px;
 }
 
 .flip-card-back {
+  display: flex;
   background-color: #5a287d;
   color: #fff;
-  padding: 20px;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  padding: 30px;
   border-radius: 10px;
   transform: rotateY(180deg);
 }
