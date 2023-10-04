@@ -203,7 +203,7 @@ export default function Dashboard() {
                   <MoreInfo />
                 )}
                 {selectedItem === "Settings" && (
-                  <Settings />
+                  <Settings account={account} user={user}/>
                 )}
               </div>
             </div>

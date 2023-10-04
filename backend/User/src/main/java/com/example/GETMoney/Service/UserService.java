@@ -34,4 +34,12 @@ public class UserService {
     public User findUserById(String id) {
         return userRepository.findById(id).orElse(null);
     }
+
+    public User updateUserDetails(String id, User user) {
+        User existingUser = userRepository.findById(id).orElse(null);
+        existingUser.setPhoneNo(user.getPhoneNo());
+        existingUser.setName(user.getName());
+        existingUser.setPassword(user.getPassword());
+        return userRepository.save(existingUser);
+    }
 }

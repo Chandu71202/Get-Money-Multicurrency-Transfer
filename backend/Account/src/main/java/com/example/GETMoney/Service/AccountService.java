@@ -85,5 +85,15 @@ public class AccountService {
     }
 
 
-
+    public Account updateAccountDetails(String id, Account account) {
+        Account existingAccount = accountRepository.findById(id).orElse(null);
+        existingAccount.setDateOfBirth(account.getDateOfBirth());
+        existingAccount.setGender(account.getGender());
+        existingAccount.setAlternateEmailId(account.getAlternateEmailId());
+        existingAccount.setAddress(account.getAddress());
+        existingAccount.setCity(account.getCity());
+        existingAccount.setState(account.getState());
+        existingAccount.setCountry(account.getCountry());
+        return accountRepository.save(existingAccount);
+    }
 }
