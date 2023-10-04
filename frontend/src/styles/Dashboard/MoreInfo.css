@@ -8,7 +8,7 @@
     text-align: center; /* Center align the FAQ section */
 }
 
-h2 {
+.faq-heading {
     font-size: 28px; /* Increased font size */
     color: #3c1053;
     margin-bottom: 10px; /* Reduced margin */
@@ -50,29 +50,4 @@ h2 {
 
 .faq-answer {
     margin-top: 10px;
-}
-
-p8 {
-    font-size: 16px;
-    color: #333;
-}
-
-/* Responsive styles for screens smaller than 768px */
-
-@media (max-width: 768px) {
-    .more-info-container {
-        padding: 10px;
-    }
-
-    h2 {
-        font-size: 24px; /* Adjusted font size for smaller screens */
-    }
-
-    .faq-button {
-        font-size: 16px;
-    }
-
-    p8 {
-        font-size: 14px;
-    }
 }
