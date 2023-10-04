@@ -13,6 +13,7 @@ import TransactionHistory from "./Dashboard/TransactionHistory";
 import Support from "./Dashboard/Support";
 import MoreInfo from "./Dashboard/MoreInfo";
 import Settings from "./Dashboard/Settings";
+import DashboardInitial from "./Dashboard/DashboardInitial";
 import Footer from "./Footer";
 
 export default function Dashboard() {
@@ -61,7 +62,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     settingHasAccount();
-  }, []);
+  }, [account]);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -175,7 +176,16 @@ export default function Dashboard() {
 
                   Hi <u>{username ? ( <>{username}</>) : (<>{"Loading"}</>)}</u>! Welcome to Your Personal Dashboard
                 </h1>
-
+                
+                {selectedItem !== "Personal Profile" && 
+                selectedItem !== "Inter-Account Transfer" && 
+                selectedItem !== "Your Account" &&
+                selectedItem !== "Depost & Withdraw" &&
+                selectedItem !== "Transaction History" &&
+                selectedItem !== "Support" &&
+                selectedItem !== "More Info" &&
+                selectedItem !== "Settings"
+                &&  <DashboardInitial/>}
                 {selectedItem === "Personal Profile" && (
                   <PersonalProfile account={account} user={user} />
                 )}
