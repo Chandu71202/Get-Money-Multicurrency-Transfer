@@ -77,7 +77,7 @@ export default function MoreInfo() {
               </button>
               {activeIndex === index && (
                 <div className="faq-answer">
-                  <p>{faq.answer}</p>
+                  <p8>{faq.answer}</p8>
                 </div>
               )}
             </div>
