@@ -9,7 +9,7 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 .signup-container:hover{
-  box-shadow: 20px 20px 20px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
   transform: translateY(-5px);
   background-color: #15121229;
 }
@@ -84,7 +84,7 @@
 }
 
 .submit_button:hover {
-  box-shadow: 10px 10px 10px 10px rgba(117, 35, 128, 0.1);
+  box-shadow: 5px 5px 5px 5px rgba(117, 35, 128, 0.1);
   background-color: #7739a4;
   color: black;
   

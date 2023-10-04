@@ -15,11 +15,11 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #b3adad29; /* Use the same background color as in Register.css */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
 .login-card:hover{
-  box-shadow: 20px 20px 20px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
   transform: translateY(-5px);
   background-color: #15121229;
 }
@@ -61,7 +61,7 @@
 /* Apply hover effect to input fields */
  .password_field:hover,
  .username_field:hover {
-  box-shadow: 10px 10px 10px 10px rgba(70, 9, 77, 0.1);
+  box-shadow: 5px 5px 5px 5px rgba(70, 9, 77, 0.1);
   transform: translateY(-1px);
   border-color: #7739a4; /* Change border color on hover */
 }
@@ -73,16 +73,16 @@
   font-size: 18px;
   padding: 10px 20px;
   border: none;
-  border-radius: 20px;
+  border-radius: 5px;
   margin-top: 10px;
   cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .submit_button:hover {
-  box-shadow: 10px 10px 10px 10px rgba(117, 35, 128, 0.1);
+  box-shadow: 5px 5px 5px 5px rgba(117, 35, 128, 0.1);
   background-color: #7739a4;
-  color: black;
+  color: #fff;
   
 }
 /* Apply styles to the paragraph below the form */

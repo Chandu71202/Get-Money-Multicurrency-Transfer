@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import "../../styles/Dashboard/Settings.css"
 import axios from 'axios';
-import MiddlePage from '../MiddlePage';
 
 export default function Settings({account,user}) {
   const [isEditing, setIsEditing] = useState(false);
@@ -60,6 +59,8 @@ export default function Settings({account,user}) {
         password: formData.newPassword,
         newPassword: "" // Reset newPassword field after saving
       }));
+      const saveButton = document.getElementById('saveButton');
+      saveButton.disabled = true;
     }
   
     console.log(formData);
@@ -84,6 +85,9 @@ export default function Settings({account,user}) {
   };
   return (
     <form className="user-profile-form" onSubmit={handleSubmit}>
+      <div>
+        <h1 className='heading'>Edit Details</h1>
+      </div>
       <div>
         <label>Date of Birth:</label>
         <input
@@ -197,7 +201,13 @@ export default function Settings({account,user}) {
       <button type="button" onClick={handleEditClick} disabled={isEditing}>
         Edit
       </button>
-      {isEditing && <button type="submit">Save</button>}
+      <button
+        type="submit"
+        id="saveButton" // Added an id to the save button
+        disabled={!isEditing} // Disable the save button when not editing
+      >
+        Save
+      </button>
     </form>
   )
 }

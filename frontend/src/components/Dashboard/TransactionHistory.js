@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import "../../styles/Dashboard/TransactionHistory.css"
-import MiddlePage from '../MiddlePage';
 
 export default function TransactionHistory({ account }) {
   const transactions = account.transactionHistory;
@@ -42,6 +41,7 @@ export default function TransactionHistory({ account }) {
       return 0;
     });
   }
+  sortedData.reverse();
 
   return (
     <div>
