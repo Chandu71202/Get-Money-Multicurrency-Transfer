@@ -1,46 +1,45 @@
 .account-container {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 20px;
-    margin-top: 120px;
-  }
-  
-  .acc-card {
-    background-color: #3c1053;
-    border: 1px solid #ccc;
-    padding: 40px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s, color 0.3s;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .acc-card h2 {
-    font-size: 18px;
-    color: white;
-    transition: color 0.3s;
-  }
-  
-  .acc-card p {
-    font-size: 16px;
-    color: white;
-    transition: color 0.3s;
-  }
-  
-  .acc-card.active {
-    background-color: #3c1053;
-    transform: scale(1.05);
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s, color 0.3s;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
-  }
-  
-  .acc-card:hover {
-    background-color: #6a467e;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
-  }
-  
-  .acc-card:hover h2,
-  .acc-card:hover p {
-    color: #fff; 
-  }
-  
+  display:flex;
+  justify-content: space-evenly;
+  padding: 20px;
+  margin-top: 120px;
+}
+
+.acc-card {
+  background-color: #3c1053;
+  border: 1px solid #ccc;
+  padding: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+ height: 100%;
+}
+
+.acc-card h2 {
+  font-size: 18px;
+  color: white;
+}
+
+.acc-card p {
+  font-size: 16px;
+  color: white;
+  margin: 0px;
+
+}
+
+.acc-card.active {
+  background-color: #3c1053;
+  transform: scale(1.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+
+.acc-card:hover {
+  background-color: #6a467e;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+.acc-card:hover h2,
+.acc-card:hover p {
+  color: #fff;
+}

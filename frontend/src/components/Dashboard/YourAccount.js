@@ -1,8 +1,8 @@
 import React from 'react'
 import "../../styles/Dashboard/YourAccount.css"
 import { useState } from 'react';
-export default function YourAccount({ account }) {
-
+export default function YourAccount({account}) {
+  
   const [activeCard, setActiveCard] = useState(null);
 
   const toggleCard = (card) => {
@@ -11,29 +11,29 @@ export default function YourAccount({ account }) {
 
   return (
     <div className="account-container">
-      <div
-        className={`acc-card ${activeCard === 'GBP' ? 'active' : ''}`}
-        onClick={() => toggleCard('GBP')}
-      >
-        <h2>GBP Balance</h2>
-        {activeCard === 'GBP' && <p>GBP BALANCE: {account.balanceGBP}</p>}
-      </div>
-
-      <div
-        className={`acc-card ${activeCard === 'USD' ? 'active' : ''}`}
-        onClick={() => toggleCard('USD')}
-      >
-        <h2>USD Balance</h2>
-        {activeCard === 'USD' && <p>USD BALANCE: {account.balanceUSD}</p>}
-      </div>
-
-      <div
-        className={`acc-card ${activeCard === 'EUR' ? 'active' : ''}`}
-        onClick={() => toggleCard('EUR')}
-      >
-        <h2>EUR Balance</h2>
-        {activeCard === 'EUR' && <p>EUR BALANCE: {account.balanceEUR}</p>}
-      </div>
+    <div
+      className={`acc-card ${activeCard === 'GBP' ? 'active' : ''}`}
+      onClick={() => toggleCard('GBP')}
+    >
+      <h2>GBP Balance</h2>
+      {activeCard === 'GBP' && <p>GBP BALANCE: {account.balanceGBP}</p>}
     </div>
-  );
-}
+
+    <div
+      className={`acc-card ${activeCard === 'USD' ? 'active' : ''}`}
+      onClick={() => toggleCard('USD')}
+    >
+      <h2>USD Balance</h2>
+      {activeCard === 'USD' && <p>USD BALANCE: {account.balanceUSD}</p>}
+    </div>
+
+    <div
+      className={`acc-card ${activeCard === 'EUR' ? 'active' : ''}`}
+      onClick={() => toggleCard('EUR')}
+    >
+      <h2>EUR Balance</h2>
+      {activeCard === 'EUR' && <p>EUR BALANCE: {account.balanceEUR}</p>}
+    </div>
+  </div>
+);
+  }
