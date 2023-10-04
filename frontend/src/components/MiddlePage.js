@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function MiddlePage() {
     let navigate = useNavigate();

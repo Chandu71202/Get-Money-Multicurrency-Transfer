@@ -49,23 +49,26 @@
   }
 
   button {
-    margin: 10px 5px;
-    padding: 8px 16px;
-    font-size: 16px;
+    background-color: #3c1053;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px 20px;
     border: none;
-    background-color: #f2eaf9;
-    color: #5a287d;
+    border-radius: 5px;
     cursor: pointer;
-    border-radius: 4px;
+    margin-left: 20px;
+    transition: background-color 0.2s;
+    margin-left: 10px;
   }
   button:hover{
-    background-color: #5a287d;
-    color: #f2eaf9;
+    background-color: #7739a4;
+    color: black;
   }
   
   button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+    color: black;
   }
   .pagination-buttons {
     text-align: right;

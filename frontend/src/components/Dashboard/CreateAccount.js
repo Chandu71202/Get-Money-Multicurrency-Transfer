@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import "../../styles/Register.css";
-import Navbar from "../Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import MiddlePage from "../MiddlePage";
 
 export default function CreateAccount({ updateHasAccount }) {
   const [account, setAccount] = useState({
@@ -73,9 +71,9 @@ export default function CreateAccount({ updateHasAccount }) {
   }
   };
   return (
-    <div>
+    <div className="create-account-container">
       
-      <div className="signup-container">
+      <div className="signup-container-createAccount">
         <h1 className="heading">Additional details to create your account</h1>
         
         <form onSubmit={handleSubmit}>
@@ -169,7 +167,7 @@ export default function CreateAccount({ updateHasAccount }) {
           </div>
 
           <button className="submit_button" type="submit">
-            Submit
+            Create Account
           </button>
         </form>
       </div>

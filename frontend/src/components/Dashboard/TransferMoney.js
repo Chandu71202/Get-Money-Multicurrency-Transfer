@@ -266,7 +266,7 @@ export default function TransferMoney({ account }) {
     await axios.get(ApiUrl + "findAllAccountNumbers").then((response) => {
       setAllAccountNumbers(response.data);
     });
-      console.log(typeof allAccountNumbers[0],allAccountNumbers[1]);
+      console.log(allAccountNumbers);
       console.log([1,2,3,4])
       if (allAccountNumbers?.indexOf(Number (receiverAccountNumber)) !== -1) {
         if (selectedSenderCurrency === "GBP") {
@@ -348,8 +348,8 @@ export default function TransferMoney({ account }) {
   };
 
   return (
-    <div>
-      <div className="card">
+    <div className="signup-container-1">
+        <h1 className="heading">Inter-Account Transfer</h1>
         <form className="form-group" onSubmit={updatingBalance}>
           <div className="flex-container">
             <div className="flex-item">
@@ -434,6 +434,5 @@ export default function TransferMoney({ account }) {
           </div>
         </form>
       </div>
-    </div>
   );
 }

@@ -173,7 +173,6 @@ export default function Dashboard() {
                     color: "#3c1053",
                   }}
                 >
-
                   Hi <u>{username ? ( <>{username}</>) : (<>{"Loading"}</>)}</u>! Welcome to Your Personal Dashboard
                 </h1>
                 
@@ -217,9 +216,10 @@ export default function Dashboard() {
               textAlign: "center",
               padding: "10px",
               fontSize: "30px",
+              backgroundColor:"#56595f2e"
             }}
           >
-            Hi <u>{username}</u>! Welcome to Your Personal Dashboard
+            Hi <u>{username ? ( <>{username}</>) : (<>{"Loading"}</>)}</u>! Welcome to Your Personal Dashboard
           </h1>
           <CreateAccount updateHasAccount={updateHasAccount} />
         </div>
