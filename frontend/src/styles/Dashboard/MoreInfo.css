@@ -22,32 +22,38 @@
 }
 
 .faq-item {
+    display: grid;
     background-color: #e1dfdf;
     padding: 10px; /* Reduced padding */
     border-radius: 5px;
     width: 100%; /* Make FAQs full width */
-    text-align: left; /* Align FAQ text to the left */
+    text-align: justify;
+    align-self: center;
 }
 
 .faq-button {
     background-color: #5c327e;
-    color: #ccc;
+    color: #f2eaf9;
     font-size: 18px;
     padding: 5px 10px; /* Reduced button padding to reduce space */
     border: none;
     border-radius: 5px;
     cursor: pointer;
     display: block;
-    width: 50%; /* Reduced button width */
-    text-align: left; /* Keep text left-aligned within buttons */
+    width: 70%; /* Reduced button width */
+    text-align: center; /* Keep text left-aligned within buttons */
     margin: 0 auto; /* Center align the buttons */
     margin-bottom: 2px; /* Further reduced space between purple buttons */
 }
 
 .faq-button:hover {
     background-color: #3c1053;
+    color: #f2eaf9;
 }
 
 .faq-answer {
     margin-top: 10px;
+    width: 70%;
+    text-align: justify;
+    justify-self: center;
 }
