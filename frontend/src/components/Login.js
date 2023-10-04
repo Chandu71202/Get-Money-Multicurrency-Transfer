@@ -4,6 +4,7 @@ import "../styles/Login.css";
 import axios from "axios";
 import Navbar from "./Navbar"; 
 import { useNavigate } from "react-router-dom";
+import Footer from "./Footer";
 
 export default function Login({ onLogin }) {
   const [user, setUser] = useState({
@@ -109,6 +110,7 @@ export default function Login({ onLogin }) {
           </p>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
