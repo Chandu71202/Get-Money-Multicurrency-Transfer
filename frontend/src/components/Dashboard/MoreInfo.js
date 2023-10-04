@@ -68,7 +68,7 @@ export default function MoreInfo() {
   return (
     <div className="centered-content"> {/* Centered container */}
       <div className="more-info-container">
-        <h2>Frequently Asked Questions (FAQs)</h2>
+        <div className="faq-heading">Frequently Asked Questions (FAQs)</div>
         <div className="faq-list">
           {faqs.map((faq, index) => (
             <div className="faq-item" key={index}>
@@ -77,7 +77,7 @@ export default function MoreInfo() {
               </button>
               {activeIndex === index && (
                 <div className="faq-answer">
-                  <p>{faq.answer}</p>
+                  {faq.answer}
                 </div>
               )}
             </div>
