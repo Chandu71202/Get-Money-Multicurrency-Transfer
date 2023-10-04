@@ -62,7 +62,7 @@
   }
   button:hover{
     background-color: #7739a4;
-    color: black;
+    color: #fff;
   }
   
   button:disabled {
