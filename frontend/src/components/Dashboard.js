@@ -13,6 +13,7 @@ import TransactionHistory from "./Dashboard/TransactionHistory";
 import Support from "./Dashboard/Support";
 import MoreInfo from "./Dashboard/MoreInfo";
 import Settings from "./Dashboard/Settings";
+import Footer from "./Footer";
 
 export default function Dashboard() {
   const [selectedItem, setSelectedItem] = useState("My Account");
@@ -160,7 +161,7 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-          <div>
+      
             <div className="main-content1">
               <div className="content">
                 <h1
@@ -168,7 +169,7 @@ export default function Dashboard() {
                     textAlign: "center",
                     paddingTop: "20px",
                     fontSize: "30px",
-
+                    color: "#3c1053",
                   }}
                 >
 
@@ -197,7 +198,7 @@ export default function Dashboard() {
                 )}
               </div>
             </div>
-          </div>
+          
         </div>
       ) : (
         <div>
@@ -206,7 +207,6 @@ export default function Dashboard() {
               textAlign: "center",
               padding: "10px",
               fontSize: "30px",
-              // backgroundColor: "#56595f2e",
             }}
           >
             Hi <u>{username}</u>! Welcome to Your Personal Dashboard
@@ -214,7 +214,7 @@ export default function Dashboard() {
           <CreateAccount updateHasAccount={updateHasAccount} />
         </div>
       )}
-
+<Footer/>
     </div>
 
   );
