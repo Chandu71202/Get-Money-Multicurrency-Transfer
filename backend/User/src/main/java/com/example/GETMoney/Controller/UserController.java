@@ -65,4 +65,9 @@ public class UserController {
             return ResponseEntity.ok("Invalid password");
         }
     }
+
+    @PatchMapping("/{id}/updateUserDetails")
+    public User updateUserDetails(@PathVariable String id, @RequestBody User user){
+        return userService.updateUserDetails(id, user);
+    }
 }

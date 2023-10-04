@@ -67,6 +67,11 @@ public class AccountController {
         return accountService.getUserWithAccount(id);
     }
 
+    @PatchMapping("/{id}/updateAccountDetails")
+    public Account updateAccountDetails(@PathVariable String id, @RequestBody Account account){
+        return accountService.updateAccountDetails(id, account);
+    }
+
 
 
 }
