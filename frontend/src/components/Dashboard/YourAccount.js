@@ -12,7 +12,7 @@ export default function YourAccount({ account }) {
   return (
     <div className="account-container">
       <div
-        className={`acc-card ${activeCard === 'GBP' ? 'active1' : ''}`}
+        className={`acc-card ${activeCard === 'GBP' ? 'active' : ''}`}
         onClick={() => toggleCard('GBP')}
       >
         <h2>GBP Balance</h2>
@@ -20,7 +20,7 @@ export default function YourAccount({ account }) {
       </div>
 
       <div
-        className={`acc-card ${activeCard === 'USD' ? 'active2' : ''}`}
+        className={`acc-card ${activeCard === 'USD' ? 'active' : ''}`}
         onClick={() => toggleCard('USD')}
       >
         <h2>USD Balance</h2>
@@ -28,7 +28,7 @@ export default function YourAccount({ account }) {
       </div>
 
       <div
-        className={`acc-card ${activeCard === 'EUR' ? 'active3' : ''}`}
+        className={`acc-card ${activeCard === 'EUR' ? 'active' : ''}`}
         onClick={() => toggleCard('EUR')}
       >
         <h2>EUR Balance</h2>
