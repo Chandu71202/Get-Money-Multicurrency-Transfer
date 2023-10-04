@@ -1,0 +1,88 @@
+
+
+.table-container {
+    font-family: "knilebold",sans-serif;
+    margin: 20px;
+    font-size: 20px;
+    border: 3px solid #5a287d;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: auto;
+    margin: auto;
+    margin-top: 50px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 8px 12px;
+    text-align: center;
+  }
+
+  td{
+    color: #5a287d;
+    border-left: 1px solid #5a287d;
+    border-right: 1px solid #5a287d;
+  }
+  
+  th {
+    background-color: #f2eaf9;
+    color: #5a287d;
+    border: 1px solid #5a287d;
+    cursor: pointer;
+  }
+  
+  th:hover {
+    background-color: #5a287d;
+    color: #f2eaf9;
+  }
+  
+  tbody tr:nth-child(even) {
+    background-color: #f2eaf9;
+  }
+  
+  tbody tr:last-child {
+    border-bottom: 1px solid #5a287d; /* Add border to the last row */
+  }
+
+  button {
+    margin: 10px 5px;
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    background-color: #f2eaf9;
+    color: #5a287d;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  button:hover{
+    background-color: #5a287d;
+    color: #f2eaf9;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  .pagination-buttons {
+    text-align: right;
+    margin-top: 10px;
+  }
+
+  @media (max-width: 768px) {
+    table {
+      font-size: 16px;
+    }
+  
+    th, td {
+      padding: 6px 10px;
+    }
+  
+    button {
+      font-size: 14px;
+    }
+  }
+  
