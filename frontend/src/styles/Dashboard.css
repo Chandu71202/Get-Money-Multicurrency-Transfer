@@ -15,7 +15,7 @@
   width: 300px;
   background-color: #5c327e;
   color: white;
-  height: 100%;
+  height: auto;
   flex: 0 0 auto;
   margin: 0px 0px 20px 0px;
   padding: 0px 0px 0px;
@@ -75,6 +75,7 @@
   position: relative;
   display: flex;
   z-index: 999;
+  /* height: auto; */
 }
 
 .sidebar-toggle:hover {
