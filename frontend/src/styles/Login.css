@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Adjust the height to your preference */
+  min-height: 100vh; /* Use min-height for better responsiveness */
   background-color: #b3adad29; /* Use the same background color as in Register.css */
 }
 
@@ -11,22 +11,23 @@
 .login-card {
   text-align: center;
   max-width: 500px;
-  padding: 30px 80px;
+  padding: 30px 20px; /* Adjust padding for smaller screens */
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #b3adad29; /* Use the same background color as in Register.css */
   box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
 
-.login-card:hover{
+.login-card:hover {
   box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
   transform: translateY(-5px);
   background-color: #15121229;
 }
+
 /* Apply styles to the login card heading */
 .login-card h1 {
   font-size: 24px;
-  margin-bottom: 40px;
+  margin-bottom: 20px; /* Reduce margin for smaller screens */
   font-weight: bold;
   color: #3c1053;
 }
@@ -39,7 +40,7 @@
 /* Apply styles to form labels */
 .login-card label {
   display: block;
-  font-size:16px;
+  font-size: 16px;
   text-align: left;
   font-weight: bold;
   margin-bottom: 5px;
@@ -59,8 +60,8 @@
 }
 
 /* Apply hover effect to input fields */
- .password_field:hover,
- .username_field:hover {
+.password_field:hover,
+.username_field:hover {
   box-shadow: 5px 5px 5px 5px rgba(70, 9, 77, 0.1);
   transform: translateY(-1px);
   border-color: #7739a4; /* Change border color on hover */
@@ -83,11 +84,11 @@
   box-shadow: 5px 5px 5px 5px rgba(117, 35, 128, 0.1);
   background-color: #7739a4;
   color: #fff;
-  
 }
+
 /* Apply styles to the paragraph below the form */
 .login-card p {
-  font-size: 14px;
+  font-size: 18px;
   margin-top: 20px;
   font-weight: bold; /* Make the paragraph text bold */
 }
@@ -102,4 +103,15 @@
 /* Apply hover effect to links */
 .login-card a:hover {
   text-decoration: underline;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .login-card {
+    padding: 20px; /* Adjusted padding for smaller screens */
+  }
+
+  .login-card h1 {
+    margin-bottom: 10px; /* Further reduce margin for smaller screens */
+  }
 }

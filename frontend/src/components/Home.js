@@ -5,6 +5,7 @@ import CarouselSection from './CarouselSection'
 import Services from './Services'
 import SecuritySection from './SecuritySection'
 import CountriesSection from './CountriesSection'
+import MyFAQ from './MyFAQ'
 import Footer from './Footer'
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <SecuritySection />
       <CurrentExchangeRates />
       <CountriesSection />
+      <MyFAQ />
       <Footer />
     </div>
 

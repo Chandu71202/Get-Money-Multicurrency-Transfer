@@ -1,0 +1,112 @@
+/* MyFAQ.css */
+.MyFAQ-container {
+  background-color: #f2eaf9;
+  padding: 20px;
+  font-family: "knilebold", sans-serif;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.MyFAQ-header {
+  width: 100%;
+  font-family: "knilebold", sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MyFAQ-title {
+  font-size: 40px;
+  font-family: "knilebold", sans-serif;
+  color: #3c1053;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.MyFAQ-button {
+  background-color: #5c327e;
+  font-family: "knilebold", sans-serif;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 40px; 
+  cursor: pointer;
+  font-size: 24px; 
+}
+
+.MyFAQ-button:hover {
+  font-family: "knilebold", sans-serif;
+  background-color: #3c1053;
+}
+
+.MyFAQ-list {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  font-family: "knilebold", sans-serif;
+  align-items: flex-start;
+}
+.MyFAQ-item {
+  width: 100%;
+  margin: 10px 0;
+  display: flex;
+  font-family: "knilebold",sans-serif;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.MyFAQ-question {
+  background-color: #5c327e;
+  color: #fff;
+  border: none;
+  font-family: "knilebold",sans-serif;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 8px 16px;
+  width: 100%;
+}
+
+.MyFAQ-answer {
+  display: none;
+  font-family: "knilebold",sans-serif;
+  background-color: #5c327e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 8px 16px;
+  width: 100%;
+}
+
+.MyFAQ-item.open .MyFAQ-question {
+  background-color: #3c1053;
+  font-family: "knilebold",sans-serif;
+}
+
+.MyFAQ-item.open .MyFAQ-answer {
+  display: block;
+  font-family: "knilebold",sans-serif;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #000;
+}
+
+.left-image,
+.right-image {
+  width: 50%;
+  font-family: "knilebold",sans-serif;
+  max-width: 200px;
+  margin: 10px;
+}
+
+@media (max-width: 768px) {
+  .left-image,
+  .right-image {
+    width: 100%;
+    max-width: none;
+  }
+}
