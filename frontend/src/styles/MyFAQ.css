@@ -10,7 +10,7 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
 }
 
 .MyFAQ-header {
@@ -41,22 +41,25 @@
   text-align: left; /* Align the text to the left */
 }
 
+.MyFAQ-content {
+  display: flex;
+}
+
 /* FAQ list */
 .MyFAQ-list {
-  width: 100%;
-  display: flex;
+  width: 50%;
+  display: grid;
   flex-direction: column;
   font-family: "knilebold", sans-serif;
-  align-items: flex-start; /* Align items to the left */
+  align-items: flex-start;
 }
 
 .MyFAQ-item {
-  width: 100%;
   margin: 10px 0;
   display: flex;
   font-family: "knilebold", sans-serif;
   flex-direction: column;
-  align-items: flex-start; /* Align items to the left */
+  align-items: center; /* Align items to the left */
 }
 
 /* Push all question buttons to the extreme left */
@@ -68,9 +71,8 @@
   border-radius: 5px;
   cursor: pointer;
   padding: 8px 16px;
-  width: 50%; /* Allow the buttons to adjust their width */
-  text-align: left; /* Align the text to the left */
-  margin-right: 10px; /* Add some margin on the right side */
+  width: 100%; /* Allow the buttons to adjust their width */
+  text-align: left; /* Align the text to the left */ /* Add some margin on the right side */
 }
 
 .MyFAQ-answer {
@@ -82,14 +84,24 @@
   border-radius: 5px;
   cursor: pointer;
   padding: 8px 16px;
-  width: 50%; /* Allow the answers to adjust their width */
-  text-align: left; /* Align the text to the left */
-  margin-right: 10px; /* Add some margin on the right side */
+  width: 100%; /* Allow the answers to adjust their width */
+  text-align: left; /* Align the text to the left *//* Add some margin on the right side */
+}
+.MyFAQ-img {
+  align-self: center;
+  width: 50%;
+}
+
+.MyFAQ-img-img {
+  padding: 10px;
+  flex-direction: column;
+  width: 90%; /* Adjust the width as needed */
+  margin-left: 40px; /* Add some space between the list and the "hi" div */
 }
 
 /* Add space to the right of opened answer fields */
 .MyFAQ-item.open .MyFAQ-answer {
-  margin-right: 40%; /* Adjust the margin to leave 40% of the page width blank on the right */
+  margin-right: 0%; /* Adjust the margin to leave 40% of the page width blank on the right */
 }
 
 /* Opened FAQ item styles */
@@ -107,12 +119,6 @@
   color: #000;
 }
 
-/* Images 
-.right-image {
-  width: 100%;
-  max-width: 100%; Make the right image responsive 
-  margin: 10px 0;
-} /*
 
 /* Responsive styles for smaller screens */
 @media (max-width: 768px) {
@@ -123,10 +129,22 @@
   .MyFAQ-button {
     font-size: 18px;
   }
-  
-  .left-image,
-  .right-image {
-    max-width: 100%;
-    margin: 5px 0;
+  .MyFAQ-content {
+    flex-direction: column;
+    align-items: flex-start;
   }
+
+  .MyFAQ-list {
+    order: 1;
+    width: 100%;
+  }
+
+  .MyFAQ-img {
+    order: 2;
+    width: 100%;
+  }
+  .MyFAQ-img-img{
+    margin: 0px;
+  }
+  
 }

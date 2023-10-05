@@ -59,18 +59,22 @@ const MyFAQ = () => {
         </button>
       </div>
       {isOpen && (
-        <div className="MyFAQ-list">
-          {myFaqs.map((myFaq, index) => (
-            <div className={`MyFAQ-item ${activeIndex === index ? 'open' : ''}`} key={index}>
-              <button className="MyFAQ-question" onClick={() => toggleAnswer(index)}>
-                {myFaq.myQuestion}
-              </button>
-              {activeIndex === index && (
-                <div className="MyFAQ-answer">{myFaq.myAnswer}</div>
-              )}
-            </div>
-          ))}
-        
+        <div className='MyFAQ-content'>
+          <div className="MyFAQ-list">
+            {myFaqs.map((myFaq, index) => (
+              <div className={`MyFAQ-item ${activeIndex === index ? 'open' : ''}`} key={index}>
+                <button className="MyFAQ-question" onClick={() => toggleAnswer(index)}>
+                  {myFaq.myQuestion}
+                </button>
+                {activeIndex === index && (
+                  <div className="MyFAQ-answer">{myFaq.myAnswer}</div>
+                )}
+              </div>
+            ))}
+          </div>
+          <div className='MyFAQ-img'>
+            <img className='MyFAQ-img-img' src='https://miro.medium.com/v2/resize:fit:828/0*FdLLSjLPudGd-Pt5'/>
+          </div>
         </div>
       )}
     </div>
