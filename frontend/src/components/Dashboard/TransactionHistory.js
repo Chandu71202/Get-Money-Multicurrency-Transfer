@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import "../../styles/Dashboard/TransactionHistory.css"
 
+
 export default function TransactionHistory({ account }) {
   const transactions = account.transactionHistory;
 
@@ -46,7 +47,13 @@ export default function TransactionHistory({ account }) {
   return (
     <div>
       {account.transactionHistory.length === 0 ? (
-        <>No Transaction Yet</>
+        <>
+        <div className='NoTransactionYet'>
+          <h2>
+            No Transactions Yet! Make your First transaction from the Inter-Account Transfer menu.
+          </h2>
+        </div>
+        </>
       ) : (
         <>
           <div className='table-container'>
@@ -77,8 +84,8 @@ export default function TransactionHistory({ account }) {
 
           </div>
           <div className='pagination-buttons'>
-            <button disabled={currentPage === 1} onClick={prevPage}>Previous</button>
-            <button disabled={sortedData.length <= currentPage * rowsPerPage} onClick={nextPage}>Next</button>
+            <button className='individual-button' disabled={currentPage === 1} onClick={prevPage}>Previous</button>
+            <button className='individual-button' disabled={sortedData.length <= currentPage * rowsPerPage} onClick={nextPage}>Next</button>
           </div>
         </>
       )}
