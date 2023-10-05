@@ -1,4 +1,6 @@
 /* MyFAQ.css */
+
+/* Base styles */
 .MyFAQ-container {
   background-color: #f2eaf9;
   padding: 20px;
@@ -8,7 +10,7 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  align-items:center ;
+  align-items: center;
 }
 
 .MyFAQ-header {
@@ -33,81 +35,98 @@
   color: #fff;
   border: none;
   border-radius: 5px;
-  padding: 10px 10px; 
+  padding: 10px 10px;
   cursor: pointer;
-  font-size: 24px; 
+  font-size: 24px;
+  text-align: left; /* Align the text to the left */
 }
 
-.MyFAQ-button:hover {
-  font-family: "knilebold", sans-serif;
-  background-color: #3c1053;
-}
-
+/* FAQ list */
 .MyFAQ-list {
-  width: 70%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   font-family: "knilebold", sans-serif;
-  align-items: baseline;
+  align-items: flex-start; /* Align items to the left */
 }
+
 .MyFAQ-item {
   width: 100%;
   margin: 10px 0;
   display: flex;
-  font-family: "knilebold",sans-serif;
+  font-family: "knilebold", sans-serif;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start; /* Align items to the left */
 }
 
+/* Push all question buttons to the extreme left */
 .MyFAQ-question {
   background-color: #5c327e;
   color: #fff;
   border: none;
-  font-family: "knilebold",sans-serif;
+  font-family: "knilebold", sans-serif;
   border-radius: 5px;
   cursor: pointer;
   padding: 8px 16px;
-  width: 100%;
+  width: 50%; /* Allow the buttons to adjust their width */
+  text-align: left; /* Align the text to the left */
+  margin-right: 10px; /* Add some margin on the right side */
 }
 
 .MyFAQ-answer {
   display: none;
-  font-family: "knilebold",sans-serif;
+  font-family: "knilebold", sans-serif;
   background-color: #5c327e;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   padding: 8px 16px;
-  width: 100%;
+  width: 50%; /* Allow the answers to adjust their width */
+  text-align: left; /* Align the text to the left */
+  margin-right: 10px; /* Add some margin on the right side */
 }
 
+/* Add space to the right of opened answer fields */
+.MyFAQ-item.open .MyFAQ-answer {
+  margin-right: 40%; /* Adjust the margin to leave 40% of the page width blank on the right */
+}
+
+/* Opened FAQ item styles */
 .MyFAQ-item.open .MyFAQ-question {
   background-color: #3c1053;
-  font-family: "knilebold",sans-serif;
+  font-family: "knilebold", sans-serif;
 }
 
 .MyFAQ-item.open .MyFAQ-answer {
   display: block;
-  font-family: "knilebold",sans-serif;
+  font-family: "knilebold", sans-serif;
   padding: 10px;
   border-radius: 5px;
   background-color: #fff;
   color: #000;
 }
 
-.left-image,
+/* Images 
 .right-image {
-  width: auto;
-  font-family: "knilebold",sans-serif;
-  max-width: 200px;
-  margin: 10px;
-}
+  width: 100%;
+  max-width: 100%; Make the right image responsive 
+  margin: 10px 0;
+} /*
 
+/* Responsive styles for smaller screens */
 @media (max-width: 768px) {
+  .MyFAQ-title {
+    font-size: 32px;
+  }
+
+  .MyFAQ-button {
+    font-size: 18px;
+  }
+  
   .left-image,
   .right-image {
-    width: 100%;
-    max-width: none;
+    max-width: 100%;
+    margin: 5px 0;
   }
 }
