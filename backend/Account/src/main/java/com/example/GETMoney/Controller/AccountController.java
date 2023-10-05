@@ -3,6 +3,7 @@ package com.example.GETMoney.Controller;
 import com.example.GETMoney.Service.AccountService;
 import com.example.GETMoney.VO.ResponseTemplateVO;
 import com.example.GETMoney.model.Account;
+import com.fasterxml.jackson.core.sym.NameN;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -56,6 +57,20 @@ public class AccountController {
         return accountService.updateTransaction(id, transaction);
     }
 
+    @PatchMapping("/{id}/updateBalanceSameAccount")
+    public String  updateBalanceSameAccount(@PathVariable String id,@RequestBody Account requestData){
+        Long amount;
+        if(requestData.getBalanceGBP()!=null){
+            amount = accountService.updateBalanceGBP(id,requestData.getBalanceGBP());
+        }
+        if(requestData.getBalanceUSD()!=null){
+            amount = accountService.updateBalanceUSD(id,requestData.getBalanceUSD());
+        }
+        if(requestData.getBalanceEUR()!=null){
+            amount =  accountService.updateBalanceEUR(id,requestData.getBalanceEUR());
+        }
+        return "Transfer Successful";
+    }
     @GetMapping("/findAllAccountNumbers")
     public ArrayList<Long> findAllAccountNumbers(){
         return accountService.findAllAccountNumbers();

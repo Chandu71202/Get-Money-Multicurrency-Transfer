@@ -5,11 +5,11 @@ import axios from "axios";
 export default function TransferMoney({ account }) {
   const [senderAmount, setSenderAmount] = useState("");
   const [selectedSenderCurrency, setSelectedSenderCurrency] = useState("GBP");
-  const [selectedRecieverCurrency, setSelectedRecieverCurrency] = useState("USD");
-  const [receiverAccountNumber,setReceiverAccountNumber] = useState();
+  const [selectedRecieverCurrency, setSelectedRecieverCurrency] =
+    useState("USD");
+  const [receiverAccountNumber, setReceiverAccountNumber] = useState();
   const [receiverAmount, setReceiverAmount] = useState("");
   const [feeAmount, setFeeAmount] = useState("");
-  const [allAccountNumbers,setAllAccountNumbers] = useState([]);
 
   const handleSenderAmountChange = (e) => {
     setSenderAmount(e.target.value);
@@ -29,10 +29,6 @@ export default function TransferMoney({ account }) {
 
   const handleReceiverAmountChange = (e) => {
     setReceiverAmount(e.target.value);
-  };
-
-  const handleFeeAmountChange = (e) => {
-    setFeeAmount(e.target.value);
   };
 
   const generateTransactionID = () => {
@@ -245,8 +241,6 @@ export default function TransferMoney({ account }) {
       .then((data) => {
         const exchangeRate = data.rates[selectedRecieverCurrency];
         if (exchangeRate !== undefined) {
-          console.log(exchangeRate.toFixed(4));
-          console.log(senderAmount);
           return exchangeRate.toFixed(4);
         } else {
           return 1.0;
@@ -258,181 +252,378 @@ export default function TransferMoney({ account }) {
       });
   };
 
-  const updatingBalance = async(e) => {
+  const updatingBalance = async (e) => {
     e.preventDefault();
-    if (senderAmount > 0) {
-    // const allAccountNumbers = [];
+    const allAccountNumbers = [];
     const ApiUrl = "http://localhost:8081/accounts/";
-    await axios.get(ApiUrl + "findAllAccountNumbers").then((response) => {
-      setAllAccountNumbers(response.data);
-    });
-      console.log(allAccountNumbers);
-      console.log([1,2,3,4])
-      if (allAccountNumbers?.indexOf(Number (receiverAccountNumber)) !== -1) {
-        if (selectedSenderCurrency === "GBP") {
-          if (account.balanceGBP >= senderAmount) {
-            axios.put(ApiUrl + `${account.id}/updateBalanceGBP`, {
-              balanceGBP: account.balanceGBP - senderAmount,
-            });
-            alert("Transfer Successful");
-            const transactionId = generateTransactionID();
-            const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
-            const transaction_array = new Array(
-              `${transactionId}`,
-              `${senderAmount}`,
-              `${selectedSenderCurrency}`,
-              `${selectedRecieverCurrency}`,
-              `${transaction}`,
-              `${account.balanceGBP - senderAmount} ${selectedSenderCurrency}`,
-              timeStamp()
-            );
-            axios.put(ApiUrl + `${account.id}/addTransaction`, {
-              transaction: transaction_array,
-            });
+    const response = await axios.get(ApiUrl + "findAllAccountNumbers");
+    // setAllAccountNumbers(response.data);
+    allAccountNumbers.push(...response.data);
+    if (allAccountNumbers.length > 0) {
+      if (allAccountNumbers.includes(Number(receiverAccountNumber))) {
+        if (account.accountNumber != receiverAccountNumber) {
+          if (senderAmount > 0) {
+            if (selectedSenderCurrency === "GBP") {
+              if (account.balanceGBP >= senderAmount) {
+                axios.put(ApiUrl + `${account.id}/updateBalanceGBP`, {
+                  balanceGBP: account.balanceGBP - Number(senderAmount),
+                });
+                alert("Transfer Successful");
+                const transactionId = generateTransactionID();
+                const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
+                const transaction_array = new Array(
+                  `${transactionId}`,
+                  `${senderAmount}`,
+                  `${selectedSenderCurrency}`,
+                  `${selectedRecieverCurrency}`,
+                  `${transaction}`,
+                  `${
+                    account.balanceGBP - senderAmount
+                  } ${selectedSenderCurrency}`,
+                  timeStamp()
+                );
+                axios.put(ApiUrl + `${account.id}/addTransaction`, {
+                  transaction: transaction_array,
+                });
+              } else {
+                alert("Insufficient Balance");
+              }
+            } else if (selectedSenderCurrency === "USD") {
+              if (account.balanceUSD >= senderAmount) {
+                axios.put(ApiUrl + `${account.id}/updateBalanceUSD`, {
+                  balanceUSD: account.balanceUSD - senderAmount,
+                });
+                alert("Transfer Successful");
+                const transactionId = generateTransactionID();
+                const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
+                const transaction_array = new Array(
+                  `${transactionId}`,
+                  `${senderAmount}`,
+                  `${selectedSenderCurrency}`,
+                  `${selectedRecieverCurrency}`,
+                  `${transaction}`,
+                  `${
+                    account.balanceUSD - senderAmount
+                  } ${selectedSenderCurrency}`,
+                  timeStamp()
+                );
+                axios.put(ApiUrl + `${account.id}/addTransaction`, {
+                  transaction: transaction_array,
+                });
+              } else {
+                alert("Insufficient Balance");
+              }
+            } else {
+              if (account.balanceEUR >= senderAmount) {
+                axios.put(ApiUrl + `${account.id}/updateBalanceEUR`, {
+                  balanceEUR: account.balanceEUR - senderAmount,
+                });
+                alert("Transfer Successful");
+                const transactionId = generateTransactionID();
+                const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
+                const transaction_array = new Array(
+                  `${transactionId}`,
+                  `${senderAmount}`,
+                  `${selectedSenderCurrency}`,
+                  `${selectedRecieverCurrency}`,
+                  `${transaction}`,
+                  `${
+                    account.balanceEUR - senderAmount
+                  } ${selectedSenderCurrency}`,
+                  timeStamp()
+                );
+                axios.put(ApiUrl + `${account.id}/addTransaction`, {
+                  transaction: transaction_array,
+                });
+              } else {
+                alert("Insufficient Balance");
+              }
+            }
           } else {
-            alert("Insufficient Balance");
-          }
-        } else if (selectedSenderCurrency === "USD") {
-          if (account.balanceUSD >= senderAmount) {
-            axios.put(ApiUrl + `${account.id}/updateBalanceUSD`, {
-              balanceUSD: account.balanceUSD - senderAmount,
-            });
-            alert("Transfer Successful");
-            const transactionId = generateTransactionID();
-            const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
-            const transaction_array = new Array(
-              `${transactionId}`,
-              `${senderAmount}`,
-              `${selectedSenderCurrency}`,
-              `${selectedRecieverCurrency}`,
-              `${transaction}`,
-              `${account.balanceUSD - senderAmount} ${selectedSenderCurrency}`,
-              timeStamp()
-            );
-            axios.put(ApiUrl + `${account.id}/addTransaction`, {
-              transaction: transaction_array,
-            });
-          } else {
-            alert("Insufficient Balance");
+            alert("Transferring amount must be greater than 0");
           }
         } else {
-          if (account.balanceEUR >= senderAmount) {
-            axios.put(ApiUrl + `${account.id}/updateBalanceEUR`, {
-              balanceEUR: account.balanceEUR - senderAmount,
-            });
-            alert("Transfer Successful");
-            const transactionId = generateTransactionID();
-            const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
-            const transaction_array = new Array(
-              `${transactionId}`,
-              `${senderAmount}`,
-              `${selectedSenderCurrency}`,
-              `${selectedRecieverCurrency}`,
-              `${transaction}`,
-              `${account.balanceEUR - senderAmount} ${selectedSenderCurrency}`,
-              timeStamp()
-            );
-            axios.put(ApiUrl + `${account.id}/addTransaction`, {
-              transaction: transaction_array,
-            });
-          } else {
-            alert("Insufficient Balance");
+          if (senderAmount > 0) {
+            if (selectedSenderCurrency === "GBP") {
+              if (selectedRecieverCurrency === "EUR") {
+                axios.patch(ApiUrl + `${account.id}/updateBalanceSameAccount`, {
+                  balanceEUR: account.balanceEUR + Number(receiverAmount),
+                  balanceGBP: account.balanceGBP - Number(senderAmount),
+                });
+
+                alert(
+                  `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                );
+                const transactionId = generateTransactionID();
+                const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
+                const transaction_array = new Array(
+                  `${transactionId}`,
+                  `${senderAmount}`,
+                  `${selectedSenderCurrency}`,
+                  `${selectedRecieverCurrency}`,
+                  `${transaction}`,
+                  `${
+                    account.balanceGBP - Number(senderAmount)
+                  } ${selectedSenderCurrency}`,
+                  timeStamp()
+                );
+                axios.put(ApiUrl + `${account.id}/addTransaction`, {
+                  transaction: transaction_array,
+                });
+              }
+              if (selectedRecieverCurrency == "USD") {
+                console.log(receiverAmount);
+                axios.patch(ApiUrl + `${account.id}/updateBalanceSameAccount`, {
+                  balanceUSD: account.balanceUSD + Number(receiverAmount),
+                  balanceGBP: account.balanceGBP - Number(senderAmount),
+                });
+
+                alert(
+                  `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                );
+                const transactionId = generateTransactionID();
+                const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
+                const transaction_array = new Array(
+                  `${transactionId}`,
+                  `${senderAmount}`,
+                  `${selectedSenderCurrency}`,
+                  `${selectedRecieverCurrency}`,
+                  `${transaction}`,
+                  `${
+                    account.balanceGBP - Number(senderAmount)
+                  } ${selectedSenderCurrency}`,
+                  timeStamp()
+                );
+                axios.put(ApiUrl + `${account.id}/addTransaction`, {
+                  transaction: transaction_array,
+                });
+              }
+              if (selectedRecieverCurrency === "GBP") {
+                alert("Enter Other Reciever Currency");
+              }
+            }
+            if (selectedSenderCurrency === "USD") {
+              if (selectedRecieverCurrency === "EUR") {
+                axios.patch(ApiUrl + `${account.id}/updateBalanceSameAccount`, {
+                  balanceEUR: account.balanceEUR + Number(receiverAmount),
+                  balanceUSD: account.balanceUSD - Number(senderAmount),
+                });
+
+                alert(
+                  `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                );
+                const transactionId = generateTransactionID();
+                const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
+                const transaction_array = new Array(
+                  `${transactionId}`,
+                  `${senderAmount}`,
+                  `${selectedSenderCurrency}`,
+                  `${selectedRecieverCurrency}`,
+                  `${transaction}`,
+                  `${
+                    account.balanceUSD - Number(senderAmount)
+                  } ${selectedSenderCurrency}`,
+                  timeStamp()
+                );
+                axios.put(ApiUrl + `${account.id}/addTransaction`, {
+                  transaction: transaction_array,
+                });
+              }
+              if (selectedRecieverCurrency == "GBP") {
+                console.log(receiverAmount);
+                axios.patch(ApiUrl + `${account.id}/updateBalanceSameAccount`, {
+                  balanceUSD: account.balanceUSD - Number(senderAmount),
+                  balanceGBP: account.balanceGBP + Number(receiverAmount),
+                });
+
+                alert(
+                  `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                );
+                const transactionId = generateTransactionID();
+                const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
+                const transaction_array = new Array(
+                  `${transactionId}`,
+                  `${senderAmount}`,
+                  `${selectedSenderCurrency}`,
+                  `${selectedRecieverCurrency}`,
+                  `${transaction}`,
+                  `${
+                    account.balanceUSD- Number(senderAmount)
+                  } ${selectedSenderCurrency}`,
+                  timeStamp()
+                );
+                axios.put(ApiUrl + `${account.id}/addTransaction`, {
+                  transaction: transaction_array,
+                });
+              }
+              if (selectedRecieverCurrency === "USD") {
+                alert("Enter Other Reciever Currency");
+              }
+            }
+            if (selectedSenderCurrency === "EUR") {
+              if (selectedRecieverCurrency === "GBP") {
+                axios.patch(ApiUrl + `${account.id}/updateBalanceSameAccount`, {
+                  balanceEUR: account.balanceEUR - Number(senderAmount),
+                  balanceGBP: account.balanceGBP + Number(receiverAmount),
+                });
+
+                alert(
+                  `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                );
+                const transactionId = generateTransactionID();
+                const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
+                const transaction_array = new Array(
+                  `${transactionId}`,
+                  `${senderAmount}`,
+                  `${selectedSenderCurrency}`,
+                  `${selectedRecieverCurrency}`,
+                  `${transaction}`,
+                  `${
+                    account.balanceEUR - Number(senderAmount)
+                  } ${selectedSenderCurrency}`,
+                  timeStamp()
+                );
+                axios.put(ApiUrl + `${account.id}/addTransaction`, {
+                  transaction: transaction_array,
+                });
+              }
+              if (selectedRecieverCurrency == "USD") {
+                console.log(receiverAmount);
+                axios.patch(ApiUrl + `${account.id}/updateBalanceSameAccount`, {
+                  balanceUSD: account.balanceUSD + Number(receiverAmount),
+                  balanceEUR: account.balanceEUR - Number(senderAmount),
+                });
+
+                alert(
+                  `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                );
+                const transactionId = generateTransactionID();
+                const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
+                const transaction_array = new Array(
+                  `${transactionId}`,
+                  `${senderAmount}`,
+                  `${selectedSenderCurrency}`,
+                  `${selectedRecieverCurrency}`,
+                  `${transaction}`,
+                  `${
+                    account.balanceEUR - Number(senderAmount)
+                  } ${selectedSenderCurrency}`,
+                  timeStamp()
+                );
+                axios.put(ApiUrl + `${account.id}/addTransaction`, {
+                  transaction: transaction_array,
+                });
+              }
+              if (selectedRecieverCurrency === "EUR") {
+                alert("Enter Other Reciever Currency");
+              }
+            }
           }
         }
       } else {
         alert("Re Check the Reciever Account Number!");
       }
     } else {
-      alert("Transferring amount must be greater than 0");
+      alert("AccountNumeber array is less than 0");
     }
   };
 
   return (
     <div className="signup-container-1">
-        <h1 className="heading">Inter-Account Transfer</h1>
-        <form className="form-group" onSubmit={updatingBalance}>
-          <div className="flex-container">
-            <div className="flex-item">
-              <label className="form-group-label">Your Account Number</label>
-              <input
-                className="form-group-input"
-                type="number"
-                name="senderAccountNumber"
-                id="senderAccountNumber"
-                value={account.accountNumber}
-                disabled
-              />
-              <label className="form-group-label">
-                Receiver's Account Number
-              </label>
-              <input
-                className="form-group-input"
-                type="number"
-                name="receiverAccountNumber"
-                id="receiverAccountNumber"
-                value={receiverAccountNumber}
-                onChange={handleReceiverAccountNumber}
-                required
-              />
-              <label className="form-group-label">Amount to Send</label>
-              <input
-                className="form-group-input-amount"
-                type="number"
-                name="senderAmount"
-                id="senderAmount"
-                value={senderAmount}
-                onChange={handleSenderAmountChange}
-                required
-              />
-              <select
-                className="form-group-input-select"
-                value={selectedSenderCurrency}
-                onChange={handleSelectedSenderCurrencyChange}
-                required
-              >
-                <option value="GBP">GBP</option>
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-              </select>
-            </div>
-            <div className="conversion">
-              <p>
-                Exact Conversion :{" "}
-                {(parseFloat(receiverAmount) + parseFloat(feeAmount)).toFixed(
-                  2
-                )}
-              </p>
-              <p>- Website Fee : {feeAmount}</p>
-              <hr></hr>
-              <p>= Effective Amount : {receiverAmount} </p>
-            </div>
-            <label className="form-group-label">The Amount Receiver Gets</label>
+      <h1 className="heading">Inter-Account Transfer</h1>
+      <p style={{"color":"#3c1053","fontSize":"17px"}}>For same Account Transfer Enter Your Account Number in Reciever Account Number Field</p>
+      <form className="form-group" onSubmit={updatingBalance}>
+        <div className="flex-container">
+          <div className="flex-item">
+            <label className="form-group-label">Your Account Number</label>
+            <input
+              className="form-group-input"
+              type="number"
+              name="senderAccountNumber"
+              id="senderAccountNumber"
+              value={account.accountNumber}
+              disabled
+            />
+            <label className="form-group-label">
+              Receiver's Account Number
+            </label>
+            <input
+              className="form-group-input"
+              type="number"
+              name="receiverAccountNumber"
+              id="receiverAccountNumber"
+              value={receiverAccountNumber}
+              onChange={handleReceiverAccountNumber}
+              required
+            />
+            <label className="form-group-label">Amount to Send</label>
             <input
               className="form-group-input-amount"
-              type="text"
-              id="receiverAmount"
-              name="receiverAmount"
-              value={receiverAmount}
-              onChange={handleReceiverAmountChange}
-              disabled
+              type="number"
+              name="senderAmount"
+              id="senderAmount"
+              value={senderAmount}
+              onChange={handleSenderAmountChange}
+              required
             />
             <select
               className="form-group-input-select"
-              value={selectedRecieverCurrency}
-              onChange={handleSelectedRecieverCurrencyChange}
+              value={selectedSenderCurrency}
+              onChange={handleSelectedSenderCurrencyChange}
               required
             >
-              {currencies.map((currency) => (
-                <option key={currency} value={currency}>
-                  {currency}
-                </option>
-              ))}
+              <option value="GBP">GBP</option>
+              <option value="USD">USD</option>
+              <option value="EUR">EUR</option>
             </select>
-            <button className="transfer-button" type="submit">
-              Transfer
-            </button>
           </div>
-        </form>
-      </div>
+          <div className="conversion">
+            <p>
+              Exact Conversion :{" "}
+              {(parseFloat(receiverAmount) + parseFloat(feeAmount)).toFixed(2)}
+            </p>
+            <p>- Website Fee : {feeAmount}</p>
+            <hr></hr>
+            <p>= Effective Amount : {receiverAmount} </p>
+          </div>
+          <label className="form-group-label">The Amount Receiver Gets</label>
+          <input
+            className="form-group-input-amount"
+            type="text"
+            id="receiverAmount"
+            name="receiverAmount"
+            value={receiverAmount}
+            onChange={handleReceiverAmountChange}
+            disabled
+          />
+          <select
+            className="form-group-input-select"
+            value={selectedRecieverCurrency}
+            onChange={handleSelectedRecieverCurrencyChange}
+            required
+          >
+            {account.accountNumber == receiverAccountNumber ? (
+              <>
+                {/* {setSelectedRecieverCurrency("EUR")} */}
+                <option value="USD">USD</option>
+                <option value="GBP">GBP</option>
+                <option value="EUR">EUR</option>
+              </>
+            ) : (
+              <>
+                {currencies.map((currency) => (
+                  <option key={currency} value={currency}>
+                    {currency}
+                  </option>
+                ))}
+              </>
+            )}
+          </select>
+          <button className="transfer-button" type="submit">
+            Transfer
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }

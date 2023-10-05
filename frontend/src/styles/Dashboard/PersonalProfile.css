@@ -11,9 +11,11 @@
   }
   
   .profile-header {
-    font-size: 24px;
-    color: #5c327e;
-    margin-bottom: 20px;
+    font-size: 28px;
+    text-align: center;
+    color: #5c327e; /* Purple color */
+    font-weight: bold;
+    margin-top: 5px;
   }
   
   .profile-details {
@@ -46,6 +48,8 @@
     text-align: center;
     color: #5c327e; /* Purple color */
     font-weight: bold;
+    margin-top: 20px;
+    /* padding-top: 10x; */
   }
   
   

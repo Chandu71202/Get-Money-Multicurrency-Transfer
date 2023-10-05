@@ -30,16 +30,23 @@
   }
   
   .user-profile-form button {
+    background-color: #3c1053;
+    color: #fff;
+    font-size: 18px;
     padding: 10px 20px;
-    font-size: 16px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
-    margin-top: 10px;
+    transition: background-color 0.2s;
+    margin-left: 10px;
   }
-  
+  .user-profile-form button:hover{
+    background-color: #7739a4;
+    color: #fff;
+  }
   .user-profile-form button:disabled {
     background-color: #ccc;
     cursor: not-allowed;
+    color: black;
   }
   

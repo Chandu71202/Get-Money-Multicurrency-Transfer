@@ -52,8 +52,8 @@ export default function PersonalProfile({ account, user }) {
             <span className="profile-value"> {account.country}</span>
           </div>
         </div>
+        <h4 className="update-text">Please click on Settings to update details!</h4>
       </div>
-      <p className="update-text">Please click on Settings to update details!</p>
     </div>
   );
 }

@@ -81,7 +81,7 @@ export default function Settings({account,user}) {
       country: formData.country
     })
     alert('Details Updated Successfully');
-    window.location.reload();
+    // window.location.reload();
   };
   return (
     <form className="user-profile-form" onSubmit={handleSubmit}>

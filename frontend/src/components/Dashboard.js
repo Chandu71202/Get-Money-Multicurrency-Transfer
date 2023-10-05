@@ -46,7 +46,7 @@ export default function Dashboard() {
 
   useEffect(() => {
     settingUserName();
-  },[]);
+  },[user]);
 
   const settingHasAccount= async () =>{
     const user_id = sessionStorage.getItem("id");

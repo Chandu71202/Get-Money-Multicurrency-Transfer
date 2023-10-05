@@ -73,7 +73,7 @@ export default function Login({ onLogin }) {
       <Navbar/>
       <div className="login-page">
         <div className="login-card">
-          <h1>Welcome Back! Please Login :o</h1>
+          <h1>Welcome Back! Please Login</h1>
           <form onSubmit={handleSubmit}>
             <div>
               <label>Email Id:</label>
