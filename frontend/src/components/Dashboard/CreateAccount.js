@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../styles/Register.css";
+import "../../styles/Register/Register.css"
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -64,7 +64,6 @@ export default function CreateAccount({ updateHasAccount }) {
     axios.post("http://localhost:8081/accounts/createNewAccount", account);
     updateHasAccount(true);
     alert("Registered Successfully");
-    navigate('/loading');
   }
   else{
     alert("Not a valid account Data")

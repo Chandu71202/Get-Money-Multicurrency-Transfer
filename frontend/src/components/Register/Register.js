@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "../styles/Register.css";
-import Navbar from "./Navbar";
+import "../../styles/Register/Register.css";
+import Navbar from "../Home/Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import Footer from "./Footer";
+import Footer from "../Home/Footer";
 
 export default function Register() {
   const [user, setUser] = useState({
@@ -82,6 +82,19 @@ export default function Register() {
   return (
     <div>
       <Navbar />
+      {sessionStorage.getItem("id") ? (
+        <div
+          className="wrapper d-flex align-items-center justify-content-center text-white"
+          style={{ backgroundColor: "#5A287D",padding:"120px"}}
+        >
+          <div>
+            <h1>You are already logged in!</h1>
+            <br />
+            <br />
+            <p>To register new user, please logout!</p>
+          </div>
+        </div>
+      ) : (
       <div className="signup-container">
         <h1 className="heading">Create a GET-Money account</h1>
         <p className="subheading">
@@ -162,7 +175,7 @@ export default function Register() {
             Sign Up
           </button>
         </form>
-      </div>
+      </div>)}
       <Footer />
     </div>
   );

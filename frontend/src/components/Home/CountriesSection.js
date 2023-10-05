@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/CountriesSection.css'
+import '../../styles/Home/CountriesSection.css'
 
 const countries = [
   { name: 'United Kingdom', logo: 'https://wise.com/web-art/assets/flags/gb.svg' },

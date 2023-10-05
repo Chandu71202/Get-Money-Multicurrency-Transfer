@@ -1,20 +1,20 @@
 import React, { useEffect, useState } from "react";
-import "../styles/Dashboard.css";
-import Navbar from "./Navbar";
+import "../../styles/Dashboard/Dashboard.css";
+import Navbar from "../Home/Navbar";
 import * as FaIcons from "react-icons/fa";
 import axios from "axios";
 
-import CreateAccount from "./Dashboard/CreateAccount";
-import PersonalProfile from "./Dashboard/PersonalProfile";
-import YourAccount from "./Dashboard/YourAccount";
-import TransferMoney from "./Dashboard/TransferMoney";
-import DepositWithdraw from "./Dashboard/DepositWithdraw";
-import TransactionHistory from "./Dashboard/TransactionHistory";
-import Support from "./Dashboard/Support";
-import MoreInfo from "./Dashboard/MoreInfo";
-import Settings from "./Dashboard/Settings";
-import DashboardInitial from "./Dashboard/DashboardInitial";
-import Footer from "./Footer";
+import CreateAccount from "./CreateAccount";
+import PersonalProfile from "./PersonalProfile";
+import YourAccount from "./YourAccount";
+import TransferMoney from "./TransferMoney";
+import DepositWithdraw from "./DepositWithdraw";
+import TransactionHistory from "./TransactionHistory";
+import Support from "./Support";
+import MoreInfo from "./MoreInfo";
+import Settings from "./Settings";
+import DashboardInitial from "./DashboardInitial";
+import Footer from "../Home/Footer";
 
 export default function Dashboard() {
   const [selectedItem, setSelectedItem] = useState("My Account");

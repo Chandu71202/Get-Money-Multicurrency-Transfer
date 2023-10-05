@@ -1,11 +1,7 @@
 import React from 'react';
-import '../styles/Footer.css';
+import '../../styles/Home/Footer.css';
 import {IoLogoInstagram, IoLogoLinkedin, IoLogoFacebook} from 'react-icons/io';
 import {FaXTwitter} from 'react-icons/fa6';
-
-
-
-
 
 export default function Footer() {
     return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "../styles/CurrentExchangeRates.css";
+import "../../styles/Home/CurrentExchangeRates.css";
 import { BsArrowRight } from 'react-icons/bs';
 
 

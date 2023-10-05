@@ -91,7 +91,7 @@ export default function Settings({account,user}) {
       <div>
         <label>Date of Birth:</label>
         <input
-          type="text"
+          type="date"
           name="dateOfBirth"
           value={formData.dateOfBirth}
           onChange={handleInputChange}

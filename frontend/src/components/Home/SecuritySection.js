@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/SecuritySection.css'
+import '../../styles/Home/SecuritySection.css'
 
 export default function SecuritySection() {
   return (

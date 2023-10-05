@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate} from 'react-router-dom'; 
-import '../styles/Navbar.css';
+import '../../styles/Home/Navbar.css';
 
 export default function Navbar() {
   const [menuActive, setMenuActive] = useState(false);

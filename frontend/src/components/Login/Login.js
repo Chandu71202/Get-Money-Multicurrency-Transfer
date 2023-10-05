@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import "../styles/Login.css";
+import "../../styles/Login/Login.css";
 import axios from "axios";
-import Navbar from "./Navbar"; 
+import Navbar from "../Home/Navbar"; 
 import { useNavigate } from "react-router-dom";
-import Footer from "./Footer";
+import Footer from "../Home/Footer";
 
 export default function Login({ onLogin }) {
   const [user, setUser] = useState({
@@ -71,6 +71,19 @@ export default function Login({ onLogin }) {
   return (
     <div>
       <Navbar/>
+      {sessionStorage.getItem("id") ? (
+        <div
+          className="wrapper d-flex align-items-center justify-content-center text-white"
+          style={{ backgroundColor: "#5A287D",padding:"120px"}}
+        >
+          <div>
+            <h1>You are already logged in!</h1>
+            <br />
+            <br />
+            <p>Try to logout and re-login again</p>
+          </div>
+        </div>
+      ) : (
       <div className="login-page">
         <div className="login-card">
           <h1>Welcome Back! Please Login</h1>
@@ -109,7 +122,7 @@ export default function Login({ onLogin }) {
             Don't have an account? <Link to="/register">Sign Up</Link>
           </p>
         </div>
-      </div>
+      </div>)}
       <Footer/>
     </div>
   );

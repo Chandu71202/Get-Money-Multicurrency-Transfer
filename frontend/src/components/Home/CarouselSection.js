@@ -1,7 +1,7 @@
 import React from 'react'
 import 'bootstrap/dist/css/bootstrap.css';
 import Carousel from 'react-bootstrap/Carousel';
-import '../styles/Carousel.css'
+import '../../styles/Home/Carousel.css'
 
 export default function CarouselSection() {
 
