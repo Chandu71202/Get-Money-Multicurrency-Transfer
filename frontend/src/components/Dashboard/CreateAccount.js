@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import "../../styles/Register/Register.css"
+import "../../styles/Dashboard/CreateAccount.css"
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 export default function CreateAccount({ updateHasAccount }) {
   const [account, setAccount] = useState({
@@ -10,13 +9,13 @@ export default function CreateAccount({ updateHasAccount }) {
     alternateEmailId: "",
     address: "",
     city: "",
-    state:"",
-    country:"",
-    accountNumber:"",
-    balanceGBP:100,
-    balanceUSD:100,
-    balanceEUR:100,
-    id:""
+    state: "",
+    country: "",
+    accountNumber: "",
+    balanceGBP: 100,
+    balanceUSD: 100,
+    balanceEUR: 100,
+    id: ""
   });
 
   const generateAccountNumber = () => {
@@ -25,7 +24,7 @@ export default function CreateAccount({ updateHasAccount }) {
     );
     return accountNumber;
   };
-  
+
   const validateEmail = (email) => {
     const pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
     if (!pattern.test(email)) {
@@ -33,9 +32,7 @@ export default function CreateAccount({ updateHasAccount }) {
     }
     return true;
   };
-  
-  let navigate = useNavigate();
-  
+
   const handleChanges = (e) => {
     setAccount({
       ...account,
@@ -46,41 +43,41 @@ export default function CreateAccount({ updateHasAccount }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(account){
-    if (account.dateOfBirth.length !== 10) {
-      alert("Enter Date of Birth in the format of DD-MM-YYYY");
-      return;
+    if (account) {
+      if (account.dateOfBirth.length !== 10) {
+        alert("Enter Date of Birth in the format of DD-MM-YYYY");
+        return;
+      }
+      if (!validateEmail(account.alternateEmailId)) {
+        alert("Invalid Email");
+        return;
+      }
+      if (account.alternateEmailId.length < 3) {
+        alert("Email must be at least 3 characters long");
+        return;
+      }
+      account.accountNumber = generateAccountNumber();
+      account.id = sessionStorage.getItem("id");
+      axios.post("http://localhost:8081/accounts/createNewAccount", account);
+      updateHasAccount(true);
+      alert("Registered Successfully");
     }
-    if (!validateEmail(account.alternateEmailId)) {
-      alert("Invalid Email");
-      return;
+    else {
+      alert("Not a valid account Data")
     }
-    if (account.alternateEmailId.length < 3) {
-      alert("Email must be at least 3 characters long");
-      return;
-    }
-    account.accountNumber = generateAccountNumber();
-    account.id=sessionStorage.getItem("id");
-    axios.post("http://localhost:8081/accounts/createNewAccount", account);
-    updateHasAccount(true);
-    alert("Registered Successfully");
-  }
-  else{
-    alert("Not a valid account Data")
-  }
   };
   return (
     <div className="create-account-container">
-      
+
       <div className="signup-container-createAccount">
         <h1 className="heading">Additional details to create your account</h1>
-        
+
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label className="label">Date of Birth :</label>
             <input
               className="name_field"
-              type="text"
+              type="date"
               id="dateOfBirth"
               name="dateOfBirth"
               value={account.dateOfBirth}
@@ -88,16 +85,46 @@ export default function CreateAccount({ updateHasAccount }) {
               required
             />
           </div>
-          <div className="form-group">
-            <label className="label">Gender :</label>
-            <input
-              className="name_field"
-              type="text"
-              id="gender"
-              name="gender"
-              value={account.gender}
-              onChange={handleChanges}
-            />
+          <div>
+            <label className="label">Gender:</label>
+            <div className="gender-container">
+              <label className="gender-label label">
+                Male:
+                <input
+                  type="radio"
+                  className="gender-radio"
+                  name="gender"
+                  value="Male"
+                  checked={account.gender === 'Male'}
+                  onChange={handleChanges}
+                />
+                <div className="gender-custom-radio"></div>
+              </label>
+              <label className="gender-label label">
+                Female:
+                <input
+                  type="radio"
+                  className="gender-radio"
+                  name="gender"
+                  value="Female"
+                  checked={account.gender === 'Female'}
+                  onChange={handleChanges}
+                />
+                <div className="gender-custom-radio"></div>
+              </label>
+              <label className="gender-label label">
+                Others:
+                <input
+                  type="radio"
+                  className="gender-radio"
+                  name="gender"
+                  value="Others"
+                  checked={account.gender === 'Others'}
+                  onChange={handleChanges}
+                />
+                <div className="gender-custom-radio"></div>
+              </label>
+            </div>
           </div>
 
           <div className="form-group">

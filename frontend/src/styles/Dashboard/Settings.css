@@ -50,3 +50,45 @@
     color: black;
   }
   
+.gender-container {
+  display: flex;
+  flex-direction: row;
+  font-size: 16px;
+}
+.gender-label{
+  padding: 5px;
+}
+.gender-radio{
+  display: none;
+}
+.gender-custom-radio {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #5c327e;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+/* Style the inner circle of the custom radio button when selected */
+.gender-custom-radio::after {
+  content: "";
+  position: absolute;
+  top: 1.5px;
+  right: 1.5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #5c327e;
+  display: none;
+}
+
+/* Show the inner circle when the radio button is checked */
+.gender-radio:checked + .gender-custom-radio::after {
+  display: block;
+}
+
+  
