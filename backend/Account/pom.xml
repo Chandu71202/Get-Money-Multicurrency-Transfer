@@ -83,6 +83,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
+		<finalName>account-service</finalName>
 	</build>
 
 </project>

@@ -9,3 +9,8 @@ spring:
         git:
           uri: https://github.com/Chandu71202/spring-boot-microservices
           clone-on-start: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
