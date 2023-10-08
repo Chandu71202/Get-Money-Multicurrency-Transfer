@@ -3,9 +3,3 @@ server :
 spring :
   application :
     name : USER-SERVICE
-eureka: 
-    instance: 
-        hostname: eurekaclient 
-    client: 
-    serviceUrl: 
-    defaultZone: http://eureka-server:8761/eureka
