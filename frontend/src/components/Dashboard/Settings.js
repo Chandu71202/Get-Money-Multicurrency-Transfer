@@ -66,6 +66,16 @@ export default function Settings({ account, user }) {
     return true;
   };
 
+  const formatDate = (dateString) => {
+    const dateParts = dateString.split('-');
+    if (dateParts.length === 3) {
+      const [day, month, year] = dateParts;
+      // Assuming the date format is dd-mm-yyyy
+      return `${day}-${month}-${year}`;
+    }
+    return dateString; // Return as is if the format is not as expected
+  };
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -78,6 +88,26 @@ export default function Settings({ account, user }) {
         alert("Email must be at least 3 characters long");
         return;
       }
+      if (!/[A-Z]/.test(formData.newPassword )) {
+        alert("Password must contain at least one uppercase letter");
+        return false;
+      }
+
+      // Password must contain at least one lowercase letter
+      if (!/[a-z]/.test(formData.newPassword )) {
+        alert("Password must contain at least on lower case");
+        return false;
+      }
+
+      if (!/[!@#$%^&*()_+[\]{};':"\\|,.<>?/~`]/.test(formData.newPassword )) {
+        alert("Password must contain at least one special character");
+        return false;
+      }
+      if (formData.newPassword .length < 8) {
+        alert("Password length must be atleast 8 characters");
+        return;
+      }
+      
       // Check if a new password was entered, and update it if necessary
       if (formData.newPassword !== "") {
         setFormData(prevData => ({
@@ -88,6 +118,7 @@ export default function Settings({ account, user }) {
         const saveButton = document.getElementById('saveButton');
         saveButton.disabled = true;
       }
+
 
       const user_id = sessionStorage.getItem('id');
       // Send the updated data to your server or perform any necessary actions here
@@ -124,7 +155,7 @@ export default function Settings({ account, user }) {
         <input
           type="date"
           name="dateOfBirth"
-          value={formData.dateOfBirth}
+          value={formatDate(formData.dateOfBirth)}
           onChange={handleInputChange}
           readOnly={!isEditing}
         />

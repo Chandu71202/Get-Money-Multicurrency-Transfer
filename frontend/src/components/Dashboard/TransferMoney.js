@@ -344,180 +344,216 @@ export default function TransferMoney({ account }) {
           }
         } else {
           if (senderAmount > 0) {
-            if (selectedSenderCurrency === "GBP") {
-              if (selectedRecieverCurrency === "EUR") {
-                axios.patch(ApiUrl + `${account.id}/updateBalanceSameAccount`, {
-                  balanceEUR: account.balanceEUR + Number(receiverAmount),
-                  balanceGBP: account.balanceGBP - Number(senderAmount),
-                });
+            switch (selectedSenderCurrency) {
+              case "GBP":
+                if (account.balanceGBP >= senderAmount) {
+                  if (selectedRecieverCurrency === "EUR") {
+                    axios.patch(
+                      ApiUrl + `${account.id}/updateBalanceSameAccount`,
+                      {
+                        balanceEUR: account.balanceEUR + Number(receiverAmount),
+                        balanceGBP: account.balanceGBP - Number(senderAmount),
+                      }
+                    );
 
-                alert(
-                  `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
-                );
-                const transactionId = generateTransactionID();
-                const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
-                const transaction_array = new Array(
-                  `${transactionId}`,
-                  `${senderAmount}`,
-                  `${selectedSenderCurrency}`,
-                  `${selectedRecieverCurrency}`,
-                  `${transaction}`,
-                  `${
-                    account.balanceGBP - Number(senderAmount)
-                  } ${selectedSenderCurrency}`,
-                  timeStamp()
-                );
-                axios.put(ApiUrl + `${account.id}/addTransaction`, {
-                  transaction: transaction_array,
-                });
-              }
-              if (selectedRecieverCurrency == "USD") {
-                console.log(receiverAmount);
-                axios.patch(ApiUrl + `${account.id}/updateBalanceSameAccount`, {
-                  balanceUSD: account.balanceUSD + Number(receiverAmount),
-                  balanceGBP: account.balanceGBP - Number(senderAmount),
-                });
+                    alert(
+                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                    );
+                    const transactionId = generateTransactionID();
+                    const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
+                    const transaction_array = new Array(
+                      `${transactionId}`,
+                      `${senderAmount}`,
+                      `${selectedSenderCurrency}`,
+                      `${selectedRecieverCurrency}`,
+                      `${transaction}`,
+                      `${
+                        account.balanceGBP - Number(senderAmount)
+                      } ${selectedSenderCurrency}`,
+                      timeStamp()
+                    );
+                    axios.put(ApiUrl + `${account.id}/addTransaction`, {
+                      transaction: transaction_array,
+                    });
+                  }
+                  if (selectedRecieverCurrency == "USD") {
+                    console.log(receiverAmount);
+                    axios.patch(
+                      ApiUrl + `${account.id}/updateBalanceSameAccount`,
+                      {
+                        balanceUSD: account.balanceUSD + Number(receiverAmount),
+                        balanceGBP: account.balanceGBP - Number(senderAmount),
+                      }
+                    );
 
-                alert(
-                  `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
-                );
-                const transactionId = generateTransactionID();
-                const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
-                const transaction_array = new Array(
-                  `${transactionId}`,
-                  `${senderAmount}`,
-                  `${selectedSenderCurrency}`,
-                  `${selectedRecieverCurrency}`,
-                  `${transaction}`,
-                  `${
-                    account.balanceGBP - Number(senderAmount)
-                  } ${selectedSenderCurrency}`,
-                  timeStamp()
-                );
-                axios.put(ApiUrl + `${account.id}/addTransaction`, {
-                  transaction: transaction_array,
-                });
-              }
-              if (selectedRecieverCurrency === "GBP") {
-                alert("Enter Other Reciever Currency");
-              }
+                    alert(
+                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                    );
+                    const transactionId = generateTransactionID();
+                    const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
+                    const transaction_array = new Array(
+                      `${transactionId}`,
+                      `${senderAmount}`,
+                      `${selectedSenderCurrency}`,
+                      `${selectedRecieverCurrency}`,
+                      `${transaction}`,
+                      `${
+                        account.balanceGBP - Number(senderAmount)
+                      } ${selectedSenderCurrency}`,
+                      timeStamp()
+                    );
+                    axios.put(ApiUrl + `${account.id}/addTransaction`, {
+                      transaction: transaction_array,
+                    });
+                  }
+                  if (selectedRecieverCurrency === "GBP") {
+                    alert("Enter Other Reciever Currency");
+                  }
+                } else {
+                  alert("Insufficient Balance");
+                }
+                break;
+              case "USD":
+                if (account.balanceUSD >= senderAmount) {
+                  if (selectedRecieverCurrency === "EUR") {
+                    axios.patch(
+                      ApiUrl + `${account.id}/updateBalanceSameAccount`,
+                      {
+                        balanceEUR: account.balanceEUR + Number(receiverAmount),
+                        balanceUSD: account.balanceUSD - Number(senderAmount),
+                      }
+                    );
+
+                    alert(
+                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                    );
+                    const transactionId = generateTransactionID();
+                    const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
+                    const transaction_array = new Array(
+                      `${transactionId}`,
+                      `${senderAmount}`,
+                      `${selectedSenderCurrency}`,
+                      `${selectedRecieverCurrency}`,
+                      `${transaction}`,
+                      `${
+                        account.balanceUSD - Number(senderAmount)
+                      } ${selectedSenderCurrency}`,
+                      timeStamp()
+                    );
+                    axios.put(ApiUrl + `${account.id}/addTransaction`, {
+                      transaction: transaction_array,
+                    });
+                  }
+                  if (selectedRecieverCurrency == "GBP") {
+                    console.log(receiverAmount);
+                    axios.patch(
+                      ApiUrl + `${account.id}/updateBalanceSameAccount`,
+                      {
+                        balanceUSD: account.balanceUSD - Number(senderAmount),
+                        balanceGBP: account.balanceGBP + Number(receiverAmount),
+                      }
+                    );
+
+                    alert(
+                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                    );
+                    const transactionId = generateTransactionID();
+                    const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
+                    const transaction_array = new Array(
+                      `${transactionId}`,
+                      `${senderAmount}`,
+                      `${selectedSenderCurrency}`,
+                      `${selectedRecieverCurrency}`,
+                      `${transaction}`,
+                      `${
+                        account.balanceUSD - Number(senderAmount)
+                      } ${selectedSenderCurrency}`,
+                      timeStamp()
+                    );
+                    axios.put(ApiUrl + `${account.id}/addTransaction`, {
+                      transaction: transaction_array,
+                    });
+                  }
+                  if (selectedRecieverCurrency === "USD") {
+                    alert("Enter Other Reciever Currency");
+                  }
+                } else {
+                  alert("Insufficient Balance");
+                }
+                break;
+              case "EUR":
+                if (account.balanceEUR >= senderAmount) {
+                  if (selectedRecieverCurrency === "GBP") {
+                    axios.patch(
+                      ApiUrl + `${account.id}/updateBalanceSameAccount`,
+                      {
+                        balanceEUR: account.balanceEUR - Number(senderAmount),
+                        balanceGBP: account.balanceGBP + Number(receiverAmount),
+                      }
+                    );
+
+                    alert(
+                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                    );
+                    const transactionId = generateTransactionID();
+                    const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
+                    const transaction_array = new Array(
+                      `${transactionId}`,
+                      `${senderAmount}`,
+                      `${selectedSenderCurrency}`,
+                      `${selectedRecieverCurrency}`,
+                      `${transaction}`,
+                      `${
+                        account.balanceEUR - Number(senderAmount)
+                      } ${selectedSenderCurrency}`,
+                      timeStamp()
+                    );
+                    axios.put(ApiUrl + `${account.id}/addTransaction`, {
+                      transaction: transaction_array,
+                    });
+                  }
+                  if (selectedRecieverCurrency == "USD") {
+                    console.log(receiverAmount);
+                    axios.patch(
+                      ApiUrl + `${account.id}/updateBalanceSameAccount`,
+                      {
+                        balanceUSD: account.balanceUSD + Number(receiverAmount),
+                        balanceEUR: account.balanceEUR - Number(senderAmount),
+                      }
+                    );
+
+                    alert(
+                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                    );
+                    const transactionId = generateTransactionID();
+                    const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
+                    const transaction_array = new Array(
+                      `${transactionId}`,
+                      `${senderAmount}`,
+                      `${selectedSenderCurrency}`,
+                      `${selectedRecieverCurrency}`,
+                      `${transaction}`,
+                      `${
+                        account.balanceEUR - Number(senderAmount)
+                      } ${selectedSenderCurrency}`,
+                      timeStamp()
+                    );
+                    axios.put(ApiUrl + `${account.id}/addTransaction`, {
+                      transaction: transaction_array,
+                    });
+                  }
+                  if (selectedRecieverCurrency === "EUR") {
+                    alert("Enter Other Reciever Currency");
+                  }
+                } else {
+                  alert("Insufficient Balance");
+                }
+                break;
+              default:
+                alert("Invalid Sender Currency");
             }
-            if (selectedSenderCurrency === "USD") {
-              if (selectedRecieverCurrency === "EUR") {
-                axios.patch(ApiUrl + `${account.id}/updateBalanceSameAccount`, {
-                  balanceEUR: account.balanceEUR + Number(receiverAmount),
-                  balanceUSD: account.balanceUSD - Number(senderAmount),
-                });
-
-                alert(
-                  `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
-                );
-                const transactionId = generateTransactionID();
-                const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
-                const transaction_array = new Array(
-                  `${transactionId}`,
-                  `${senderAmount}`,
-                  `${selectedSenderCurrency}`,
-                  `${selectedRecieverCurrency}`,
-                  `${transaction}`,
-                  `${
-                    account.balanceUSD - Number(senderAmount)
-                  } ${selectedSenderCurrency}`,
-                  timeStamp()
-                );
-                axios.put(ApiUrl + `${account.id}/addTransaction`, {
-                  transaction: transaction_array,
-                });
-              }
-              if (selectedRecieverCurrency == "GBP") {
-                console.log(receiverAmount);
-                axios.patch(ApiUrl + `${account.id}/updateBalanceSameAccount`, {
-                  balanceUSD: account.balanceUSD - Number(senderAmount),
-                  balanceGBP: account.balanceGBP + Number(receiverAmount),
-                });
-
-                alert(
-                  `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
-                );
-                const transactionId = generateTransactionID();
-                const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
-                const transaction_array = new Array(
-                  `${transactionId}`,
-                  `${senderAmount}`,
-                  `${selectedSenderCurrency}`,
-                  `${selectedRecieverCurrency}`,
-                  `${transaction}`,
-                  `${
-                    account.balanceUSD- Number(senderAmount)
-                  } ${selectedSenderCurrency}`,
-                  timeStamp()
-                );
-                axios.put(ApiUrl + `${account.id}/addTransaction`, {
-                  transaction: transaction_array,
-                });
-              }
-              if (selectedRecieverCurrency === "USD") {
-                alert("Enter Other Reciever Currency");
-              }
-            }
-            if (selectedSenderCurrency === "EUR") {
-              if (selectedRecieverCurrency === "GBP") {
-                axios.patch(ApiUrl + `${account.id}/updateBalanceSameAccount`, {
-                  balanceEUR: account.balanceEUR - Number(senderAmount),
-                  balanceGBP: account.balanceGBP + Number(receiverAmount),
-                });
-
-                alert(
-                  `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
-                );
-                const transactionId = generateTransactionID();
-                const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
-                const transaction_array = new Array(
-                  `${transactionId}`,
-                  `${senderAmount}`,
-                  `${selectedSenderCurrency}`,
-                  `${selectedRecieverCurrency}`,
-                  `${transaction}`,
-                  `${
-                    account.balanceEUR - Number(senderAmount)
-                  } ${selectedSenderCurrency}`,
-                  timeStamp()
-                );
-                axios.put(ApiUrl + `${account.id}/addTransaction`, {
-                  transaction: transaction_array,
-                });
-              }
-              if (selectedRecieverCurrency == "USD") {
-                console.log(receiverAmount);
-                axios.patch(ApiUrl + `${account.id}/updateBalanceSameAccount`, {
-                  balanceUSD: account.balanceUSD + Number(receiverAmount),
-                  balanceEUR: account.balanceEUR - Number(senderAmount),
-                });
-
-                alert(
-                  `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
-                );
-                const transactionId = generateTransactionID();
-                const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
-                const transaction_array = new Array(
-                  `${transactionId}`,
-                  `${senderAmount}`,
-                  `${selectedSenderCurrency}`,
-                  `${selectedRecieverCurrency}`,
-                  `${transaction}`,
-                  `${
-                    account.balanceEUR - Number(senderAmount)
-                  } ${selectedSenderCurrency}`,
-                  timeStamp()
-                );
-                axios.put(ApiUrl + `${account.id}/addTransaction`, {
-                  transaction: transaction_array,
-                });
-              }
-              if (selectedRecieverCurrency === "EUR") {
-                alert("Enter Other Reciever Currency");
-              }
-            }
+          } else {
+            alert("Transferring amount must be greater than 0");
           }
         }
       } else {
@@ -531,7 +567,10 @@ export default function TransferMoney({ account }) {
   return (
     <div className="signup-container-1">
       <h1 className="heading">Inter-Account Transfer</h1>
-      <p style={{"color":"#3c1053","fontSize":"17px"}}>For same Account Transfer Enter Your Account Number in Reciever Account Number Field</p>
+      <p style={{ color: "#3c1053", fontSize: "17px" }}>
+        For same Account Transfer Enter Your Account Number in Reciever Account
+        Number Field
+      </p>
       <form className="form-group" onSubmit={updatingBalance}>
         <div className="flex-container">
           <div className="flex-item">

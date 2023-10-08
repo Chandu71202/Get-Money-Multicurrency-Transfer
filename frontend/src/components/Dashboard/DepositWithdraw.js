@@ -22,25 +22,97 @@ export default function DepositWithdraw({ account }) {
     });
   };
 
+  const generateTransactionID = () => {
+    const transactionId = Math.floor(3000000 + Math.random() * 90000);
+    return transactionId;
+  };
+
+  const timeStamp = () => {
+    const currentDate = new Date();
+    const currentDayOfMonth = currentDate.getDate();
+    const currentMonth = currentDate.getMonth();
+    const currentYear = currentDate.getFullYear();
+
+    const dateString =
+      currentDayOfMonth + "-" + (currentMonth + 1) + "-" + currentYear;
+    return dateString;
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Add your logic to handle form submission here
     const id = sessionStorage.getItem("id");
     const ApiUrl = "http://localhost:8081/accounts/";
-    console.log(currency, card.amount);
+    if (card.cardNumber.length !== 16) {
+      alert("Card Number must be 16 digits long");
+      return;
+    }
+    if (card.expiration.length !== 5) {
+      alert("Expiration must be 5 digits long");
+      return;
+    }
+    if (card.cvv.length !== 3) {
+      alert("CVV must be 3 digits long");
+      return;
+    }
     if (card.amount > 0) {
       if (currency === "GBP") {
         axios.put(ApiUrl + `${id}/updateBalanceGBP`, {
           balanceGBP: account.balanceGBP + Number(card.amount),
-        });
+        }).then(()=>{
+        const transactionId = generateTransactionID();
+        const transaction_array = new Array(
+          `${transactionId}`,
+          `${card.amount}`,
+          `${currency}(self)`,
+          `${currency}(self)`,
+          `Self-Transfer GBP`,
+          `${
+            account.balanceGBP + Number(card.amount)
+          } ${currency}`,
+          timeStamp()
+        );
+        axios.put(ApiUrl + `${account.id}/addTransaction`, {
+          transaction: transaction_array,
+        });});
       } else if (currency === "USD") {
         axios.put(ApiUrl + `${id}/updateBalanceUSD`, {
           balanceUSD: account.balanceUSD + Number(card.amount),
-        });
+        }).then(()=>{
+        const transactionId = generateTransactionID();
+        const transaction_array = new Array(
+          `${transactionId}`,
+          `${card.amount}`,
+          `${currency}(self)`,
+          `${currency}(self)`,
+          `Self-Transfer USD`,
+          `${
+            account.balanceUSD + Number(card.amount)
+          } ${currency}`,
+          timeStamp()
+        );
+        axios.put(ApiUrl + `${account.id}/addTransaction`, {
+          transaction: transaction_array,
+        });});
       } else {
         axios.put(ApiUrl + `${id}/updateBalanceEUR`, {
           balanceEUR: account.balanceEUR + Number(card.amount),
-        });
+        }).then(()=>{
+        const transactionId = generateTransactionID();
+        const transaction_array = new Array(
+          `${transactionId}`,
+          `${card.amount}`,
+          `${currency} self`,
+          `${currency} self`,
+          `Self-Transfer EUR`,
+          `${
+            account.balanceEUR + Number(card.amount)
+          } ${currency}`,
+          timeStamp()
+        );
+        axios.put(ApiUrl + `${account.id}/addTransaction`, {
+          transaction: transaction_array,
+        });});
       }
       alert(
         `Deposit Succesful of an amount of ${card.amount} into your ${currency} account`
@@ -74,12 +146,13 @@ export default function DepositWithdraw({ account }) {
               id="expiration"
               value={card.expiration}
               onChange={handleChanges}
+              placeholder="mm/yy"
               required
             />
             <label className="form-group-label">CVV</label>
             <input
               className="form-group-input"
-              type="number"
+              type="password"
               name="cvv"
               id="cvv"
               value={card.cvv}

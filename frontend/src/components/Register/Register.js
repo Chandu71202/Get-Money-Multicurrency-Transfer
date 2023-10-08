@@ -13,6 +13,7 @@ export default function Register() {
     password: "",
     confirmPassword: "",
   });
+  user.name = user.name.charAt(0).toUpperCase() + user.name.slice(1);
   let navigate = useNavigate();
   const [emailExists, setEmailExists] = useState(false);
   const validateEmail = (email) => {
@@ -59,9 +60,25 @@ export default function Register() {
         alert("Email must be at least 3 characters long");
         return;
       }
+
       if (user.phoneNo.length !== 10) {
         alert("Phone number must have exactly 10 digits");
         return;
+      }
+      if (!/[A-Z]/.test(user.password)) {
+        alert("Password must contain at least one uppercase letter");
+        return false;
+      }
+
+      // Password must contain at least one lowercase letter
+      if (!/[a-z]/.test(user.password)) {
+        alert("Password must contain at least on lower case");
+        return false;
+      }
+
+      if (!/[!@#$%^&*()_+[\]{};':"\\|,.<>?/~`]/.test(user.password)) {
+        alert("Password must contain at least one special character");
+        return false;
       }
       if (user.password.length < 8) {
         alert("Password length must be atleast 8 characters");
@@ -73,10 +90,9 @@ export default function Register() {
       }
       axios.post("http://localhost:8080/users/registerNewUser", user);
       alert("Registered Successfully");
-      navigate('/login');
-    }
-    else {
-      alert("Not a valid User Data")
+      navigate("/login");
+    } else {
+      alert("Not a valid User Data");
     }
   };
   return (
@@ -136,7 +152,7 @@ export default function Register() {
               <label className="label">Phone Number</label>
               <input
                 className="phone_field"
-                type="tel"
+                type="number"
                 id="phoneNo"
                 name="phoneNo"
                 value={user.phoneNo}
@@ -175,7 +191,8 @@ export default function Register() {
               Sign Up
             </button>
           </form>
-        </div>)}
+        </div>
+      )}
       <Footer />
     </div>
   );

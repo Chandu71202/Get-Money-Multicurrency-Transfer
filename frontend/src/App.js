@@ -6,6 +6,7 @@ import Login from "./components/Login/Login"; // Import the Login component
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useState,useEffect } from "react";
 import ErrorHandling from "./components/ErrorHandling/ErrorHandling";
+import MiddlePage from "./components/ErrorHandling/MiddlePage";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -40,6 +41,7 @@ function App() {
           ) : (
             <Route path="/dashboard" element={<ErrorHandling />} />
           )}
+          <Route path="/loading" element={<MiddlePage/>}></Route>
         </Routes>
       </Router>
     </div>

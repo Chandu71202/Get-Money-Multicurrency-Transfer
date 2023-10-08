@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "../../styles/Dashboard/CreateAccount.css"
 import axios from "axios";
+import MiddlePage from "../ErrorHandling/MiddlePage";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateAccount({ updateHasAccount }) {
   const [account, setAccount] = useState({
@@ -17,6 +19,8 @@ export default function CreateAccount({ updateHasAccount }) {
     balanceEUR: 100,
     id: ""
   });
+
+  const navigate = useNavigate();
 
   const generateAccountNumber = () => {
     const accountNumber = Math.floor(
@@ -60,7 +64,8 @@ export default function CreateAccount({ updateHasAccount }) {
       account.id = sessionStorage.getItem("id");
       axios.post("http://localhost:8081/accounts/createNewAccount", account);
       updateHasAccount(true);
-      alert("Registered Successfully");
+      alert("Account Created Successfully");
+      navigate('/loading');
     }
     else {
       alert("Not a valid account Data")

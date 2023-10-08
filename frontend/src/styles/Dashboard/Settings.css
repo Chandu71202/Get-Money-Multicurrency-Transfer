@@ -90,5 +90,3 @@
 .gender-radio:checked + .gender-custom-radio::after {
   display: block;
 }
-
-  
