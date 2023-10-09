@@ -13,7 +13,6 @@ import TransactionHistory from "./TransactionHistory";
 import Support from "./Support";
 import MoreInfo from "./MoreInfo";
 import Settings from "./Settings";
-import DashboardInitial from "./DashboardInitial";
 import Footer from "../Home/Footer";
 
 export default function Dashboard() {
@@ -184,7 +183,7 @@ export default function Dashboard() {
                 selectedItem !== "Support" &&
                 selectedItem !== "More Info" &&
                 selectedItem !== "Settings"
-                &&  <DashboardInitial/>}
+                &&  <PersonalProfile account={account} user={user}/>}
                 {selectedItem === "Personal Profile" && (
                   <PersonalProfile account={account} user={user} />
                 )}
