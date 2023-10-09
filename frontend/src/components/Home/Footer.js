@@ -23,16 +23,16 @@ export default function Footer() {
                     <h3>Contact Us</h3>
                     <p>123 Main Street</p>
                     <p>Cityville, State, 12345</p>
-                    <p>Email: info@yourbank.com</p>
+                    <p>Email: getmoney@natwest.com</p>
                     <p>Phone: (123) 456-7890</p>
                 </div>
                 <div className="footer-social">
                     <h3>Follow Us</h3>
                     <ul>
-                        <li><a href="#"><IoLogoFacebook /></a></li>
-                        <li><a href="#"><FaXTwitter /></a></li>
-                        <li><a href="#"><IoLogoLinkedin /></a></li>
-                        <li><a href="#"><IoLogoInstagram /></a></li>
+                        <li><a href="https://www.facebook.com/NatWest/"><IoLogoFacebook /></a></li>
+                        <li><a href="https://twitter.com/NatWestGroup"><FaXTwitter /></a></li>
+                        <li><a href="https://www.linkedin.com/company/natwest-group/mycompany/"><IoLogoLinkedin /></a></li>
+                        <li><a href="https://www.instagram.com/natwest/?hl=en"><IoLogoInstagram /></a></li>
                     </ul>
                 </div>
             </div>

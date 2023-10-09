@@ -1,18 +1,21 @@
-import React, { useState,useRef } from 'react'
-import "../../styles/Dashboard/TransactionHistory.css"
-import {useReactToPrint} from 'react-to-print';
+import React, { useState, useRef } from "react";
+import "../../styles/Dashboard/TransactionHistory.css";
+import { useReactToPrint } from "react-to-print";
 
 export default function TransactionHistory({ account }) {
   const transactions = account.transactionHistory;
 
-  const [sortConfig, setSortConfig] = useState({ key: null, direction: 'ascending' });
+  const [sortConfig, setSortConfig] = useState({
+    key: null,
+    direction: "ascending",
+  });
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 5;
 
   const handleSort = (key) => {
-    let direction = 'ascending';
-    if (sortConfig.key === key && sortConfig.direction === 'ascending') {
-      direction = 'descending';
+    let direction = "ascending";
+    if (sortConfig.key === key && sortConfig.direction === "ascending") {
+      direction = "descending";
     }
     setSortConfig({ key, direction });
   };
@@ -37,33 +40,40 @@ export default function TransactionHistory({ account }) {
       const aValue = a[sortConfig.key];
       const bValue = b[sortConfig.key];
 
-      if (aValue < bValue) return sortConfig.direction === 'ascending' ? -1 : 1;
-      if (aValue > bValue) return sortConfig.direction === 'ascending' ? 1 : -1;
+      if (aValue < bValue) return sortConfig.direction === "ascending" ? -1 : 1;
+      if (aValue > bValue) return sortConfig.direction === "ascending" ? 1 : -1;
       return 0;
     });
   }
   sortedData.reverse();
-  
+
   const componentPDF = useRef();
   const generatePdf = useReactToPrint({
     content: () => componentPDF.current,
-    documentTitle:`${account.accountNumber}-Statement`,
-    // onAfterPrint:alert("Printed Successfully")
-  })
+    documentTitle: "Statement",
+    onAfterPrint: () => {
+      alert("Printed Successfully");
+    },
+  });
 
   return (
     <div>
       {account.transactionHistory.length === 0 ? (
         <>
-        <div className='NoTransactionYet'>
-          <h2>
-            No Transactions Yet! Make your First transaction from the Inter-Account Transfer menu.
-          </h2>
-        </div>
+          <div className="NoTransactionYet">
+            <h2>
+              No Transactions Yet! Make your First transaction from the
+              Inter-Account Transfer menu.
+            </h2>
+          </div>
         </>
       ) : (
         <>
-          <div className='table-container' ref={componentPDF} style={{width:'100%'}}>
+          <div
+            className="table-container"
+            ref={componentPDF}
+            style={{ width: "100%", textAlign: "center" }}
+          >
             <table>
               <thead>
                 <tr>
@@ -88,16 +98,28 @@ export default function TransactionHistory({ account }) {
                 ))}
               </tbody>
             </table>
-
           </div>
-          <div className='pagination-buttons'>
-            <button className='print-button' onClick={generatePdf}>Print</button>
-            <button className='individual-button' disabled={currentPage === 1} onClick={prevPage}>Previous</button>
-            <button className='individual-button' disabled={sortedData.length <= currentPage * rowsPerPage} onClick={nextPage}>Next</button>
+          <div className="pagination-buttons">
+            <button className="print-button" onClick={generatePdf}>
+              Print
+            </button>
+            <button
+              className="individual-button"
+              disabled={currentPage === 1}
+              onClick={prevPage}
+            >
+              Previous
+            </button>
+            <button
+              className="individual-button"
+              disabled={sortedData.length <= currentPage * rowsPerPage}
+              onClick={nextPage}
+            >
+              Next
+            </button>
           </div>
-          
         </>
       )}
     </div>
-  )
+  );
 }

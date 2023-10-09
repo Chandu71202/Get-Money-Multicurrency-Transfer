@@ -45,6 +45,7 @@ export default function Settings({ account, user }) {
         [name]: type === 'checkbox' ? checked : value
       }));
     }
+    
     if (name === 'newPassword') {
       setFormData(prevData => ({
         ...prevData,
@@ -58,6 +59,7 @@ export default function Settings({ account, user }) {
       }));
     }
   };
+  
   const validateEmail = (email) => {
     const pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
     if (!pattern.test(email)) {
@@ -88,25 +90,7 @@ export default function Settings({ account, user }) {
         alert("Email must be at least 3 characters long");
         return;
       }
-      if (!/[A-Z]/.test(formData.newPassword )) {
-        alert("Password must contain at least one uppercase letter");
-        return false;
-      }
-
-      // Password must contain at least one lowercase letter
-      if (!/[a-z]/.test(formData.newPassword )) {
-        alert("Password must contain at least on lower case");
-        return false;
-      }
-
-      if (!/[!@#$%^&*()_+[\]{};':"\\|,.<>?/~`]/.test(formData.newPassword )) {
-        alert("Password must contain at least one special character");
-        return false;
-      }
-      if (formData.newPassword .length < 8) {
-        alert("Password length must be atleast 8 characters");
-        return;
-      }
+      
       
       // Check if a new password was entered, and update it if necessary
       if (formData.newPassword !== "") {
@@ -115,6 +99,26 @@ export default function Settings({ account, user }) {
           password: formData.newPassword,
           newPassword: "" // Reset newPassword field after saving
         }));
+
+        if (!/[A-Z]/.test(formData.newPassword )) {
+          alert("Password must contain at least one uppercase letter");
+          return false;
+        }
+  
+        // Password must contain at least one lowercase letter
+        if (!/[a-z]/.test(formData.newPassword )) {
+          alert("Password must contain at least on lower case");
+          return false;
+        }
+  
+        if (!/[!@#$%^&*()_+[\]{};':"\\|,.<>?/~`]/.test(formData.newPassword )) {
+          alert("Password must contain at least one special character");
+          return false;
+        }
+        if (formData.newPassword .length < 8) {
+          alert("Password length must be atleast 8 characters");
+          return;
+        }
         const saveButton = document.getElementById('saveButton');
         saveButton.disabled = true;
       }

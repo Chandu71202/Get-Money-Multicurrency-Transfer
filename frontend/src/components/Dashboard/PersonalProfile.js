@@ -25,7 +25,7 @@ export default function PersonalProfile({ account, user }) {
           </div>
           <div className="profile-box">
             <label className="profile-label">Date of Birth : </label>
-            <span className="profile-value"> {account.dateOfBirth}</span>
+            <span className="profile-value"> {new Date(account.dateOfBirth).toLocaleDateString("en-GB")} </span>
           </div>
           <div className="profile-box">
             <label className="profile-label">Gender : </label>

@@ -17,7 +17,7 @@ export default function Support() {
       <div className="support_videos">
         <h1 className='heading3'>Watch GET-Money Support Videos</h1>
         <p className='check'>Check out our official Youtube channel to help you get the most from your device</p>
-        <a href="#" className='youtube-link'>Visit  GET-Money Support on Youtube<FaIcons.FaAngleRight /></a>
+        <a href="https://www.youtube.com/channel/UCI1-dWB83HQEud8-SHh6bQw" className='youtube-link'>Visit  GET-Money Support on Youtube<FaIcons.FaAngleRight /></a>
         <div>
           <img className="youtube" src="https://www.dignited.com/wp-content/uploads/2023/06/watching-Youtube3.jpg"></img>
         </div>
@@ -35,7 +35,7 @@ export default function Support() {
         <div className="box-right">
           <h4>GET-Money Support app</h4>
           <p>Get help for all of your issue in one place, or connect with the experts</p>
-          <a href="#" className='youtube-link'>Download<FaIcons.FaAngleRight /></a>
+          <a href="https://www.youtube.com/channel/UCI1-dWB83HQEud8-SHh6bQw" className='youtube-link'>Download<FaIcons.FaAngleRight /></a>
           <div>
             <img src="https://cdn.dribbble.com/users/1449995/screenshots/5678125/dribbble_shot_hd.png" alt="Image 2"></img>
           </div>

@@ -12,6 +12,7 @@ export default function DepositWithdraw({ account }) {
     expiration: "",
     cvv: "",
     amount: "",
+    name: ""
   });
 
   const handleChanges = (e) => {
@@ -102,8 +103,8 @@ export default function DepositWithdraw({ account }) {
         const transaction_array = new Array(
           `${transactionId}`,
           `${card.amount}`,
-          `${currency} self`,
-          `${currency} self`,
+          `${currency}(self)`,
+          `${currency}(self)`,
           `Self-Transfer EUR`,
           `${
             account.balanceEUR + Number(card.amount)
@@ -156,6 +157,16 @@ export default function DepositWithdraw({ account }) {
               name="cvv"
               id="cvv"
               value={card.cvv}
+              onChange={handleChanges}
+              required
+            />
+            <label className="form-group-label">Name on Card</label>
+            <input
+              className="form-group-input"
+              type="text"
+              name="name"
+              id="name"
+              value={card.name}
               onChange={handleChanges}
               required
             />
