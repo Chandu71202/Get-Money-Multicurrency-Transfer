@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState,useRef } from 'react'
 import "../../styles/Dashboard/TransactionHistory.css"
-
+import {useReactToPrint} from 'react-to-print';
 
 export default function TransactionHistory({ account }) {
   const transactions = account.transactionHistory;
@@ -43,6 +43,13 @@ export default function TransactionHistory({ account }) {
     });
   }
   sortedData.reverse();
+  
+  const componentPDF = useRef();
+  const generatePdf = useReactToPrint({
+    content: () => componentPDF.current,
+    documentTitle:`${account.accountNumber}-Statement`,
+    // onAfterPrint:alert("Printed Successfully")
+  })
 
   return (
     <div>
@@ -56,7 +63,7 @@ export default function TransactionHistory({ account }) {
         </>
       ) : (
         <>
-          <div className='table-container'>
+          <div className='table-container' ref={componentPDF} style={{width:'100%'}}>
             <table>
               <thead>
                 <tr>
@@ -84,9 +91,11 @@ export default function TransactionHistory({ account }) {
 
           </div>
           <div className='pagination-buttons'>
+            <button className='print-button' onClick={generatePdf}>Print</button>
             <button className='individual-button' disabled={currentPage === 1} onClick={prevPage}>Previous</button>
             <button className='individual-button' disabled={sortedData.length <= currentPage * rowsPerPage} onClick={nextPage}>Next</button>
           </div>
+          
         </>
       )}
     </div>
