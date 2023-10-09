@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import "../../styles/Dashboard/Settings.css"
 import axios from 'axios';
-import Popup from "../Dashboard/Popup";
 
 export default function Settings({ account, user }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -25,16 +24,6 @@ export default function Settings({ account, user }) {
   const handleEditClick = () => {
     setIsEditing(true);
   };
-  const [showPopup, setShowPopup] = useState(false);
-  const [popupMessage, setPopupMessage] = useState('');
-
-  const openPopup = (message) => {
-    setPopupMessage(message);
-    setShowPopup(true);
-  };
-  const closePopup = () => {
-    setShowPopup(false);
-  }; 
 
   // const settingNewPassword = () => {
   //   setNewPassword(newPassword);
@@ -92,30 +81,30 @@ export default function Settings({ account, user }) {
     e.preventDefault();
     if (formData) {
       if (!validateEmail(formData.alternateEmailId)) {
-        openPopup("Invalid Email");
+        alert("Invalid Email");
         return;
       }
       if (formData.alternateEmailId.length < 3) {
-        openPopup("Email must be at least 3 characters long");
+        alert("Email must be at least 3 characters long");
         return;
       }
       if (!/[A-Z]/.test(formData.newPassword )) {
-        openPopup("Password must contain at least one uppercase letter");
+        alert("Password must contain at least one uppercase letter");
         return false;
       }
 
       // Password must contain at least one lowercase letter
       if (!/[a-z]/.test(formData.newPassword )) {
-        openPopup("Password must contain at least on lower case");
+        alert("Password must contain at least on lower case");
         return false;
       }
 
       if (!/[!@#$%^&*()_+[\]{};':"\\|,.<>?/~`]/.test(formData.newPassword )) {
-        openPopup("Password must contain at least one special character");
+        alert("Password must contain at least one special character");
         return false;
       }
       if (formData.newPassword .length < 8) {
-        openPopup("Password length must be atleast 8 characters");
+        alert("Password length must be atleast 8 characters");
         return;
       }
       
@@ -147,11 +136,11 @@ export default function Settings({ account, user }) {
         state: formData.state,
         country: formData.country
       })
-      openPopup('Details Updated Successfully');
+      alert('Details Updated Successfully');
       setIsEditing(false);
     }
     else {
-      openPopup("Enter Valid Details.")
+      alert("Enter Valid Details.")
     }
 
     // window.location.reload();
@@ -316,8 +305,6 @@ export default function Settings({ account, user }) {
       >
         Save
       </button>
-      {showPopup && <Popup message={popupMessage} onClose={closePopup} />}
-
     </form>
   )
 }

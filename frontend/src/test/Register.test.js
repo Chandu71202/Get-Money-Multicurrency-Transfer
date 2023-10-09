@@ -67,7 +67,7 @@ describe("Register Component", () => {
       );
       
         
-      expect(wrapper.find('Popup').prop('message')).toBe("Registered Successfully");
+      expect(wrapper.find('').prop('message')).toBe("Registered Successfully");
       expect(mockUsedNavigate).toHaveBeenCalledWith("/login");
     });
    

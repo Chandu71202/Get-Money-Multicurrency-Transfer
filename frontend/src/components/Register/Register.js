@@ -4,7 +4,6 @@ import Navbar from "../Home/Navbar";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Home/Footer";
-import Popup from "../Dashboard/Popup";
 
 export default function Register() {
   const [user, setUser] = useState({
@@ -14,17 +13,6 @@ export default function Register() {
     password: "",
     confirmPassword: "",
   });
-  const [showPopup, setShowPopup] = useState(false);
-  const [popupMessage, setPopupMessage] = useState('');
-
-  const openPopup = (message) => {
-    setPopupMessage(message);
-    setShowPopup(true);
-  };
-  const closePopup = () => {
-    setShowPopup(false);
-  };    
-
   user.name = user.name.charAt(0).toUpperCase() + user.name.slice(1);
   let navigate = useNavigate();
   const [emailExists, setEmailExists] = useState(false);
@@ -56,55 +44,55 @@ export default function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!emailExists) {
-      openPopup("Email already exists. Please choose a different email.");
+      alert("Email already exists. Please choose a different email.");
       return;
     }
     if (user) {
       if (user.name.length < 3) {
-        openPopup("Name must be at least 3 characters long");
+        alert("Name must be at least 3 characters long");
         return;
       }
       if (!validateEmail(user.email)) {
-        openPopup("Invalid Email");
+        alert("Invalid Email");
         return;
       }
       if (user.email.length < 3) {
-        openPopup("Email must be at least 3 characters long");
+        alert("Email must be at least 3 characters long");
         return;
       }
 
       if (user.phoneNo.length !== 10) {
-        openPopup("Phone number must have exactly 10 digits");
+        alert("Phone number must have exactly 10 digits");
         return;
       }
       if (!/[A-Z]/.test(user.password)) {
-        openPopup("Password must contain at least one uppercase letter");
+        alert("Password must contain at least one uppercase letter");
         return false;
       }
 
       // Password must contain at least one lowercase letter
       if (!/[a-z]/.test(user.password)) {
-        openPopup("Password must contain at least on lower case");
+        alert("Password must contain at least on lower case");
         return false;
       }
 
       if (!/[!@#$%^&*()_+[\]{};':"\\|,.<>?/~`]/.test(user.password)) {
-        openPopup("Password must contain at least one special character");
+        alert("Password must contain at least one special character");
         return false;
       }
       if (user.password.length < 8) {
-        openPopup("Password length must be atleast 8 characters");
+        alert("Password length must be atleast 8 characters");
         return;
       }
       if (user.password !== user.confirmPassword) {
-        openPopup("Passwords do not match");
+        alert("Passwords do not match");
         return;
       }
       axios.post("http://localhost:8080/users/registerNewUser", user);
-      openPopup("Registered Successfully");
+      alert("Registered Successfully");
       navigate("/login");
     } else {
-      openPopup("Not a valid User Data");
+      alert("Not a valid User Data");
     }
   };
   return (
@@ -202,8 +190,6 @@ export default function Register() {
             <button className="submit_button" type="submit">
               Sign Up
             </button>
-            {showPopup && <Popup message={popupMessage} onClose={closePopup} />}
-
           </form>
         </div>
       )}

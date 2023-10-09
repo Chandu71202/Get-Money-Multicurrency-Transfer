@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../../styles/Dashboard/DepositWithdraw.css";
-import Popup from "../Dashboard/Popup";
-
 
 export default function DepositWithdraw({ account }) {
   const [currency, setCurrency] = useState("GBP");
@@ -23,16 +21,6 @@ export default function DepositWithdraw({ account }) {
       [name]: value,
     });
   };
-  const [showPopup, setShowPopup] = useState(false);
-  const [popupMessage, setPopupMessage] = useState('');
-
-  const openPopup = (message) => {
-    setPopupMessage(message);
-    setShowPopup(true);
-  };
-  const closePopup = () => {
-    setShowPopup(false);
-  }; 
 
   const generateTransactionID = () => {
     const transactionId = Math.floor(3000000 + Math.random() * 90000);
@@ -56,15 +44,15 @@ export default function DepositWithdraw({ account }) {
     const id = sessionStorage.getItem("id");
     const ApiUrl = "http://localhost:8081/accounts/";
     if (card.cardNumber.length !== 16) {
-      openPopup("Card Number must be 16 digits long");
+      alert("Card Number must be 16 digits long");
       return;
     }
     if (card.expiration.length !== 5) {
-      openPopup("Expiration must be 5 digits long");
+      alert("Expiration must be 5 digits long");
       return;
     }
     if (card.cvv.length !== 3) {
-      openPopup("CVV must be 3 digits long");
+      alert("CVV must be 3 digits long");
       return;
     }
     if (card.amount > 0) {
@@ -126,11 +114,11 @@ export default function DepositWithdraw({ account }) {
           transaction: transaction_array,
         });});
       }
-      openPopup(
+      alert(
         `Deposit Succesful of an amount of ${card.amount} into your ${currency} account`
       );
     } else {
-      openPopup("Deposit Amount must be greater than 0");
+      alert("Deposit Amount must be greater than 0");
     }
   };
 
@@ -195,7 +183,6 @@ export default function DepositWithdraw({ account }) {
           <button className="transfer-button" type="submit">
             Transfer
           </button>
-          {showPopup && <Popup message={popupMessage} onClose={closePopup} />}
         </div>
       </form>
     </div>

@@ -1,201 +1,201 @@
 .signup-container {
-  text-align: center;
-  max-width: 600px;
-  margin: 30px auto 30px auto;
-  padding: 25px 80px;
-  border: 1px solid #25232379;
-  border-radius: 5px;
-  background-color:   #e9e7e7;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-.signup-container:hover{
-  box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
-  /* transform: translateY(-3px); */
-  background-color: #15121229;
-}
-
-.heading {
-  font-size: 24px;
-  margin-bottom: 20px;
-  font-weight: bold;
-  color: #3c1053;
-}
-
-.subheading {
-  font-size: 17px;
-  font-weight:500;
-  margin-top: 10px;
-
-}
-
-.login {
-  color: #3c1053;
-  font-weight: 700;
-}
-
-.login:hover {
-  text-decoration: underline;
-}
-
-.form-group {
-  margin-bottom: 15px;
-  text-align: left;
-}
-
-.label {
-  display: block;
-  font-size:16px;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #3c1053;
-  text-align: left;
-}
-
-  .name_field,
-  .email_field,
-  .phone_field,
-  .password_field_register,
-  .confirm_password_field {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 3px solid #3c1053;
-  border-radius: 5px;
-}
-
-  .name_field:hover,
-  .email_field:hover,
-  .phone_field:hover,
-  .password_field_register:hover,
-  .confirm_password_field:hover {
-  box-shadow: 3px 3px 3px 3px rgba(70, 9, 77, 0.1);
-  transform: translateY(-1px);
-  border-color: #7739a4; /* Change border color on hover */
-}
-
-.submit_button {
-  background-color: #3c1053;
-  color: #fff;
-  font-size: 18px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.submit_button:hover {
-  box-shadow: 5px 5px 5px 5px rgba(117, 35, 128, 0.1);
-  background-color: #7739a4;
-  color: black;
+    text-align: center;
+    max-width: 600px;
+    margin: 30px auto 30px auto;
+    padding: 25px 80px;
+    border: 1px solid #25232379;
+    border-radius: 5px;
+    background-color:   #e9e7e7;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  .signup-container:hover{
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+    background-color: #15121229;
+  }
   
-}
-
-.signup-container-createAccount{
-  text-align: center;
-  max-width: 700px;
-  margin: 50px auto 30px auto;
-  padding: 25px 80px;
-  border: 1px solid #25232379;
-  border-radius: 5px;
-  /* background-color:   #e9e7e7; */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-.create-account-container{
-  background-color: #56595f2e;
-  padding-bottom: 2rem;
-  padding-top: 0.5rem;
-  margin-top: -8px;
-}
-
-.gender-container {
-  display: flex;
-  flex-direction: row;
-  font-size: 16px;
-  margin-bottom: 15px;
-  text-align: left;
-}
-.gender-label{
-  padding: 5px;
-}
-.gender-radio{
-  display: none;
-}
-.gender-custom-radio {
-  width: 20px;
-  height: 20px;
-  border: 2px solid #5c327e;
-  border-radius: 50%;
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-
-/* Style the inner circle of the custom radio button when selected */
-.gender-custom-radio::after {
-  content: "";
-  position: absolute;
-  top: 1.5px;
-  right: 1.5px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background-color: #5c327e;
-  display: none;
-}
-
-/* Show the inner circle when the radio button is checked */
-.gender-radio:checked + .gender-custom-radio::after {
-  display: block;
-}
-
-@media (max-width: 768px) {
-  .signup-container {
-    padding: 20px; /* Adjusted padding for smaller screens */
-    max-width: 75%; /* Container takes full width on smaller screens */
+  .heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #3c1053;
   }
+  
+  .subheading {
+    font-size: 17px;
+    font-weight:500;
+    margin-top: 10px;
+  
+  }
+  
+  .login {
+    color: #3c1053;
+    font-weight: 700;
+  }
+  
+  .login:hover {
+    text-decoration: underline;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  
   .label {
     display: block;
     font-size:16px;
     font-weight: bold;
     margin-bottom: 5px;
     color: #3c1053;
-    margin-left: 50px;
+    text-align: left;
+  }
+  
+    .name_field,
+    .email_field,
+    .phone_field,
+    .password_field_register,
+    .confirm_password_field {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 3px solid #3c1053;
+    border-radius: 5px;
+  }
+  
+    .name_field:hover,
+    .email_field:hover,
+    .phone_field:hover,
+    .password_field_register:hover,
+    .confirm_password_field:hover {
+    box-shadow: 3px 3px 3px 3px rgba(70, 9, 77, 0.1);
+    transform: translateY(-1px);
+    border-color: #7739a4; /* Change border color on hover */
+  }
+  
+  .submit_button {
+    background-color: #3c1053;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .submit_button:hover {
+    box-shadow: 5px 5px 5px 5px rgba(117, 35, 128, 0.1);
+    background-color: #7739a4;
+    color: black;
+    
+  }
+  
+  .signup-container-createAccount{
+    text-align: center;
+    max-width: 700px;
+    margin: 50px auto 30px auto;
+    padding: 25px 80px;
+    border: 1px solid #25232379;
+    border-radius: 5px;
+    /* background-color:   #e9e7e7; */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  .create-account-container{
+    background-color: #56595f2e;
+    padding-bottom: 2rem;
+    padding-top: 0.5rem;
+    margin-top: -8px;
+  }
+  
+  .gender-container {
+    display: flex;
+    flex-direction: row;
+    font-size: 16px;
+    margin-bottom: 15px;
+    text-align: left;
+  }
+  .gender-label{
+    padding: 5px;
+  }
+  .gender-radio{
+    display: none;
+  }
+  .gender-custom-radio {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #5c327e;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  
+  /* Style the inner circle of the custom radio button when selected */
+  .gender-custom-radio::after {
+    content: "";
+    position: absolute;
+    top: 1.5px;
+    right: 1.5px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #5c327e;
+    display: none;
+  }
+  
+  /* Show the inner circle when the radio button is checked */
+  .gender-radio:checked + .gender-custom-radio::after {
+    display: block;
   }
 
-  .name_field,
-  .email_field,
-  .phone_field,
-  .password_field_register,
-  .confirm_password_field {
-  width: 80%;
-  align-self: center;
-  /* text-align: center; */
-  padding: 10px;
-  font-size: 16px;
-  border: 3px solid #3c1053;
-  border-radius: 5px;
-}
-.signup-container-createAccount{
-  text-align: center;
-  max-width: 500px;
-  margin: 30px auto 30px auto;
-  padding: 25px 80px;
-  border: 1px solid #25232379;
-  border-radius: 5px;
-  background-color:   #e9e7e7;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-}
-@media (max-width: 480px){
-  .label {
-    display: block;
-    font-size:16px;
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #3c1053;
-    margin-left: 30px;
+  @media (max-width: 768px) {
+    .signup-container {
+      padding: 20px; /* Adjusted padding for smaller screens */
+      max-width: 75%; /* Container takes full width on smaller screens */
+    }
+    .label {
+      display: block;
+      font-size:16px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #3c1053;
+      margin-left: 50px;
+    }
+  
+    .name_field,
+    .email_field,
+    .phone_field,
+    .password_field_register,
+    .confirm_password_field {
+    width: 80%;
+    align-self: center;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+    border: 3px solid #3c1053;
+    border-radius: 5px;
   }
-}
+  .signup-container-createAccount{
+    text-align: center;
+    max-width: 500px;
+    margin: 30px auto 30px auto;
+    padding: 25px 80px;
+    border: 1px solid #25232379;
+    border-radius: 5px;
+    background-color:   #e9e7e7;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  }
+  @media (max-width: 480px){
+    .label {
+      display: block;
+      font-size:16px;
+      font-weight: bold;
+      margin-bottom: 5px;
+      color: #3c1053;
+      margin-left: 30px;
+    }
+  }
