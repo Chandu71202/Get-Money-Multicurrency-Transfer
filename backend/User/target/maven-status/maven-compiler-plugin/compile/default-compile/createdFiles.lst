@@ -1,0 +1,5 @@
+com\example\GETMoney\model\User.class
+com\example\GETMoney\repository\UserRepository.class
+com\example\GETMoney\Service\UserService.class
+com\example\GETMoney\Controller\UserController.class
+com\example\GETMoney\GetMoneyApplication.class

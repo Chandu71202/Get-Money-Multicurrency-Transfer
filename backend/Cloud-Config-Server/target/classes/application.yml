@@ -1,0 +1,16 @@
+server:
+  port: 9296
+spring:
+  application:
+    name: CONFIG-SERVER
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Chandu71202/spring-boot-microservices
+          clone-on-start: true
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
