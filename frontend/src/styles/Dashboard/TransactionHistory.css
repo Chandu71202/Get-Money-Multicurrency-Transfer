@@ -59,6 +59,17 @@
     transition: background-color 0.2s;
     margin-left: 10px;
   }
+  .print-button{
+    background-color: #3c1053;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-left: 10px;
+  }
   button:hover{
     background-color: #7739a4;
     color: #fff;

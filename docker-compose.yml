@@ -1,0 +1,62 @@
+version: '3'
+services:
+  eureka-server:
+    build:
+      context: ./backend/Service-Registry  
+    image: eureka-server
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - getmoney
+  cloud-config-server:
+    build:
+      context: ./backend/Cloud-Config-Server  
+    image: cloud-config-server
+    container_name: cloud-config-server
+    ports:
+      - "9296:9296"
+    networks:
+      - getmoney
+  cloud-gateway:
+    build:
+      context: ./backend/Cloud-Gateway  
+    image: cloud-gateway
+    container_name: cloud-gateway
+    ports:
+      - "9090:9090"
+    networks:
+      - getmoney
+  user-service:
+    build:
+      context: ./backend/USER 
+    image: user-service
+    container_name: user-service
+    ports:
+      - "8080:8080"
+    networks:
+      - getmoney
+  account-service:
+    build:
+      context: ./backend/Account  
+    image: account-service
+    container_name: account-service
+    ports:
+      - "8081:8081"
+    networks:
+      - getmoney
+
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #   image: frontend
+  #   container_name: frontend
+  #   ports:
+  #     - "3000:3000"
+  #   networks:
+  #     - getmoney
+
+networks:
+  getmoney:
+    external:
+      name: getmoney
