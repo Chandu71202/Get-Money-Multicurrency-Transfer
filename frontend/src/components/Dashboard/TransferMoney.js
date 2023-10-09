@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/Dashboard/TransferMoney.css";
 import axios from "axios";
+import Popup from "../Dashboard/Popup";
+
 
 export default function TransferMoney({ account }) {
   const [senderAmount, setSenderAmount] = useState("");
@@ -10,6 +12,17 @@ export default function TransferMoney({ account }) {
   const [receiverAccountNumber, setReceiverAccountNumber] = useState();
   const [receiverAmount, setReceiverAmount] = useState("");
   const [feeAmount, setFeeAmount] = useState("");
+
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
+
+  const openPopup = (message) => {
+    setPopupMessage(message);
+    setShowPopup(true);
+  };
+  const closePopup = () => {
+    setShowPopup(false);
+  }; 
 
   const handleSenderAmountChange = (e) => {
     setSenderAmount(e.target.value);
@@ -268,7 +281,7 @@ export default function TransferMoney({ account }) {
                 axios.put(ApiUrl + `${account.id}/updateBalanceGBP`, {
                   balanceGBP: account.balanceGBP - Number(senderAmount),
                 });
-                alert("Transfer Successful");
+                openPopup("Transfer Successful");
                 const transactionId = generateTransactionID();
                 const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
                 const transaction_array = new Array(
@@ -286,14 +299,14 @@ export default function TransferMoney({ account }) {
                   transaction: transaction_array,
                 });
               } else {
-                alert("Insufficient Balance");
+                openPopup("Insufficient Balance");
               }
             } else if (selectedSenderCurrency === "USD") {
               if (account.balanceUSD >= senderAmount) {
                 axios.put(ApiUrl + `${account.id}/updateBalanceUSD`, {
                   balanceUSD: account.balanceUSD - senderAmount,
                 });
-                alert("Transfer Successful");
+                openPopup("Transfer Successful");
                 const transactionId = generateTransactionID();
                 const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
                 const transaction_array = new Array(
@@ -311,14 +324,14 @@ export default function TransferMoney({ account }) {
                   transaction: transaction_array,
                 });
               } else {
-                alert("Insufficient Balance");
+                openPopup("Insufficient Balance");
               }
             } else {
               if (account.balanceEUR >= senderAmount) {
                 axios.put(ApiUrl + `${account.id}/updateBalanceEUR`, {
                   balanceEUR: account.balanceEUR - senderAmount,
                 });
-                alert("Transfer Successful");
+                openPopup("Transfer Successful");
                 const transactionId = generateTransactionID();
                 const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
                 const transaction_array = new Array(
@@ -336,11 +349,11 @@ export default function TransferMoney({ account }) {
                   transaction: transaction_array,
                 });
               } else {
-                alert("Insufficient Balance");
+                openPopup("Insufficient Balance");
               }
             }
           } else {
-            alert("Transferring amount must be greater than 0");
+            openPopup("Transferring amount must be greater than 0");
           }
         } else {
           if (senderAmount > 0) {
@@ -356,7 +369,7 @@ export default function TransferMoney({ account }) {
                       }
                     );
 
-                    alert(
+                    openPopup(
                       `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
                     );
                     const transactionId = generateTransactionID();
@@ -386,7 +399,7 @@ export default function TransferMoney({ account }) {
                       }
                     );
 
-                    alert(
+                    openPopup(
                       `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
                     );
                     const transactionId = generateTransactionID();
@@ -407,10 +420,10 @@ export default function TransferMoney({ account }) {
                     });
                   }
                   if (selectedRecieverCurrency === "GBP") {
-                    alert("Enter Other Reciever Currency");
+                    openPopup("Enter Other Reciever Currency");
                   }
                 } else {
-                  alert("Insufficient Balance");
+                  openPopup("Insufficient Balance");
                 }
                 break;
               case "USD":
@@ -424,7 +437,7 @@ export default function TransferMoney({ account }) {
                       }
                     );
 
-                    alert(
+                    openPopup(
                       `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
                     );
                     const transactionId = generateTransactionID();
@@ -454,7 +467,7 @@ export default function TransferMoney({ account }) {
                       }
                     );
 
-                    alert(
+                    openPopup(
                       `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
                     );
                     const transactionId = generateTransactionID();
@@ -475,10 +488,10 @@ export default function TransferMoney({ account }) {
                     });
                   }
                   if (selectedRecieverCurrency === "USD") {
-                    alert("Enter Other Reciever Currency");
+                    openPopup("Enter Other Reciever Currency");
                   }
                 } else {
-                  alert("Insufficient Balance");
+                  openPopup("Insufficient Balance");
                 }
                 break;
               case "EUR":
@@ -492,7 +505,7 @@ export default function TransferMoney({ account }) {
                       }
                     );
 
-                    alert(
+                    openPopup(
                       `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
                     );
                     const transactionId = generateTransactionID();
@@ -522,7 +535,7 @@ export default function TransferMoney({ account }) {
                       }
                     );
 
-                    alert(
+                    openPopup(
                       `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
                     );
                     const transactionId = generateTransactionID();
@@ -543,24 +556,24 @@ export default function TransferMoney({ account }) {
                     });
                   }
                   if (selectedRecieverCurrency === "EUR") {
-                    alert("Enter Other Reciever Currency");
+                    openPopup("Enter Other Reciever Currency");
                   }
                 } else {
-                  alert("Insufficient Balance");
+                  openPopup("Insufficient Balance");
                 }
                 break;
               default:
-                alert("Invalid Sender Currency");
+                openPopup("Invalid Sender Currency");
             }
           } else {
-            alert("Transferring amount must be greater than 0");
+            openPopup("Transferring amount must be greater than 0");
           }
         }
       } else {
-        alert("Re Check the Reciever Account Number!");
+        openPopup("Re Check the Reciever Account Number!");
       }
     } else {
-      alert("AccountNumeber array is less than 0");
+      openPopup("AccountNumeber array is less than 0");
     }
   };
 
@@ -661,6 +674,8 @@ export default function TransferMoney({ account }) {
           <button className="transfer-button" type="submit">
             Transfer
           </button>
+          {showPopup && <Popup message={popupMessage} onClose={closePopup} />}
+
         </div>
       </form>
     </div>

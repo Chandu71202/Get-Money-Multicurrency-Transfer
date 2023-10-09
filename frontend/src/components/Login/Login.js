@@ -5,13 +5,24 @@ import axios from "axios";
 import Navbar from "../Home/Navbar"; 
 import { useNavigate } from "react-router-dom";
 import Footer from "../Home/Footer";
+import Popup from "../Dashboard/Popup";
+
 
 export default function Login({ onLogin }) {
   const [user, setUser] = useState({
     email: "",
     password: "",
   });
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
 
+  const openPopup = (message) => {
+    setPopupMessage(message);
+    setShowPopup(true);
+  };
+  const closePopup = () => {
+    setShowPopup(false);
+  }; 
   let navigate = useNavigate();
 
   const handleChanges = (e) => {
@@ -34,11 +45,11 @@ export default function Login({ onLogin }) {
     e.preventDefault();
     if (user) {
       if (!validateEmail(user.email)) {
-        alert("Invalid Email");
+        openPopup("Invalid Email");
         return;
       }
       if (user.password.length < 8) {
-        alert("Password length must be atleast 8 characters");
+        openPopup("Password length must be atleast 8 characters");
         return;
       }
       axios.post("http://localhost:8080/users/loginUser", user)
@@ -49,14 +60,14 @@ export default function Login({ onLogin }) {
             sessionStorage.setItem("id", response.data);
           })
           onLogin();
-          alert("User Login Successful");
+          openPopup("User Login Successful");
           navigate('/dashboard');
         }
         else if(response.data=="Invalid password"){
-          alert("Wrong Password!");
+          openPopup("Wrong Password!");
         }
         else{
-          alert("User does not exist!, Please Register");
+          openPopup("User does not exist!, Please Register");
         }
       })
       .catch((error) => {
@@ -64,7 +75,7 @@ export default function Login({ onLogin }) {
       });
     }
     else{
-      alert("Not a valid Login Data")
+      openPopup("Not a valid Login Data")
     }
   };
 
@@ -116,6 +127,8 @@ export default function Login({ onLogin }) {
               <button className="submit_button" type="submit">
                 Login
               </button>
+          {showPopup && <Popup message={popupMessage} onClose={closePopup} />}
+
             </div>
           </form>
           <p>
