@@ -2,7 +2,7 @@ version: '3'
 services:
   eureka-server:
     build:
-      context: ./backend/Service-Registry  # Directory containing Dockerfile for eureka-server
+      context: ./backend/Service-Registry  
     image: eureka-server
     container_name: eureka-server
     ports:
@@ -11,7 +11,7 @@ services:
       - getmoney
   cloud-config-server:
     build:
-      context: ./backend/Cloud-Config-Server  # Directory containing Dockerfile for cloud-config-server
+      context: ./backend/Cloud-Config-Server  
     image: cloud-config-server
     container_name: cloud-config-server
     ports:
@@ -20,7 +20,7 @@ services:
       - getmoney
   cloud-gateway:
     build:
-      context: ./backend/Cloud-Gateway  # Directory containing Dockerfile for cloud-gateway
+      context: ./backend/Cloud-Gateway  
     image: cloud-gateway
     container_name: cloud-gateway
     ports:
@@ -29,7 +29,7 @@ services:
       - getmoney
   user-service:
     build:
-      context: ./backend/USER # Directory containing Dockerfile for user-service
+      context: ./backend/USER 
     image: user-service
     container_name: user-service
     ports:
@@ -38,13 +38,23 @@ services:
       - getmoney
   account-service:
     build:
-      context: ./backend/Account  # Directory containing Dockerfile for resignation-service
+      context: ./backend/Account  
     image: account-service
     container_name: account-service
     ports:
       - "8081:8081"
     networks:
       - getmoney
+
+  # frontend:
+  #   build:
+  #     context: ./frontend
+  #   image: frontend
+  #   container_name: frontend
+  #   ports:
+  #     - "3000:3000"
+  #   networks:
+  #     - getmoney
 
 networks:
   getmoney:
