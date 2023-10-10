@@ -19,7 +19,8 @@ export default function MoreInfo() {
         "When initiating a transfer, you can select the base currency from the list of currencies available in your multi-currency account. Make sure to choose a currency that you already hold in your account.",
     },
     {
-      question: "Can I transfer funds between different multi-currency accounts?",
+      question:
+        "Can I transfer funds between different multi-currency accounts?",
       answer:
         "Yes, you can transfer funds between different multi-currency accounts as long as the base currency you select for the transfer is available in both accounts.",
     },
@@ -34,12 +35,14 @@ export default function MoreInfo() {
         "The processing time for currency transfers can vary based on several factors, including the destination country and the receiving bank. Typically, transfers within the same multi-currency account are processed instantly.",
     },
     {
-      question: "Is there a limit to the amount I can transfer between currencies?",
+      question:
+        "Is there a limit to the amount I can transfer between currencies?",
       answer:
         "Yes, there may be limits on the amount you can transfer between currencies. These limits can vary based on your account type and currency pair. Please refer to our transfer limits for more information.",
     },
     {
-      question: "Can I cancel or modify a currency transfer after initiating it?",
+      question:
+        "Can I cancel or modify a currency transfer after initiating it?",
       answer:
         "Once a currency transfer is initiated, it may not be possible to cancel or modify it. However, please contact our support team for assistance, and we will do our best to help you.",
     },
@@ -49,7 +52,8 @@ export default function MoreInfo() {
         "You can track the status of your currency transfer by logging into your account and navigating to the 'Transfer History' section. There, you will find details on the status and progress of your transfer.",
     },
     {
-      question: "What should I do if I encounter an issue with a currency transfer?",
+      question:
+        "What should I do if I encounter an issue with a currency transfer?",
       answer:
         "If you encounter any issues with a currency transfer, such as delays or discrepancies, please contact our customer support team immediately. We are here to assist you and resolve any issues promptly.",
     },
@@ -66,19 +70,22 @@ export default function MoreInfo() {
   };
 
   return (
-    <div className="centered-content"> {/* Centered container */}
+    <div className="centered-content">
+      {" "}
+      {/* Centered container */}
       <div className="more-info-container">
         <div className="faq-heading">Frequently Asked Questions (FAQs)</div>
         <div className="faq-list">
           {faqs.map((faq, index) => (
             <div className="faq-item" key={index}>
-              <button className="faq-button" onClick={() => toggleAnswer(index)}>
+              <button
+                className="faq-button"
+                onClick={() => toggleAnswer(index)}
+              >
                 {faq.question}
               </button>
               {activeIndex === index && (
-                <div className="faq-answer">
-                  {faq.answer}
-                </div>
+                <div className="faq-answer">{faq.answer}</div>
               )}
             </div>
           ))}

@@ -12,7 +12,7 @@ export default function DepositWithdraw({ account }) {
     expiration: "",
     cvv: "",
     amount: "",
-    name: ""
+    name: "",
   });
 
   const handleChanges = (e) => {
@@ -58,65 +58,68 @@ export default function DepositWithdraw({ account }) {
     }
     if (card.amount > 0) {
       if (currency === "GBP") {
-        axios.put(ApiUrl + `${id}/updateBalanceGBP`, {
-          balanceGBP: account.balanceGBP + Number(card.amount),
-        }).then(()=>{
-        const transactionId = generateTransactionID();
-        const transaction_array = new Array(
-          `${transactionId}`,
-          `${card.amount}`,
-          `${currency}(self)`,
-          `${currency}(self)`,
-          `Self-Transfer GBP`,
-          `${
-            account.balanceGBP + Number(card.amount)
-          } ${currency}`,
-          timeStamp()
-        );
-        axios.put(ApiUrl + `${account.id}/addTransaction`, {
-          transaction: transaction_array,
-        });});
+        axios
+          .put(ApiUrl + `${id}/updateBalanceGBP`, {
+            balanceGBP: account.balanceGBP + Number(card.amount),
+          })
+          .then(() => {
+            const transactionId = generateTransactionID();
+            const transaction_array = new Array(
+              `${transactionId}`,
+              `${card.amount}`,
+              `${currency}(self)`,
+              `${currency}(self)`,
+              `Self-Transfer GBP`,
+              `${account.balanceGBP + Number(card.amount)} ${currency}`,
+              timeStamp(),
+            );
+            axios.put(ApiUrl + `${account.id}/addTransaction`, {
+              transaction: transaction_array,
+            });
+          });
       } else if (currency === "USD") {
-        axios.put(ApiUrl + `${id}/updateBalanceUSD`, {
-          balanceUSD: account.balanceUSD + Number(card.amount),
-        }).then(()=>{
-        const transactionId = generateTransactionID();
-        const transaction_array = new Array(
-          `${transactionId}`,
-          `${card.amount}`,
-          `${currency}(self)`,
-          `${currency}(self)`,
-          `Self-Transfer USD`,
-          `${
-            account.balanceUSD + Number(card.amount)
-          } ${currency}`,
-          timeStamp()
-        );
-        axios.put(ApiUrl + `${account.id}/addTransaction`, {
-          transaction: transaction_array,
-        });});
+        axios
+          .put(ApiUrl + `${id}/updateBalanceUSD`, {
+            balanceUSD: account.balanceUSD + Number(card.amount),
+          })
+          .then(() => {
+            const transactionId = generateTransactionID();
+            const transaction_array = new Array(
+              `${transactionId}`,
+              `${card.amount}`,
+              `${currency}(self)`,
+              `${currency}(self)`,
+              `Self-Transfer USD`,
+              `${account.balanceUSD + Number(card.amount)} ${currency}`,
+              timeStamp(),
+            );
+            axios.put(ApiUrl + `${account.id}/addTransaction`, {
+              transaction: transaction_array,
+            });
+          });
       } else {
-        axios.put(ApiUrl + `${id}/updateBalanceEUR`, {
-          balanceEUR: account.balanceEUR + Number(card.amount),
-        }).then(()=>{
-        const transactionId = generateTransactionID();
-        const transaction_array = new Array(
-          `${transactionId}`,
-          `${card.amount}`,
-          `${currency}(self)`,
-          `${currency}(self)`,
-          `Self-Transfer EUR`,
-          `${
-            account.balanceEUR + Number(card.amount)
-          } ${currency}`,
-          timeStamp()
-        );
-        axios.put(ApiUrl + `${account.id}/addTransaction`, {
-          transaction: transaction_array,
-        });});
+        axios
+          .put(ApiUrl + `${id}/updateBalanceEUR`, {
+            balanceEUR: account.balanceEUR + Number(card.amount),
+          })
+          .then(() => {
+            const transactionId = generateTransactionID();
+            const transaction_array = new Array(
+              `${transactionId}`,
+              `${card.amount}`,
+              `${currency}(self)`,
+              `${currency}(self)`,
+              `Self-Transfer EUR`,
+              `${account.balanceEUR + Number(card.amount)} ${currency}`,
+              timeStamp(),
+            );
+            axios.put(ApiUrl + `${account.id}/addTransaction`, {
+              transaction: transaction_array,
+            });
+          });
       }
       alert(
-        `Deposit Succesful of an amount of ${card.amount} into your ${currency} account`
+        `Deposit Succesful of an amount of ${card.amount} into your ${currency} account`,
       );
     } else {
       alert("Deposit Amount must be greater than 0");

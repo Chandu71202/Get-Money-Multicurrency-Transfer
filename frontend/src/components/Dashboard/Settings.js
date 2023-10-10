@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import "../../styles/Dashboard/Settings.css"
-import axios from 'axios';
+import React, { useState } from "react";
+import "../../styles/Dashboard/Settings.css";
+import axios from "axios";
 
 export default function Settings({ account, user }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -18,7 +18,7 @@ export default function Settings({ account, user }) {
     name: user.name,
     phoneNo: user.phoneNo,
     password: user.password,
-    newPassword: ""
+    newPassword: "",
   });
 
   const handleEditClick = () => {
@@ -31,35 +31,34 @@ export default function Settings({ account, user }) {
   // }
 
   const handleInputChange = (e) => {
-
     const { name, value, type, checked } = e.target;
 
-    if (type === 'radio') {
-      setFormData(prevData => ({
+    if (type === "radio") {
+      setFormData((prevData) => ({
         ...prevData,
-        [name]: value
+        [name]: value,
       }));
     } else {
-      setFormData(prevData => ({
+      setFormData((prevData) => ({
         ...prevData,
-        [name]: type === 'checkbox' ? checked : value
+        [name]: type === "checkbox" ? checked : value,
       }));
     }
-    
-    if (name === 'newPassword') {
-      setFormData(prevData => ({
+
+    if (name === "newPassword") {
+      setFormData((prevData) => ({
         ...prevData,
         newPassword: value,
-        password: value // Update password internally
+        password: value, // Update password internally
       }));
     } else {
-      setFormData(prevData => ({
+      setFormData((prevData) => ({
         ...prevData,
-        [name]: value
+        [name]: value,
       }));
     }
   };
-  
+
   const validateEmail = (email) => {
     const pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
     if (!pattern.test(email)) {
@@ -69,7 +68,7 @@ export default function Settings({ account, user }) {
   };
 
   const formatDate = (dateString) => {
-    const dateParts = dateString.split('-');
+    const dateParts = dateString.split("-");
     if (dateParts.length === 3) {
       const [day, month, year] = dateParts;
       // Assuming the date format is dd-mm-yyyy
@@ -77,7 +76,6 @@ export default function Settings({ account, user }) {
     }
     return dateString; // Return as is if the format is not as expected
   };
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -90,61 +88,64 @@ export default function Settings({ account, user }) {
         alert("Email must be at least 3 characters long");
         return;
       }
-      
-      
+
       // Check if a new password was entered, and update it if necessary
       if (formData.newPassword !== "") {
-        setFormData(prevData => ({
+        setFormData((prevData) => ({
           ...prevData,
           password: formData.newPassword,
-          newPassword: "" // Reset newPassword field after saving
+          newPassword: "", // Reset newPassword field after saving
         }));
 
-        if (!/[A-Z]/.test(formData.newPassword )) {
+        if (!/[A-Z]/.test(formData.newPassword)) {
           alert("Password must contain at least one uppercase letter");
           return false;
         }
-  
+
         // Password must contain at least one lowercase letter
-        if (!/[a-z]/.test(formData.newPassword )) {
+        if (!/[a-z]/.test(formData.newPassword)) {
           alert("Password must contain at least on lower case");
           return false;
         }
-  
-        if (!/[!@#$%^&*()_+[\]{};':"\\|,.<>?/~`]/.test(formData.newPassword )) {
+
+        if (!/[!@#$%^&*()_+[\]{};':"\\|,.<>?/~`]/.test(formData.newPassword)) {
           alert("Password must contain at least one special character");
           return false;
         }
-        if (formData.newPassword .length < 8) {
+        if (formData.newPassword.length < 8) {
           alert("Password length must be atleast 8 characters");
           return;
         }
-        const saveButton = document.getElementById('saveButton');
+        const saveButton = document.getElementById("saveButton");
         saveButton.disabled = true;
       }
 
-
-      const user_id = sessionStorage.getItem('id');
+      const user_id = sessionStorage.getItem("id");
       // Send the updated data to your server or perform any necessary actions here
-      await axios.patch(`http://localhost:8080/users/${user_id}/updateUserDetails`, {
-        name: formData.name,
-        phoneNo: formData.phoneNo,
-        password: formData.password,
-      })
-      await axios.patch(`http://localhost:8081/accounts/${user_id}/updateAccountDetails`, {
-        dateOfBirth: formData.dateOfBirth,
-        gender: formData.gender,
-        alternateEmailId: formData.alternateEmailId,
-        address: formData.address,
-        city: formData.city,
-        state: formData.state,
-        country: formData.country
-      })
-      alert('Details Updated Successfully');
+      await axios.patch(
+        `http://localhost:8080/users/${user_id}/updateUserDetails`,
+        {
+          name: formData.name,
+          phoneNo: formData.phoneNo,
+          password: formData.password,
+        },
+      );
+      await axios.patch(
+        `http://localhost:8081/accounts/${user_id}/updateAccountDetails`,
+        {
+          dateOfBirth: formData.dateOfBirth,
+          gender: formData.gender,
+          alternateEmailId: formData.alternateEmailId,
+          address: formData.address,
+          city: formData.city,
+          state: formData.state,
+          country: formData.country,
+        },
+      );
+      alert("Details Updated Successfully");
       setIsEditing(false);
-    }
-    else {
-      alert("Enter Valid Details.")
+    } else {
+      alert("Enter Valid Details.");
     }
 
     // window.location.reload();
@@ -152,7 +153,7 @@ export default function Settings({ account, user }) {
   return (
     <form className="user-profile-form" onSubmit={handleSubmit}>
       <div>
-        <h1 className='heading'>Edit Details</h1>
+        <h1 className="heading">Edit Details</h1>
       </div>
       <div>
         <label>Date of Birth:</label>
@@ -174,7 +175,7 @@ export default function Settings({ account, user }) {
               className="gender-radio"
               name="gender"
               value="Male"
-              checked={formData.gender === 'Male'}
+              checked={formData.gender === "Male"}
               onChange={handleInputChange}
               disabled={!isEditing}
             />
@@ -187,7 +188,7 @@ export default function Settings({ account, user }) {
               className="gender-radio"
               name="gender"
               value="Female"
-              checked={formData.gender === 'Female'}
+              checked={formData.gender === "Female"}
               onChange={handleInputChange}
               disabled={!isEditing}
             />
@@ -200,7 +201,7 @@ export default function Settings({ account, user }) {
               className="gender-radio"
               name="gender"
               value="Others"
-              checked={formData.gender === 'Others'}
+              checked={formData.gender === "Others"}
               onChange={handleInputChange}
               disabled={!isEditing}
             />
@@ -310,5 +311,5 @@ export default function Settings({ account, user }) {
         Save
       </button>
     </form>
-  )
+  );
 }

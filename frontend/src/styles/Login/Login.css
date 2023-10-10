@@ -2,8 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; 
-  background-color: #b3adad29;/* Adjust the height to your preference */ /* Use the same background color as in Register.css */
+  height: 100vh;
+  background-color: #b3adad29; /* Adjust the height to your preference */ /* Use the same background color as in Register.css */
 }
 
 /* Apply styles to the login card container */
@@ -16,7 +16,7 @@
   border-radius: 5px; /* Use the same background color as in Register.css */
 }
 
-.login-card:hover{
+.login-card:hover {
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
   transform: translateY(-3px);
   background-color: #15121229;
@@ -37,7 +37,7 @@
 /* Apply styles to form labels */
 .login-card label {
   display: block;
-  font-size:16px;
+  font-size: 16px;
   text-align: left;
   font-weight: bold;
   margin-bottom: 5px;
@@ -57,8 +57,8 @@
 }
 
 /* Apply hover effect to input fields */
- .password_field:hover,
- .username_field:hover {
+.password_field:hover,
+.username_field:hover {
   box-shadow: 5px 5px 5px 5px rgba(70, 9, 77, 0.1);
   transform: translateY(-1px);
   border-color: #7739a4; /* Change border color on hover */
@@ -81,7 +81,6 @@
   box-shadow: 5px 5px 5px 5px rgba(117, 35, 128, 0.1);
   background-color: #7739a4;
   color: #fff;
-  
 }
 /* Apply styles to the paragraph below the form */
 .login-card p {
@@ -102,9 +101,7 @@
   text-decoration: underline;
 }
 
-
 @media (max-width: 768px) {
-  
   .login-card {
     text-align: center;
     max-width: 400px;
@@ -114,11 +111,11 @@
     border-radius: 5px; /* Use the same background color as in Register.css */
   }
   .password_field,
-.username_field {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  border: 3px solid #3c1053;
-  border-radius: 5px;
-}
+  .username_field {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 3px solid #3c1053;
+    border-radius: 5px;
+  }
 }

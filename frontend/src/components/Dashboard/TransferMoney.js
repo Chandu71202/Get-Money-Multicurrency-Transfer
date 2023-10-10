@@ -215,7 +215,7 @@ export default function TransferMoney({ account }) {
     const calculateReceiverAmount = async () => {
       const exchangeRate = await getExchangeRate(
         selectedSenderCurrency,
-        selectedRecieverCurrency
+        selectedRecieverCurrency,
       );
       const calculatedReceiverAmount = senderAmount * exchangeRate;
       const fee = calculatedReceiverAmount * 0.05; // Calculate the fee (5% of receiver amount)
@@ -229,7 +229,7 @@ export default function TransferMoney({ account }) {
 
   const getExchangeRate = async (
     selectedSenderCurrency,
-    selectedRecieverCurrency
+    selectedRecieverCurrency,
   ) => {
     return fetch(`https://open.er-api.com/v6/latest/${selectedSenderCurrency}`)
       .then((response) => {
@@ -280,7 +280,7 @@ export default function TransferMoney({ account }) {
                   `${
                     account.balanceGBP - senderAmount
                   } ${selectedSenderCurrency}`,
-                  timeStamp()
+                  timeStamp(),
                 );
                 axios.put(ApiUrl + `${account.id}/addTransaction`, {
                   transaction: transaction_array,
@@ -305,7 +305,7 @@ export default function TransferMoney({ account }) {
                   `${
                     account.balanceUSD - senderAmount
                   } ${selectedSenderCurrency}`,
-                  timeStamp()
+                  timeStamp(),
                 );
                 axios.put(ApiUrl + `${account.id}/addTransaction`, {
                   transaction: transaction_array,
@@ -330,7 +330,7 @@ export default function TransferMoney({ account }) {
                   `${
                     account.balanceEUR - senderAmount
                   } ${selectedSenderCurrency}`,
-                  timeStamp()
+                  timeStamp(),
                 );
                 axios.put(ApiUrl + `${account.id}/addTransaction`, {
                   transaction: transaction_array,
@@ -353,11 +353,11 @@ export default function TransferMoney({ account }) {
                       {
                         balanceEUR: account.balanceEUR + Number(receiverAmount),
                         balanceGBP: account.balanceGBP - Number(senderAmount),
-                      }
+                      },
                     );
 
                     alert(
-                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`,
                     );
                     const transactionId = generateTransactionID();
                     const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
@@ -370,7 +370,7 @@ export default function TransferMoney({ account }) {
                       `${
                         account.balanceGBP - Number(senderAmount)
                       } ${selectedSenderCurrency}`,
-                      timeStamp()
+                      timeStamp(),
                     );
                     axios.put(ApiUrl + `${account.id}/addTransaction`, {
                       transaction: transaction_array,
@@ -383,11 +383,11 @@ export default function TransferMoney({ account }) {
                       {
                         balanceUSD: account.balanceUSD + Number(receiverAmount),
                         balanceGBP: account.balanceGBP - Number(senderAmount),
-                      }
+                      },
                     );
 
                     alert(
-                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`,
                     );
                     const transactionId = generateTransactionID();
                     const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
@@ -400,7 +400,7 @@ export default function TransferMoney({ account }) {
                       `${
                         account.balanceGBP - Number(senderAmount)
                       } ${selectedSenderCurrency}`,
-                      timeStamp()
+                      timeStamp(),
                     );
                     axios.put(ApiUrl + `${account.id}/addTransaction`, {
                       transaction: transaction_array,
@@ -421,11 +421,11 @@ export default function TransferMoney({ account }) {
                       {
                         balanceEUR: account.balanceEUR + Number(receiverAmount),
                         balanceUSD: account.balanceUSD - Number(senderAmount),
-                      }
+                      },
                     );
 
                     alert(
-                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`,
                     );
                     const transactionId = generateTransactionID();
                     const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
@@ -438,7 +438,7 @@ export default function TransferMoney({ account }) {
                       `${
                         account.balanceUSD - Number(senderAmount)
                       } ${selectedSenderCurrency}`,
-                      timeStamp()
+                      timeStamp(),
                     );
                     axios.put(ApiUrl + `${account.id}/addTransaction`, {
                       transaction: transaction_array,
@@ -451,11 +451,11 @@ export default function TransferMoney({ account }) {
                       {
                         balanceUSD: account.balanceUSD - Number(senderAmount),
                         balanceGBP: account.balanceGBP + Number(receiverAmount),
-                      }
+                      },
                     );
 
                     alert(
-                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`,
                     );
                     const transactionId = generateTransactionID();
                     const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
@@ -468,7 +468,7 @@ export default function TransferMoney({ account }) {
                       `${
                         account.balanceUSD - Number(senderAmount)
                       } ${selectedSenderCurrency}`,
-                      timeStamp()
+                      timeStamp(),
                     );
                     axios.put(ApiUrl + `${account.id}/addTransaction`, {
                       transaction: transaction_array,
@@ -489,11 +489,11 @@ export default function TransferMoney({ account }) {
                       {
                         balanceEUR: account.balanceEUR - Number(senderAmount),
                         balanceGBP: account.balanceGBP + Number(receiverAmount),
-                      }
+                      },
                     );
 
                     alert(
-                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`,
                     );
                     const transactionId = generateTransactionID();
                     const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
@@ -506,7 +506,7 @@ export default function TransferMoney({ account }) {
                       `${
                         account.balanceEUR - Number(senderAmount)
                       } ${selectedSenderCurrency}`,
-                      timeStamp()
+                      timeStamp(),
                     );
                     axios.put(ApiUrl + `${account.id}/addTransaction`, {
                       transaction: transaction_array,
@@ -519,11 +519,11 @@ export default function TransferMoney({ account }) {
                       {
                         balanceUSD: account.balanceUSD + Number(receiverAmount),
                         balanceEUR: account.balanceEUR - Number(senderAmount),
-                      }
+                      },
                     );
 
                     alert(
-                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`
+                      `Transfer in your own account from ${selectedSenderCurrency} to ${selectedRecieverCurrency} is done`,
                     );
                     const transactionId = generateTransactionID();
                     const transaction = `An Amount of ${senderAmount} ${selectedSenderCurrency} was transferred to ${receiverAccountNumber} as ${receiverAmount} ${selectedRecieverCurrency}`;
@@ -536,7 +536,7 @@ export default function TransferMoney({ account }) {
                       `${
                         account.balanceEUR - Number(senderAmount)
                       } ${selectedSenderCurrency}`,
-                      timeStamp()
+                      timeStamp(),
                     );
                     axios.put(ApiUrl + `${account.id}/addTransaction`, {
                       transaction: transaction_array,

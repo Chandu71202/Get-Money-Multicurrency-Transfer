@@ -1,59 +1,59 @@
 /* MoreInfo.css */
 
 .more-info-container {
-    background-color: #e1dfdf;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    text-align: center; /* Center align the FAQ section */
+  background-color: #e1dfdf;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  text-align: center; /* Center align the FAQ section */
 }
 
 .faq-heading {
-    font-size: 28px; /* Increased font size */
-    color: #3c1053;
-    margin-bottom: 10px; /* Reduced margin */
+  font-size: 28px; /* Increased font size */
+  color: #3c1053;
+  margin-bottom: 10px; /* Reduced margin */
 }
 
 .faq-list {
-    display: flex;
-    flex-direction: column;
-    gap: 5px; /* Reduced gap between FAQs */
-    align-items: flex-end; /* Push FAQs and buttons to the right */
+  display: flex;
+  flex-direction: column;
+  gap: 5px; /* Reduced gap between FAQs */
+  align-items: flex-end; /* Push FAQs and buttons to the right */
 }
 
 .faq-item {
-    display: grid;
-    background-color: #e1dfdf;
-    padding: 10px; /* Reduced padding */
-    border-radius: 5px;
-    width: 100%; /* Make FAQs full width */
-    text-align: justify;
-    align-self: center;
+  display: grid;
+  background-color: #e1dfdf;
+  padding: 10px; /* Reduced padding */
+  border-radius: 5px;
+  width: 100%; /* Make FAQs full width */
+  text-align: justify;
+  align-self: center;
 }
 
 .faq-button {
-    background-color: #5c327e;
-    color: #f2eaf9;
-    font-size: 18px;
-    padding: 5px 10px; /* Reduced button padding to reduce space */
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: block;
-    width: 70%; /* Reduced button width */
-    text-align: center; /* Keep text left-aligned within buttons */
-    margin: 0 auto; /* Center align the buttons */
-    margin-bottom: 2px; /* Further reduced space between purple buttons */
+  background-color: #5c327e;
+  color: #f2eaf9;
+  font-size: 18px;
+  padding: 5px 10px; /* Reduced button padding to reduce space */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  width: 70%; /* Reduced button width */
+  text-align: center; /* Keep text left-aligned within buttons */
+  margin: 0 auto; /* Center align the buttons */
+  margin-bottom: 2px; /* Further reduced space between purple buttons */
 }
 
 .faq-button:hover {
-    background-color: #3c1053;
-    color: #f2eaf9;
+  background-color: #3c1053;
+  color: #f2eaf9;
 }
 
 .faq-answer {
-    margin-top: 10px;
-    width: 70%;
-    text-align: justify;
-    justify-self: center;
+  margin-top: 10px;
+  width: 70%;
+  text-align: justify;
+  justify-self: center;
 }

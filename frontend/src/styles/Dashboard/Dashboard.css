@@ -19,7 +19,6 @@
   margin: 8px 0px 20px 0px;
   overflow-y: auto;
   transition: width 0.3s ease-in-out;
-
 }
 
 .sidebar-closed {
@@ -83,12 +82,10 @@
 
 .toggle-icon {
   transition: transform 0.3s ease-in-out;
-
 }
 
 .toggle-icon.open {
   transform: rotate(180deg);
-
 }
 
 @media screen and (max-width: 850px) {
@@ -103,7 +100,6 @@
     position: static;
     align-items: center;
     height: auto;
-
   }
 
   .sidebar-item {
@@ -122,5 +118,4 @@
   .main-content {
     padding: 10px;
   }
-
 }

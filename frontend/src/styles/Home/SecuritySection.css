@@ -1,26 +1,26 @@
 .securitySection {
-    padding: 30px;
-    color: #5a287d;
-    margin-top: 20px;
-  }
-.security{
+  padding: 30px;
+  color: #5a287d;
+  margin-top: 20px;
+}
+.security {
   display: flex;
 }
-.securityHeader{
+.securityHeader {
   text-align: left;
-  font-family: "knilebold",sans-serif;
+  font-family: "knilebold", sans-serif;
   font-weight: bold;
   margin: 50px 0 50px 20px;
   font-size: 50px;
 }
-.security-p{
+.security-p {
   width: 80%;
-  font-family: "knilebold",sans-serif;
+  font-family: "knilebold", sans-serif;
   font-size: 30px;
   margin: 0 0 0 20px;
 }
-.security-ul{
-  font-family: "knilebold",sans-serif;
+.security-ul {
+  font-family: "knilebold", sans-serif;
   margin: 30px 0 50px 30px;
   font-size: 20px;
 }

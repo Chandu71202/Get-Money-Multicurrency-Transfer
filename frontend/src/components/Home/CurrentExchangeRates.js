@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/Home/CurrentExchangeRates.css";
-import { BsArrowRight } from 'react-icons/bs';
-
+import { BsArrowRight } from "react-icons/bs";
 
 export default function CurrentExchangeRates() {
   const [exchangeRates, setExchangeRates] = useState({});
@@ -18,7 +17,7 @@ export default function CurrentExchangeRates() {
     const fetchExchangeRates = async () => {
       try {
         const response = await fetch(
-          `https://open.er-api.com/v6/latest/${baseCurrency}`
+          `https://open.er-api.com/v6/latest/${baseCurrency}`,
         );
         const response1 = await fetch(`https://open.er-api.com/v6/latest/GBP`);
         const response2 = await fetch(`https://open.er-api.com/v6/latest/USD`);
@@ -65,12 +64,19 @@ export default function CurrentExchangeRates() {
   return (
     <div className="current-exchange-rates">
       <div className="text">
-        <h1 className="currency-exchange-rates-h1">Make your money move, fast</h1>
-        <div style={{ width: '80%' }}>
-          <h2 style={{fontSize: 30}}>Send to 70+ countries, fast. Free from hidden fees and exchange rate markups</h2>
+        <h1 className="currency-exchange-rates-h1">
+          Make your money move, fast
+        </h1>
+        <div style={{ width: "80%" }}>
+          <h2 style={{ fontSize: 30 }}>
+            Send to 70+ countries, fast. Free from hidden fees and exchange rate
+            markups
+          </h2>
         </div>
         <div>
-          <h3 className="currency-exchange-rates-h3">Try our calculator right now <BsArrowRight/></h3>
+          <h3 className="currency-exchange-rates-h3">
+            Try our calculator right now <BsArrowRight />
+          </h3>
         </div>
       </div>
 
@@ -85,8 +91,14 @@ export default function CurrentExchangeRates() {
           <p>EUR to USD: {exchangeRates3.USD?.toFixed(4)}</p>
         </div>
         <div>
-          <label>Try Yourself Out!</label><br></br>
-          <input type="number" className="styled-input" value={amount} onChange={handleAmountChange} />
+          <label>Try Yourself Out!</label>
+          <br></br>
+          <input
+            type="number"
+            className="styled-input"
+            value={amount}
+            onChange={handleAmountChange}
+          />
           <select value={baseCurrency} onChange={handleBaseCurrencyChange}>
             <option value="GBP">GBP</option>
             <option value="USD">USD</option>

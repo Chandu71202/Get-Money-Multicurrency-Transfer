@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../styles/Dashboard/CreateAccount.css"
+import "../../styles/Dashboard/CreateAccount.css";
 import axios from "axios";
 import MiddlePage from "../ErrorHandling/MiddlePage";
 import { useNavigate } from "react-router-dom";
@@ -17,15 +17,13 @@ export default function CreateAccount({ updateHasAccount }) {
     balanceGBP: 100,
     balanceUSD: 100,
     balanceEUR: 100,
-    id: ""
+    id: "",
   });
 
   const navigate = useNavigate();
 
   const generateAccountNumber = () => {
-    const accountNumber = Math.floor(
-      700000000000 + Math.random() * 9000000000
-    );
+    const accountNumber = Math.floor(700000000000 + Math.random() * 9000000000);
     return accountNumber;
   };
 
@@ -43,7 +41,6 @@ export default function CreateAccount({ updateHasAccount }) {
       [e.target.name]: e.target.value,
     });
   };
-
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -65,15 +62,13 @@ export default function CreateAccount({ updateHasAccount }) {
       axios.post("http://localhost:8081/accounts/createNewAccount", account);
       updateHasAccount(true);
       alert("Account Created Successfully");
-      navigate('/loading');
-    }
-    else {
-      alert("Not a valid account Data")
+      navigate("/loading");
+    } else {
+      alert("Not a valid account Data");
     }
   };
   return (
     <div className="create-account-container">
-
       <div className="signup-container-createAccount">
         <h1 className="heading">Additional details to create your account</h1>
 
@@ -100,7 +95,7 @@ export default function CreateAccount({ updateHasAccount }) {
                   className="gender-radio"
                   name="gender"
                   value="Male"
-                  checked={account.gender === 'Male'}
+                  checked={account.gender === "Male"}
                   onChange={handleChanges}
                 />
                 <div className="gender-custom-radio"></div>
@@ -112,7 +107,7 @@ export default function CreateAccount({ updateHasAccount }) {
                   className="gender-radio"
                   name="gender"
                   value="Female"
-                  checked={account.gender === 'Female'}
+                  checked={account.gender === "Female"}
                   onChange={handleChanges}
                 />
                 <div className="gender-custom-radio"></div>
@@ -124,7 +119,7 @@ export default function CreateAccount({ updateHasAccount }) {
                   className="gender-radio"
                   name="gender"
                   value="Others"
-                  checked={account.gender === 'Others'}
+                  checked={account.gender === "Others"}
                   onChange={handleChanges}
                 />
                 <div className="gender-custom-radio"></div>

@@ -1,111 +1,110 @@
-
-
 .table-container {
-    font-family: "knilebold",sans-serif;
-    margin: 20px;
-    font-size: 20px;
-    border: 3px solid #5a287d;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    max-width: 100%;
-    margin: auto;
-    margin-top: 50px;
-  }
-  
+  font-family: "knilebold", sans-serif;
+  margin: 20px;
+  font-size: 20px;
+  border: 3px solid #5a287d;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 100%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px 12px;
+  text-align: center;
+}
+
+td {
+  color: #5a287d;
+  border-left: 1px solid #5a287d;
+  border-right: 1px solid #5a287d;
+}
+
+th {
+  background-color: #f2eaf9;
+  color: #5a287d;
+  border: 1px solid #5a287d;
+  cursor: pointer;
+}
+
+th:hover {
+  background-color: #5a287d;
+  color: #f2eaf9;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f2eaf9;
+}
+
+tbody tr:last-child {
+  border-bottom: 1px solid #5a287d; /* Add border to the last row */
+}
+
+.individual-button {
+  background-color: #3c1053;
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-left: 10px;
+}
+.print-button {
+  background-color: #3c1053;
+  color: #fff;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  margin-left: 10px;
+}
+button:hover {
+  background-color: #7739a4;
+  color: #fff;
+}
+
+button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  color: black;
+}
+.pagination-buttons {
+  text-align: right;
+  margin-top: 10px;
+}
+.NoTransactionYet {
+  display: flex;
+  height: 300px;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+  padding: 30px;
+  margin-left: 30px;
+  color: #3c1053;
+}
+
+@media (max-width: 768px) {
   table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  th, td {
-    padding: 8px 12px;
-    text-align: center;
+    font-size: 16px;
   }
 
-  td{
-    color: #5a287d;
-    border-left: 1px solid #5a287d;
-    border-right: 1px solid #5a287d;
-  }
-  
-  th {
-    background-color: #f2eaf9;
-    color: #5a287d;
-    border: 1px solid #5a287d;
-    cursor: pointer;
-  }
-  
-  th:hover {
-    background-color: #5a287d;
-    color: #f2eaf9;
-  }
-  
-  tbody tr:nth-child(even) {
-    background-color: #f2eaf9;
-  }
-  
-  tbody tr:last-child {
-    border-bottom: 1px solid #5a287d; /* Add border to the last row */
+  th,
+  td {
+    padding: 6px 10px;
   }
 
-  .individual-button {
-    background-color: #3c1053;
-    color: #fff;
-    font-size: 18px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-left: 10px;
+  button {
+    font-size: 14px;
   }
-  .print-button{
-    background-color: #3c1053;
-    color: #fff;
-    font-size: 18px;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-left: 10px;
-  }
-  button:hover{
-    background-color: #7739a4;
-    color: #fff;
-  }
-  
-  button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-    color: black;
-  }
-  .pagination-buttons {
-    text-align: right;
-    margin-top: 10px;
-  }
-  .NoTransactionYet{
-    display: flex;
-    height: 300px;
-    justify-content: center;
-    align-items: center;
-    width: 70%;
-    padding: 30px;
-    margin-left: 30px;
-    color: #3c1053;
-  }
-
-  @media (max-width: 768px) {
-    table {
-      font-size: 16px;
-    }
-  
-    th, td {
-      padding: 6px 10px;
-    }
-  
-    button {
-      font-size: 14px;
-    }
-  }
-  
+}

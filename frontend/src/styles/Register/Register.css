@@ -5,10 +5,10 @@
   padding: 25px 80px;
   border: 1px solid #25232379;
   border-radius: 5px;
-  background-color:   #e9e7e7;
+  background-color: #e9e7e7;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
-.signup-container:hover{
+.signup-container:hover {
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.1);
   transform: translateY(-3px);
   background-color: #15121229;
@@ -23,9 +23,8 @@
 
 .subheading {
   font-size: 17px;
-  font-weight:500;
+  font-weight: 500;
   margin-top: 10px;
-
 }
 
 .login {
@@ -44,17 +43,17 @@
 
 .label {
   display: block;
-  font-size:16px;
+  font-size: 16px;
   font-weight: bold;
   margin-bottom: 5px;
   color: #3c1053;
 }
 
-  .name_field,
-  .email_field,
-  .phone_field,
-  .password_field_register,
-  .confirm_password_field {
+.name_field,
+.email_field,
+.phone_field,
+.password_field_register,
+.confirm_password_field {
   width: 100%;
   padding: 10px;
   font-size: 16px;
@@ -62,11 +61,11 @@
   border-radius: 5px;
 }
 
-  .name_field:hover,
-  .email_field:hover,
-  .phone_field:hover,
-  .password_field_register:hover,
-  .confirm_password_field:hover {
+.name_field:hover,
+.email_field:hover,
+.phone_field:hover,
+.password_field_register:hover,
+.confirm_password_field:hover {
   box-shadow: 3px 3px 3px 3px rgba(70, 9, 77, 0.1);
   transform: translateY(-1px);
   border-color: #7739a4; /* Change border color on hover */
@@ -87,10 +86,9 @@
   box-shadow: 5px 5px 5px 5px rgba(117, 35, 128, 0.1);
   background-color: #7739a4;
   color: black;
-  
 }
 
-.signup-container-createAccount{
+.signup-container-createAccount {
   text-align: center;
   max-width: 700px;
   margin: 50px auto 30px auto;
@@ -100,7 +98,7 @@
   /* background-color:   #e9e7e7; */
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
-.create-account-container{
+.create-account-container {
   background-color: #56595f2e;
   padding-bottom: 2rem;
   padding-top: 0.5rem;
@@ -114,7 +112,7 @@
   }
   .label {
     display: block;
-    font-size:16px;
+    font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
     color: #3c1053;
@@ -126,29 +124,29 @@
   .phone_field,
   .password_field_register,
   .confirm_password_field {
-  width: 80%;
-  align-self: center;
-  text-align: center;
-  padding: 10px;
-  font-size: 16px;
-  border: 3px solid #3c1053;
-  border-radius: 5px;
+    width: 80%;
+    align-self: center;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+    border: 3px solid #3c1053;
+    border-radius: 5px;
+  }
+  .signup-container-createAccount {
+    text-align: center;
+    max-width: 500px;
+    margin: 30px auto 30px auto;
+    padding: 25px 80px;
+    border: 1px solid #25232379;
+    border-radius: 5px;
+    background-color: #e9e7e7;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
 }
-.signup-container-createAccount{
-  text-align: center;
-  max-width: 500px;
-  margin: 30px auto 30px auto;
-  padding: 25px 80px;
-  border: 1px solid #25232379;
-  border-radius: 5px;
-  background-color:   #e9e7e7;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-}
-@media (max-width: 480px){
+@media (max-width: 480px) {
   .label {
     display: block;
-    font-size:16px;
+    font-size: 16px;
     font-weight: bold;
     margin-bottom: 5px;
     color: #3c1053;

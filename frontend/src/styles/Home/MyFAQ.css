@@ -83,7 +83,7 @@
   cursor: pointer;
   padding: 8px 16px;
   width: 100%; /* Allow the answers to adjust their width */
-  text-align: left; /* Align the text to the left *//* Add some margin on the right side */
+  text-align: left; /* Align the text to the left */ /* Add some margin on the right side */
 }
 .MyFAQ-img {
   align-self: center;
@@ -117,7 +117,6 @@
   color: #000;
 }
 
-
 /* Responsive styles for smaller screens */
 @media (max-width: 768px) {
   .MyFAQ-title {
@@ -141,8 +140,7 @@
     order: 2;
     width: 100%;
   }
-  .MyFAQ-img-img{
+  .MyFAQ-img-img {
     margin: 0px;
   }
-  
 }

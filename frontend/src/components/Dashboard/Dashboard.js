@@ -20,8 +20,8 @@ export default function Dashboard() {
   const [selectedItem, setSelectedItem] = useState("My Account");
   const [username, setUserName] = useState("");
   const [hasAccount, setHasAccount] = useState(true);
-  const [account, setAccount] = useState([])
-  const [user, setUser] = useState([])
+  const [account, setAccount] = useState([]);
+  const [user, setUser] = useState([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const handleItemClick = (item) => {
@@ -46,19 +46,21 @@ export default function Dashboard() {
 
   useEffect(() => {
     settingUserName();
-  },[user]);
+  }, [user]);
 
-  const settingHasAccount= async () =>{
+  const settingHasAccount = async () => {
     const user_id = sessionStorage.getItem("id");
-    await axios.get(`http://localhost:8081/accounts/findUserById/${user_id}`).then((response) => {
-      if (response.data.id === user_id) {
-        setHasAccount(true);
-        setAccount(response.data);
-      } else {
-        setHasAccount(false);
-      }
-    });
-  }
+    await axios
+      .get(`http://localhost:8081/accounts/findUserById/${user_id}`)
+      .then((response) => {
+        if (response.data.id === user_id) {
+          setHasAccount(true);
+          setAccount(response.data);
+        } else {
+          setHasAccount(false);
+        }
+      });
+  };
 
   useEffect(() => {
     settingHasAccount();
@@ -66,7 +68,7 @@ export default function Dashboard() {
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
-  }
+  };
 
   return (
     <div>
@@ -75,13 +77,16 @@ export default function Dashboard() {
         <div className="container1">
           <div className="whole-sidebar">
             <div className="sidebar-toggle" onClick={toggleSidebar}>
-              <span className={`toggle-icon  ${isSidebarOpen ? "open" : ""}`}>&#9776;</span>
+              <span className={`toggle-icon  ${isSidebarOpen ? "open" : ""}`}>
+                &#9776;
+              </span>
             </div>
 
             <div className={`sidebar ${isSidebarOpen ? "" : "sidebar-closed"}`}>
               <div
-                className={`sidebar-item ${selectedItem === "Personal Profile" ? "selected" : ""
-                  }`}
+                className={`sidebar-item ${
+                  selectedItem === "Personal Profile" ? "selected" : ""
+                }`}
                 onClick={() => handleItemClick("Personal Profile")}
               >
                 <span className="span">
@@ -91,8 +96,9 @@ export default function Dashboard() {
               </div>
 
               <div
-                className={`sidebar-item ${selectedItem === "Your Account" ? "selected" : ""
-                  }`}
+                className={`sidebar-item ${
+                  selectedItem === "Your Account" ? "selected" : ""
+                }`}
                 onClick={() => handleItemClick("Your Account")}
               >
                 <span className="span">
@@ -101,8 +107,9 @@ export default function Dashboard() {
                 Your Account
               </div>
               <div
-                className={`sidebar-item ${selectedItem === "Inter-Account Transfer" ? "selected" : ""
-                  }`}
+                className={`sidebar-item ${
+                  selectedItem === "Inter-Account Transfer" ? "selected" : ""
+                }`}
                 onClick={() => handleItemClick("Inter-Account Transfer")}
               >
                 <span className="span">
@@ -111,8 +118,9 @@ export default function Dashboard() {
                 Inter-Account Transfer
               </div>
               <div
-                className={`sidebar-item ${selectedItem === "Depost & Withdraw" ? "selected" : ""
-                  }`}
+                className={`sidebar-item ${
+                  selectedItem === "Depost & Withdraw" ? "selected" : ""
+                }`}
                 onClick={() => handleItemClick("Depost & Withdraw")}
               >
                 <span className="span">
@@ -121,8 +129,9 @@ export default function Dashboard() {
                 Depost & Withdraw
               </div>
               <div
-                className={`sidebar-item ${selectedItem === "Transaction History" ? "selected" : ""
-                  }`}
+                className={`sidebar-item ${
+                  selectedItem === "Transaction History" ? "selected" : ""
+                }`}
                 onClick={() => handleItemClick("Transaction History")}
               >
                 <span className="span">
@@ -131,8 +140,9 @@ export default function Dashboard() {
                 Transaction History
               </div>
               <div
-                className={`sidebar-item ${selectedItem === "Support" ? "selected" : ""
-                  }`}
+                className={`sidebar-item ${
+                  selectedItem === "Support" ? "selected" : ""
+                }`}
                 onClick={() => handleItemClick("Support")}
               >
                 <span className="span">
@@ -141,8 +151,9 @@ export default function Dashboard() {
                 Support
               </div>
               <div
-                className={`sidebar-item ${selectedItem === "More Info" ? "selected" : ""
-                  }`}
+                className={`sidebar-item ${
+                  selectedItem === "More Info" ? "selected" : ""
+                }`}
                 onClick={() => handleItemClick("More Info")}
               >
                 <span className="span">
@@ -151,8 +162,9 @@ export default function Dashboard() {
                 More Info
               </div>
               <div
-                className={`sidebar-item ${selectedItem === "Settings" ? "selected" : ""
-                  }`}
+                className={`sidebar-item ${
+                  selectedItem === "Settings" ? "selected" : ""
+                }`}
                 onClick={() => handleItemClick("Settings")}
               >
                 <span className="span">
@@ -162,52 +174,53 @@ export default function Dashboard() {
               </div>
             </div>
           </div>
-      
-            <div className="main-content1">
-              <div className="content">
-                <h1
-                  style={{
-                    textAlign: "center",
-                    paddingTop: "20px",
-                    fontSize: "30px",
-                    color: "#3c1053",
-                  }}
-                >
-                  Hi <u>{username ? ( <>{username}</>) : (<>{"Loading"}</>)}</u>! Welcome to Your Personal Dashboard
-                </h1>
-                
-                {selectedItem !== "Personal Profile" && 
-                selectedItem !== "Inter-Account Transfer" && 
+
+          <div className="main-content1">
+            <div className="content">
+              <h1
+                style={{
+                  textAlign: "center",
+                  paddingTop: "20px",
+                  fontSize: "30px",
+                  color: "#3c1053",
+                }}
+              >
+                Hi <u>{username ? <>{username}</> : <>{"Loading"}</>}</u>!
+                Welcome to Your Personal Dashboard
+              </h1>
+
+              {selectedItem !== "Personal Profile" &&
+                selectedItem !== "Inter-Account Transfer" &&
                 selectedItem !== "Your Account" &&
                 selectedItem !== "Depost & Withdraw" &&
                 selectedItem !== "Transaction History" &&
                 selectedItem !== "Support" &&
                 selectedItem !== "More Info" &&
-                selectedItem !== "Settings"
-                &&  <PersonalProfile account={account} user={user} />}
-                {selectedItem === "Personal Profile" && (
+                selectedItem !== "Settings" && (
                   <PersonalProfile account={account} user={user} />
                 )}
-                {selectedItem === "Inter-Account Transfer" && <TransferMoney account={account} />}
-                {selectedItem === "Your Account" && (
-                  <YourAccount account={account} />
-                )}
-                {selectedItem === "Depost & Withdraw" && (
-                  <DepositWithdraw account={account} />
-                )}
-                {selectedItem === "Transaction History" && (
-                  <TransactionHistory account={account} />
-                )}
-                {selectedItem === "Support" && <Support />}
-                {selectedItem === "More Info" && (
-                  <MoreInfo />
-                )}
-                {selectedItem === "Settings" && (
-                  <Settings account={account} user={user}/>
-                )}
-              </div>
+              {selectedItem === "Personal Profile" && (
+                <PersonalProfile account={account} user={user} />
+              )}
+              {selectedItem === "Inter-Account Transfer" && (
+                <TransferMoney account={account} />
+              )}
+              {selectedItem === "Your Account" && (
+                <YourAccount account={account} />
+              )}
+              {selectedItem === "Depost & Withdraw" && (
+                <DepositWithdraw account={account} />
+              )}
+              {selectedItem === "Transaction History" && (
+                <TransactionHistory account={account} />
+              )}
+              {selectedItem === "Support" && <Support />}
+              {selectedItem === "More Info" && <MoreInfo />}
+              {selectedItem === "Settings" && (
+                <Settings account={account} user={user} />
+              )}
             </div>
-          
+          </div>
         </div>
       ) : (
         <div>
@@ -216,16 +229,16 @@ export default function Dashboard() {
               textAlign: "center",
               padding: "10px",
               fontSize: "30px",
-              backgroundColor:"#56595f2e"
+              backgroundColor: "#56595f2e",
             }}
           >
-            Hi <u>{username ? ( <>{username}</>) : (<>{"Loading"}</>)}</u>! Welcome to Your Personal Dashboard
+            Hi <u>{username ? <>{username}</> : <>{"Loading"}</>}</u>! Welcome
+            to Your Personal Dashboard
           </h1>
           <CreateAccount updateHasAccount={updateHasAccount} />
         </div>
       )}
-<Footer/>
+      <Footer />
     </div>
-
   );
 }

@@ -1,11 +1,11 @@
-.signup-container-1{
+.signup-container-1 {
   text-align: center;
   max-width: 700px;
   margin: auto;
   padding: 25px 80px;
   border: 1px solid #25232379;
   border-radius: 5px;
-  background-color:   #e9e7e7;
+  background-color: #e9e7e7;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   margin-top: 30px;
   margin-bottom: 30px;
@@ -13,7 +13,7 @@
 
 .card {
   text-align: center;
-  margin:auto;
+  margin: auto;
   padding: 30px 80px;
   border: 3px solid #ccc;
   border-radius: 5px;
@@ -66,7 +66,7 @@
   color: black;
 }
 
-.form-group-input-amount{
+.form-group-input-amount {
   width: 78%;
   padding: 10px;
   margin-right: 14px;
@@ -76,31 +76,30 @@
   margin-top: 10px;
   margin-bottom: 10px;
 }
-.form-group-input-select{
+.form-group-input-select {
   width: 100px;
   height: 51px;
-  padding: 10px; 
+  padding: 10px;
 }
 
-.conversion{
+.conversion {
   text-align: center;
   font-size: 15px;
   font-weight: 540;
 }
 
-.conversion > hr{
+.conversion > hr {
   max-width: 300px;
   margin-left: auto;
   margin-right: auto;
 }
 
 @media (max-width: 768px) {
-
   /* TransferMoney.css */
-.transfer-money{
-  margin: auto;
-  max-width: 60%;
-}
+  .transfer-money {
+    margin: auto;
+    max-width: 60%;
+  }
 
   .form-group-input,
   .form-group-input-amount,
@@ -108,7 +107,7 @@
     font-size: 14px;
   }
 
-  .form-group-input-amount{
+  .form-group-input-amount {
     width: 60%;
   }
 
@@ -119,7 +118,7 @@
   .conversion {
     font-size: 14px;
   }
-  .conversion > hr{
+  .conversion > hr {
     max-width: 200px;
     margin-left: auto;
     margin-right: auto;

@@ -1,109 +1,108 @@
 /* CurrencyConverter.css */
-.current-exchange-rates{
+.current-exchange-rates {
   background-color: #f2eaf9;
-  font-family: "knilebold",sans-serif;
+  font-family: "knilebold", sans-serif;
   color: #3c1053;
   padding: 30px;
   display: flex;
-  
 }
-.text{
+.text {
   margin-left: 20px;
 }
-.currency-exchange-rates-h1{
+.currency-exchange-rates-h1 {
   font-weight: bold;
   margin: 50px 0px 50px 0px;
   font-size: 50px;
 }
-.currency-exchange-rates-h3{
+.currency-exchange-rates-h3 {
   text-align: center;
   margin-top: 100px;
 }
 .currency-converter-card {
-    background-color: #fff;
-    align-self: flex-end;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    width: 90%;
-    text-align: center;
-    max-width: 475px;
-    min-width: 400px;
-    margin-left:20px;
-    margin-top: 20px;
-    margin-right: 70px;
-    font-family: "knilebold",sans-serif;
-    color: #333;
-  }
-  
-  .currency-converter-card h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-    color: #3c1053;
-    font-weight: bold;
-  }
-  
-  .currency-converter-card div {
-    margin-bottom: 20px;
-  }
-  
-  /* Style input and select elements */
-  .styled-input{
-    border: 3px solid #3c1053;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    width: 100px;
-    background-color: #fff;
-    margin-right: 10px;
-    color: #333;
-  }
-  select {
-    border: 3px solid #3c1053;
-    padding: 14px;
-    font-size: 16px;
-    border-radius: 5px;
-    width: 100px;
-    background-color: #fff;
-    margin-right: 10px;
-    color: #333;
-  }
-  
-  .styled-input:focus,
-  select:focus {
-    border-color:#5a287d;
-    outline: none;
-  }
-  
-  .currency-converter-card label {
-    font-size: 20px;
-    font-weight: bold;
-    color: #3c1053;
-    padding-bottom: 20px;
-  }
-  
-  .currency-converter-card p {
-    font-size: 18px;
-    margin-top: 10px;
-    font-family:Verdana, Geneva, Tahoma, sans-serif;
-    color: #621b89f7;
-  }
-  
-  .currency-converter-card span {
-    font-size: 16px;
-    margin: 0 10px;
-    color: #3c1053;
-  }
+  background-color: #fff;
+  align-self: flex-end;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  text-align: center;
+  max-width: 475px;
+  min-width: 400px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-right: 70px;
+  font-family: "knilebold", sans-serif;
+  color: #333;
+}
 
-  .currency-converter-card:hover{
-    transform: translateY(-1.5px);
-  }
-  .resultant{
-    /* font-size:50px; */
-    font-weight:700;
-  }
+.currency-converter-card h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #3c1053;
+  font-weight: bold;
+}
 
-  /* Add responsive styles */
+.currency-converter-card div {
+  margin-bottom: 20px;
+}
+
+/* Style input and select elements */
+.styled-input {
+  border: 3px solid #3c1053;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 100px;
+  background-color: #fff;
+  margin-right: 10px;
+  color: #333;
+}
+select {
+  border: 3px solid #3c1053;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 5px;
+  width: 100px;
+  background-color: #fff;
+  margin-right: 10px;
+  color: #333;
+}
+
+.styled-input:focus,
+select:focus {
+  border-color: #5a287d;
+  outline: none;
+}
+
+.currency-converter-card label {
+  font-size: 20px;
+  font-weight: bold;
+  color: #3c1053;
+  padding-bottom: 20px;
+}
+
+.currency-converter-card p {
+  font-size: 18px;
+  margin-top: 10px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #621b89f7;
+}
+
+.currency-converter-card span {
+  font-size: 16px;
+  margin: 0 10px;
+  color: #3c1053;
+}
+
+.currency-converter-card:hover {
+  transform: translateY(-1.5px);
+}
+.resultant {
+  /* font-size:50px; */
+  font-weight: 700;
+}
+
+/* Add responsive styles */
 @media screen and (max-width: 768px) {
   .current-exchange-rates {
     flex-direction: column;
@@ -117,14 +116,13 @@
   }
 
   .currency-converter-card {
-   min-width : 95%;
-   text-align: center;
-
+    min-width: 95%;
+    text-align: center;
   }
-  .currency-converter-card label{
+  .currency-converter-card label {
     padding-bottom: 20px;
   }
-  .styled-input{
+  .styled-input {
     width: 25%;
   }
   select {
@@ -168,6 +166,3 @@
     width: 30%;
   }
 }
-
-
-  
