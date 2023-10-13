@@ -1,0 +1,110 @@
+To design responsive app, using which a customer should be able to initiate inter-account transfer between the same currencies for a combination of multi Currency to multi currency account.
+The ability to transfer between any two currencies between two different accounts and even the same multi currency account where they meet the below criteria and the base currency is either one of the debit/credit currency being transacted:
+Base currency(GBP, USD OR EUR) to remaining exotic currencies.
+
+
+1. Login/Signup
+2. Dashboard - all accounts user is registered
+3. View Stmts(confined to account),check balance,all transactions(irrespective of accounts)
+4. Current Exchange rates btw the currencies
+5. Customer Care- maintainance
+6. About Page - Guide to how to use the transaction part
+7. UI - Praise the company and showcase the security features
+8. User Reviews
+9. FAQ's 
+10. Have a footer disclosing on Comany,services and support
+11. While Transaction display the breakdown of the money
+
+
+1. Create an Account - User
+
+Type of Transactions by User
+1. Self Exchange from one currency to other
+2. Transfer money in same currency to other accounts
+3. Transfer money in different currency to other accounts
+
+
+Features within Dashboard After Login
+
+Navbar 
+1. About
+2. Profile 
+3. Cards
+4. Offers & Referral
+
+Home
+1. Account Details and Balance(showcase all currencies)
+2. Exchange Rates
+3. Transfer
+4. FAQ's 
+
+
+Footer
+1.Security
+2.Customer Help
+3.Feedbacks
+4.Social Media Links
+
+
+
+Dashboard -> Profile
+1. User Personal Details
+2. Edit option to edit this details 
+
+
+
+1. Personal Profile - showcases all the details of the customer,no.of accounts etc,
+2. Your Accounts - 3 accounts (GBP,USD,EUR)
+3. Inter-Account Transfer - Transfer Money which we completed 
+4. Deposit and withdrawl - where he can deposit money in respective accounts through his credit/debit cards
+5. Support - need to think of
+6. More info - about loan,services,security, etc
+7. settings - where user can update their personal details like name,address such thing
+
+
+
+EUREKA SERVER:
+     - Runs on port 8761
+
+ 
+EUREKA CLIENT 1 (USER):
+     - Runs on port 8080
+
+ 
+EUREKA CLIENT 2 (ACCOUNT):
+     - Runs on port 8081
+
+
+User and Auth Service:
+     - register
+         POST http://localhost:8080/users/registerNewUser -> send formData with User type
+     - login
+         POST http://localhost:8080/users/loginUser -> get email and password from formData and Map It
+     - Read any user by ID
+         GET http://localhost:8080/users/{id} -> get user by ID
+     - All Users
+         GET http://localhost:8080/users/allUsers -> get all Users data
+     - Get Id By Email
+	 GET http://localhost:8080/users/getIdByEmail/{email} -> gets id my email
+     - Checking if Email is already Available
+         GET http://localhost:8080/users/checkEmail/{email} -> checks if the database is already having any email registered
+     - connected to users (cluster) USER-SERVICE
+     
+Account Service:
+     - create a account of individual user
+         POST http://localhost:8081/accounts/createNewAccount -> send formData with Account type
+     - find user by ID 
+         POST http://localhost:8081/accounts/findUserById/{id} -> finding if user has account or not by user's id 
+     - Update Balance of GBP by ID
+         PUT http://localhost:8081/accounts/{id}/updateBalanceGBP -> update the balance of GBP
+     - Update Balance of USD by ID
+         PUT http://localhost:8081/accounts/{id}/updateBalanceUSD -> update the balance of USD
+     - Update Balance of EUR by ID
+         PUT http://localhost:8081/accounts/{id}/updateBalanceEUR -> update the balance of EUR
+     - Update Transaction History
+         PUT http://localhost:8081/accounts/{id}/addTransaction -> updates transaction history after every transaction
+     - Join User and Account by ID
+         PUT http://localhost:8081/accounts/joinUserAndAccount/{id} -> joins both user and account table
+     - connected to users (cluster) ACCOUNT-SERVICE
+
+         
